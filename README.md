@@ -129,6 +129,8 @@ used with *total commander 8.01 32bit*
 * WinCDEmu
 
 **utility:**
+* fscapture
+* jcpicker
 * NeoSafeKeys
 * NirLauncher + SysinternalsSuite Package
 * SpeedCrunch

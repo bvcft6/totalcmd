@@ -1,0 +1,11 @@
+Version history
+---------------
+
+1.10
+----
+ADDED		64 bít support
+
+
+
+1.00
+-       	Initial release

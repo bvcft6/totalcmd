@@ -15,9 +15,11 @@ $RECYCLE.BIN/
 /tcwebdav.ini
 /sftpplug.ini
 /wincmd.key
+
 *.exe
 *.dll
 *.dll64
+
 *.wcx
 *.wcx64
 *.wdx
@@ -30,3 +32,7 @@ $RECYCLE.BIN/
 *.bak
 *.log
 *.ttf
+
+*.vxd
+*.sys
+*.lng
