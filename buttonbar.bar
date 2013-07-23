@@ -1,5 +1,5 @@
 [Buttonbar]
-Buttoncount=35
+Buttoncount=36
 button1=Wcmicons.dll
 cmd1=cm_Rereadsource
 iconic1=0
@@ -121,3 +121,7 @@ button35=wciconex.dll,29
 cmd35=cm_ConfigSaveDirHistory
 iconic35=0
 menu35=History aus
+button36=imageres.dll,82
+cmd36=em_openSoftware
+iconic36=0
+menu36=Software
