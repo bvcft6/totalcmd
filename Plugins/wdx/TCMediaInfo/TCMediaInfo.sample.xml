@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tcmediainfo>
     <options>
-        <Formats>AVI,DIVX,MPEG,MPE,MPA,DAT,MPG,ASF,VOB,MKV,OGM,MP1,MP2,MP3,MP4,M4A,M4V,AVC,WAV,AIFF,OGG,WMA,MOV,WMV,QT,AC3,DTS,AU,D2V,RA,RM,APE,FLAC</Formats>
+        <Formats>AVI,DIVX,MPEG,MPE,MPA,DAT,MPG,ASF,VOB,MKV,OGM,MP1,MP2,MP3,MP4,M4A,M4V,AVC,FLV,3GP,WAV,AIFF,OGG,WMA,MOV,WMV,QT,AC3,DTS,AU,D2V,RA,RM,APE,FLAC</Formats>
         <MultiSeparator> / </MultiSeparator>
         <BasePath>base.db</BasePath>
         <MemoryBase>False</MemoryBase>
         <UseBase>True</UseBase>
-        <SqlitePath>sqlite3.dll</SqlitePath>
+        <SqlitePath>Sqlite3.dll</SqlitePath>
+        <Sqlite64Path>Sqlite3_x64.dll</Sqlite64Path>
+        <MediaInfoPath>MediaInfo.dll</MediaInfoPath>
+        <MediaInfo64Path>MediaInfo_x64.dll</MediaInfo64Path>
+        <MissedField>&lt;empty&gt;</MissedField>
+        <DebugMode>0</DebugMode>
     </options>
     <sources>
         <!-- General -->
@@ -33,7 +38,7 @@
         <source name="VideoCodecID" field="CodecID" context="Video"/>
         <source name="VideoFrameWidth" field="Width" context="Video"/>
         <source name="VideoFrameHeight" field="Height" context="Video"/>
-        <source name="VideoFPS" field="FrameRate/String" context="Video"/>
+        <source name="VideoFPS" field="FrameRate" context="Video"/>
         <source name="VideoFrameCount" field="FrameCount" context="Video"/>
         <!-- Audio -->
         <source name="AudioStreamCount" field="StreamCount" context="Audio"/>
@@ -54,38 +59,12 @@
     <columns>
         <!-- General -->
         <column name="Duration">
-            <unit name="h:m:s" type="script">
-            <![CDATA[
-            var
-               Sec, Min, Hour: integer;
-            begin
-              Hour:=Trunc(Duration/3600000);
-              Min:=Trunc((Duration-Hour*3600000)/60000);
-              Sec:=Trunc((Duration-Hour*3600000-Min*60000)/1000);
-              Output:=Format('%2.2d:%2.2d:%2.2d', [Hour, Min, Sec]);
-            end.
-            ]]>
-            </unit>
-            <unit name="h:m:s.z" type="script">
-            <![CDATA[
-            var
-               Msec, Sec, Min, Hour: integer;
-            begin
-              Hour:=Trunc(Duration/3600000);
-              Min:=Trunc((Duration-Hour*3600000)/60000);
-              Sec:=Trunc((Duration-Hour*3600000-Min*60000)/1000);
-              Msec:=Duration-Hour*3600000-Min*60000-Sec*1000;
-              Output:=Format('%2.2d:%2.2d:%2.2d.%3.3d', [Hour, Min, Sec, Msec]);
-            end.
-            ]]>
-            </unit>
-            <unit name="s" type="script">begin Output:=Trunc(Duration/1000); end.</unit>
+            <unit name="hh:mm:ss" type="script">Output:=TimingFormat('%hh:%mm:%ss', Duration);</unit>
+            <unit name="hh:mm:ss.fff" type="script">Output:=TimingFormat('%hh:%mm:%ss.%fff', Duration);</unit>
+            <unit name="s" type="script">Output:=Trunc(Duration/1000);</unit>
             <unit name="z">Duration</unit>
             <unit name="Custom" type="script">
             <![CDATA[
-            var
-               Sec, Min, Hour: integer;
-            begin
               Output:='';
               if Duration = '' then Exit;
               Hour:=Trunc(Duration/3600000);
@@ -94,15 +73,14 @@
               if (Hour <> 0) then Output:=IntToStr(Hour)+' hr ';
               if  (Min <> 0) then Output:=Output+IntToStr(Min) +' min ';
               if  (Sec <> 0) then Output:=Output+IntToStr(Sec) +' sec ';
-            end.
             ]]>
             </unit>
         </column>
         <column name="Format">GeneralFormat</column>
         <column name="Bitrate">
             <unit name="Bps">OverallBitRate</unit>
-            <unit name="KBps" type="script">begin Output:=Format('%f', [Double(OverallBitRate)/1024]); end.</unit>
-            <unit name="MBps" type="script">begin Output:=Format('%f', [Double(OverallBitRate)/1048576]); end.</unit>
+            <unit name="KBps" type="script">Output:=Format('%f', OverallBitRate/1000);</unit>
+            <unit name="MBps" type="script">Output:=Format('%f', OverallBitRate/1000000);</unit>
         </column>
         <column name="Encoded Date" coltype="ft_datetime">EncDate</column>
         <column name="Stream Count">
@@ -129,28 +107,36 @@
         <column name="Video Codec">VideoCodecID</column> <!-- For AVI this field return FOURCC -->
         <column name="Video Bitrate">
             <unit name="Bps">VideoBr</unit>
-            <unit name="KBps" type="script">begin Output:=Format('%f', [Double(VideoBr)/1024]); end.</unit>
-            <unit name="MBps" type="script">begin Output:=Format('%f', [Double(VideoBr)/1048576]); end.</unit>
+            <unit name="KBps" type="script">Output:=Format('%f', VideoBr/1000);</unit>
+            <unit name="MBps" type="script">Output:=Format('%f', VideoBr/1000000);</unit>
         </column>
         <column name="Frame Size" type="script">
         <![CDATA[
-        begin
           if (VideoFrameWidth = '') and (VideoFrameHeight = '') then
             Output:=''
           else
             Output:=VideoFrameWidth+' x '+VideoFrameHeight;
-        end.
         ]]>
         </column>
         <column name="Frame Rate">VideoFPS</column>
         <column name="Frame Count">VideoFrameCount</column>
+        <column name="All video as string" type="script">
+        <![CDATA[
+		  if (VideoFrameWidth = '') and (VideoFrameHeight = '') then
+            Output:=''
+          else
+            Output:=VideoFrameWidth+'x'+VideoFrameHeight;
+          if (VideoFPS <> '') then Output:=Output+', '+VideoFPS+' fps';
+          if (VideoFormat <> '') then Output:=Output+', '+VideoFormat;
+        ]]>     
+        </column>
         <separator/>
         <!-- Audio -->
         <column name="Audio Language">AudioLang</column>
         <column name="Audio Format">AudioFormat</column>
         <column name="Audio Bitrate">
             <unit name="Bps">AudioBr</unit>
-            <unit name="KBps" type="script">begin Output:=Format('%f', [Double(AudioBr)/1024]); end.</unit>
+            <unit name="KBps" type="script"><![CDATA[if (AudioBr <> '') then Output:=Format('%f', AudioBr/1000);]]></unit>
         </column>
         <column name="Bitrate Mode">AudioBrMode</column>
         <column name="Sampling Rate">AudioSamplingRate</column>
@@ -158,10 +144,14 @@
         <column name="Resolution">AudioResolution</column>
         <column name="All audio as string" type="script">
         <![CDATA[
-        begin
           Output:='';
-          if (AudioBrMode <> '') then Output:=AudioBrMode;
-          if (AudioBr <> '') then Output:=Output+'@'+Format('%d', [Trunc(Double(AudioBr)/1000)]);
+          if (AudioBrMode <> '') then 
+		  begin
+			  Output:=AudioBrMode;
+	          if (AudioBr <> '') then Output:=Output+'@'+Format('%d kbps', Trunc(AudioBr/1000));
+		  end
+		  else
+	          if (AudioBr <> '') then Output:=Format('%d kbps', Trunc(AudioBr/1000));			
           if (AudioSamplingRate <> '') then Output:=Output+', '+AudioSamplingRate+'Hz';
           if (AudioResolution <> '') then Output:=Output+', '+AudioResolution+'bit';
           if (AudioFormatSettingsMode <> '') then
@@ -172,7 +162,6 @@
                 1: Output:=Output+', Mono';
                 2: Output:=Output+', Stereo';
               end;
-        end.
         ]]>     
         </column>
         <separator/>
@@ -182,10 +171,15 @@
         <separator/>
         <!-- Almost demo purpose, retrieve custom values from lists -->
         <column name="Video codec custom" type="list" list="VideoCodecs">VideoCodecID</column>
-        <column name="Audio codec custom" type="script">begin Output:=GetListValue('AudioCodecs', Format('%4.4d', [Integer(AudioCodecID)]), AudioCodecID); end.</column>
+        <column name="Audio codec custom" type="script">Output:=GetListValue('AudioCodecs', Format('%4.4d', AudioCodecID), AudioCodecID);</column>
     </columns>
     <lists>
         <list name="VideoCodecs" type="ini" file="Codecs.cfg" section="VIDEO"/>
         <list name="AudioCodecs" type="ini" file="Codecs.cfg" section="AUDIO"/>
     </lists>
+    <listeroptions>
+        <!-- Temporary! This options will be changed! -->
+        <FontName>Courier New</FontName>
+        <FontSize>13</FontSize>
+    </listeroptions>
 </tcmediainfo>

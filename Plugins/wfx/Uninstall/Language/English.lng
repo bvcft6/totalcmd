@@ -1,0 +1,36 @@
+; LngFile for UnIstaller v1.8 FS-Plugin for TC
+;
+; Autor: Igor Shkarednyi
+;        prof@atnet.ru
+;
+
+[Language]
+Lng=English
+
+[Warnings]
+1=ATTENTION!!! You are trying to uninstall a hidden program!!! This operation can bring about unpredictable results!!!
+2=Continue?
+
+[Config]
+1=Configuration
+2=OK
+3=Cancel
+4=Display
+5=Standard only
+6=Hidden only
+7=Both
+8=Standard
+9=Hidden
+10=Windows HotFix
+
+[Properties]
+1=Properties:
+2=OK
+3=Cancel
+4=Standard parameters
+5=Hidden parameters
+
+[Modify]
+1=If You want to change or remove this program, then press "Change" or "Removing"
+2=Change
+3=Removing

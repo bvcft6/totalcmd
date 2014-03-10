@@ -1,0 +1,12 @@
+[eng]
+Width=Width
+Height=Height
+Dimensions=Dimensions
+Content=Content
+
+[deu]
+[eng]
+Width=Breite
+Height=Höhe
+Dimensions=Abmessungen
+Content=Inhalt

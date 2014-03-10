@@ -8,14 +8,14 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-
-# total commander
+# total commander files
 /history.ini
 /wcx_ftp.ini
 /tcwebdav.ini
 /sftpplug.ini
 /wincmd.key
 
+# non-free components
 *.exe
 *.dll
 *.dll64
@@ -35,4 +35,17 @@ $RECYCLE.BIN/
 
 *.vxd
 *.sys
-*.lng
+Russian.lng 
+
+*.db
+*.br2
+
+# want icons
+!icons/*.dll
+!Wcmicons.dll
+!WCICONEX.DLL
+
+
+
+# source folder
+/Plugins/wdx/wdx_mediainfo/src/
