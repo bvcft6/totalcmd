@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Документация TCMediaInfo</title>
+  <meta name="Author" content="Dmitry Yudin">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Language" content="ru">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+  <!--
+  body {font-family: Verdana, Tahoma; font-size: 10pt}
+  h1 {font-size: 16pt}
+  h2 {font-size: 14pt}
+  .comment {width: 800px; padding-top: 8px; podding-bottom: 0px; font-family: Verdana; font-size: 10pt}
+  .image {margin-top: -5px}
+  -->
+  </style>
+</head>
+
+<body>
+
+<h1>TCMediaInfo plugin for Total Commander 0.7.1</h1>
+
+<h2>Описание плагина</h2>
+<p>TCMediaInfo - контентный/листерный плагин для извлечения информации из видео и аудио файлов. Плагин использует библиотеку MediaInfo и поддерживает все форматы, которые поддерживаются библиотекой. Полный список форматов смотрите <a href="http://mediainfo.sourceforge.net/Support/Formats">здесь</a>.
+
+<h2>Требования</h2>
+<p>Плагин тестировался на:
+<ul>
+	<li>Total Commander 8.0 под Windows XP Professional SP3 (x86)
+	<li>Total Commander 8.0 x64 под Windows 7 (x64)
+</ul>
+
+<h2>Установка</h2>
+<p>Просто откройте wdx_tcmediainfo_xxx.zip в Total Commander для запуска автоматической установки.
+
+<h2>Использование</h2>
+<p>Поскольку библиотека MediaInfo может извлекать множество информации, плагин сделан полностью настраиваемым и позволяет использовать практически любой параметр библиотеки MediaInfo. По-умолчанию несколько наиболее полезных параметров уже настроены в стандартной конфигурации. 
+<p>Конфигурирование колонок в Total Commander смотрите в документации на программу.
+
+<h2>Конфигурация</h2>
+<p>Если вам нужна дополнительная информация, которой нет в стандартной конфигурации, придется отредактировать файл TCMediaInfo.xml и добавить свои параметры. В файле <b>allfields.txt</b> находится полный список свойств библиотеки. Если вы обновляете библиотеку до новой версии, запустите <b>saveprops.bat</b> чтобы обновить файл списка.
+
+<p>В файле конфигурации вы можете увидеть четыре основных xml-узла.
+
+<h3>Узел опций:</h3>
+
+<pre>
+<span style="color: 0000AA">&lt;options&gt;
+    &lt;Formats&gt;<b></span>AVI,DIVX,MPEG,...</b><span style="color: 0000AA">&lt;/Formats&gt;
+    &lt;MultiSeparator&gt; <b></span>/ </b><span style="color: 0000AA">&lt;/MultiSeparator&gt;
+    &lt;BasePath&gt;<b></span>base.db</b><span style="color: 0000AA">&lt;/BasePath&gt;
+    &lt;MemoryBase&gt;<b></span>False</b><span style="color: 0000AA">&lt;/MemoryBase&gt;
+    &lt;UseBase&gt;<b></span>True</b><span style="color: 0000AA">&lt;/UseBase&gt;
+    &lt;SqlitePath&gt;<b></span>Sqlite3.dll</b><span style="color: 0000AA">&lt;/SqlitePath&gt;
+    &lt;Sqlite64Path&gt;<b></span>Sqlite3_x64.dll</b><span style="color: 0000AA">&lt;/Sqlite64Path&gt;
+    &lt;MediaInfoPath&gt;<b></span>MediaInfo.dll</b><span style="color: 0000AA">&lt;/MediaInfoPath&gt;
+    &lt;MediaInfo64Path&gt;<b></span>MediaInfo_x64.dll</b><span style="color: 0000AA">&lt;/MediaInfo64Path&gt;
+    &lt;MissedField&gt;</span><span style="color: 800080">&lt;<b></span>empty</b><span style="color: 800080">&gt;</span><span style="color: 0000AA">&lt;/MissedField&gt;
+    &lt;DebugMode&gt;<b></span>False</b><span style="color: 0000AA">&lt;/DebugMode&gt;
+&lt;/options&gt;</span>
+</pre>
+
+<p><b>Formats</b> - список поддерживаемых расширений, разделенных запятой.
+
+<p><b>MultiSeparator</b> - строка, которой будут разделены несколько результатов в одном поле (например, список языков звуковых дорожек в фильме). 
+
+<p><b>BaseFile</b> - путь к файлу базы. Можно использовать переменные окружения.
+
+<p><b>UseBase</b> - установите в True если вы хотите использовать базу. База сделана в связи с медленной работой библиотеки MediaInfo для ускорения последующего получения данных.
+
+<p><b>MemoryBase</b> - если true, база будет создана только в памяти и сброшена при перезапуске TC
+
+<p><b>SqlitePath</b> - путь к библиотеке Sqlite3.dll. По-умолчанию плагин ищет ее в своем каталоге. Можно использовать переменные окружения.
+
+<p><b>Sqlite64Path</b> - путь к библиотеке Sqlite3_x64.dll для 64-битной версии плагина. По-умолчанию плагин ищет ее в своем каталоге. Можно использовать переменные окружения.
+
+<p><b>MediaInfoPath</b> - путь к библиотеке MediaInfo.dll. По-умолчанию плагин ищет ее в своем каталоге. Можно использовать переменные окружения.
+
+<p><b>MediaInfo64Path</b> - путь к библиотеке MediaInfo_x64.dll для 64-битной версии плагина. По-умолчанию плагин ищет ее в своем каталоге. Можно использовать переменные окружения.
+
+<p><b>MissedField</b> - этот текст будет показываться в полях, которые не имеют данных в базе данных (для новых источников).
+
+<p><b>DebugMode</b> - режим отладки, сообщения об ошибках и отладочные сообщения записываются в файл debug.log
+
+
+<h3>Узел источников:</h3>
+<pre>
+<span style="color: 0000AA">&lt;sources&gt;
+  &lt;source </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;SourceName&quot; </span><span style="color: 008080">field</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;MediaLibraryField&quot; </span><span style="color: 008080">context</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;MediaLibraryFieldContext&quot; </span><span style="color: 008080">stream</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;StreamNumber&quot;</span><span style="color: 000080">/&gt;
+</span><span style="color: 0000AA">&lt;/sources&gt;</span>
+</pre>
+
+<p>Здесь вы задаете "источники" - информация, которая будет получена из библиотеки и (опционально) сохранена в базу. Каждый узел &lt;source&gt; может иметь атрибуты:
+
+<p><b>SourceName</b> - имя источника. Оно может содержать только латинские буквы, цифры и символ подчеркивания. Заданное имя будет являться именем поля для базы, и именем переменной для скриптов.
+
+<p><b>MediaLibraryField</b> - имя поля MediaLibrary (смотрите полный список доступных полей в allprops.txt)
+
+<p><b>MediaLibraryFieldContext</b> (опциональный) - поскольку многие поля возвращают свою информацию для для разных типов объектов (контейнер, видео, аудио, и т.д.), и некоторые работают только для определенных типов контента, вам нужно задавать, для какого типа (в каком контексте) будет получена информация. Контекст может быть General, Video, Audio, Text, Chapters, Image и Menu. Если контекст опущен, будет извлекаться информация в контексте General (обычно это контейнер или общая информация, например, теги).
+
+<p>StreamNumber</b> (опциональный) - номер потока, для которого будет извлечена информация. Если вместо числа будет задано "*" - будет извлечена информация по всем доступным потокам в данном контексте (данные будут разделены строкой, заданной в параметре MultiSeparator).
+
+<h3>Узел колонок:</h3>
+<pre><span style="color: 0000AA">&lt;columns&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">coltype</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnOutputType&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;template&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName1, SourceName2</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;list&quot; </span><span style="color: 008080">list</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;script&quot;</span><span style="color: 0000AA">&gt;<b></span>{script content here}</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;script&quot;</span><span style="color: 0000AA">&gt;
+  </span><span style="color: 800000">&lt;![CDATA[
+      {script content here} 
+  ]]&gt;  
+  </span><span style="color: 0000AA">&lt;/column&gt;
+&lt;/columns&gt;</span></pre>
+
+<p>Здесь вы определяете колонки, как они будут видны в Total Commander. 
+
+<p>Каждый узел &lt;column&gt; может содержать атрибуты:
+
+<p><b>ColumnName</b> - имя колонки (обычно английское, чтобы его можно было переводить стандартными средствами Total Commander), как оно будет видно в Total Commander. 
+
+<p><b>type="<i>&lt;single|template|list|script&gt;</i>"</b> - определяет, как будет трактоваться текст узла. <p>Может быть:
+
+<p style="padding: 10px"><b>single</b> - текст узла является именем источника. Используется по-умолчанию и может быть опущен.<br>
+<b>template</b> - шаблон, имена источников в тексте будут заменены их значениями.<br>
+<b>list</b> - значение заданного источника будет искаться в списке с именем, заданном в атрибуте "list", (смотрите раздел "списки")<br>
+<b>script</b> - скрипт на встроенном скриптовом языке (смотрите секцию "написание скриптов").
+
+<p>Если атрибут опущен, текст трактуется как простое имя источника (single).
+
+<p>Текст узла может быть взят в секцию CDATA. Это рекомендуется делать в случае скриптов, чтобы не преобразовывать спецсимоволы, которые могут встретиться в скрипте, а также в случае многострочных скриптов.
+
+<p>Узел &lt;column&gt; также может содержать вложенные узлы &lt;unit&gt; (единицы). Они обрабатываются точно так же, как узлы &lt;column&gt; и имеют такие же атрибуты. Не исползуйте атрибут "type" в узле &lt;column&gt;, если вы используете единицы.
+
+<p><b>ColumnOutputType</b> (опционально) - тип колонки, в основном полезно для форматирования даты/времени. Поддерживаются типы ft_string, ft_numeric_32,  ft_numeric_32, ft_datetime. Может быть опущен, по-умолчанию используется ft_string.
+
+<p>Также вы можете поместить узел &lt;separator/&gt; между колонками, он будет виден как разделитель в меню Total Commander.
+
+<h3>Узел списков:</h3>
+
+<pre><span style="color: 0000AA">&lt;lists&gt;
+  &lt;list </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot;</span><span style="color: 0000AA">&gt;
+    &lt;line </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;SearchText&quot;</span><span style="color: 0000AA">&gt;<b></span>ReplaceText</b><span style="color: 0000AA">&lt;/line&gt;
+  &lt;/list&gt;
+  &lt;list </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ini&quot; </span><span style="color: 008080">file</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;{path to file, environment variables allowed}&quot; </span><span style="color: 008080">section</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;{load from}&quot;</span><span style="color: 000080">/&gt;
+</span><span style="color: 0000AA">&lt;/lists&gt;
+</span></pre>
+
+<p>В этом узле располагаются списки замен.
+
+<p><b>ListName</b> - имя списка. Оно может содержать только латинские буквы, цифры и символ подчеркивания. Заданное имя может быть использовано в колонках типа "list", или скрипт может вызвать его по этому имени.
+
+<p><b>SearchText</b> - текст (идентификатор) для поиска
+
+<p><b>ReplaceText</b> - найденный текст будет заменен этим текстом
+
+<p><b>type="ini"</b> - список может быть загружен из внешнего ini-файла. Имя файла должно быть задано в атрибуте "file" (можно использовать переменные окружения). Также необходимо установить имя секции ini-файла в атрибуте "section". Ini может быть закодирован в ANSI или UTF-8.
+
+<h2>Написание скриптов</h2>
+
+<p>Написание скриптов позволяет полностью изменить вывод информации под ваши нужды.
+
+<p>В скриптах можно использовать любое из определенных имен источников, и специальную переменную "Output", значение которой будет выведено плагином. Все входные переменные и переменная "Output" имеют тип Variant. Это означает, что во многих случаях вы можете использовать ее значение без дополнительных преобразований типов. Обратите внимание, что когда вариант - строка, она на самом деле закодирована в UTF-8.
+
+<p>Переменные обьявлять не надо, они при небходимости создаются динамически
+при присваивании им значений. Тип определяется по последнему присвоенному
+значению, типовый контроль при присваивании не выполняется. То есть если
+существующей числовой переменной присвоить строку, ее тип изменится.
+Символам строки можно присваивать числовые значения в диапазоне 0..255 или
+символы (строки длиной 1).
+
+<p>В выражениях поддерживаются следующие операции:
+арифметические: +, -, *, /, ^ (возведение в степень), SHL, SHR
+операции с битами: BITOR,BITAND,BITXOR,BITNOT
+логические: &gt;, &lt;, &gt;=, &lt;=, =, &lt;&gt;, AND, OR, NOT, константы TRUE и FALSE.
+Tакже можно использовать скобки. Порядок выполненния операций стандартный.
+
+<p>В интерпретаторе поддерживаются операторы:
+<ul>
+  <li>BEGIN ... END
+  <li>IF ... THEN ... ELSE
+  <li>CASE
+  <li>FOR ... TO/DOWNTO ... DO
+  <li>WHILE ... DO
+  <li>REPEAT ... UNTIL
+  <li>CONTINUE
+  <li>BREAK
+  <li>GOTO
+  <li>EXIT
+</ul>
+
+<p>Также, поддерживаются массивы и пользовательские процедуры и функции.
+
+<h2>Специальные функции</h2>
+
+<p>Для упрощения работы в применении к данным плагина, введены некоторые специальные функции.
+
+<p><b><span style="color: 0000AA">GetListValue</span>(<span style="color: AA0000">List</span>; <span style="color: AA0000">Default</span>)</b>
+
+<p>Cпециальная функция для работы со списками. Параметры:
+
+<p><b>List</b> - имя списка<br>
+<b>ID</b> - текст, который будет искаться<br>
+<b>Default</b> - стандартное значение, котрое будет возвращено в случае если текст не найден
+
+<p>Возвращаемое значение - строка.
+
+<p><b><span style="color: 0000AA">TimingFormat</span>(<span style="color: AA0000">TimingFmt</span>; <span style="color: AA0000">Timing</span>)</b>
+
+<p>Функция для вычисления и форматирования тайминга, заданного в миллисекундах.
+
+<p><b>TimingFmt</b> - формат строки, может быть свободно сконструирован из произвольного текста со следующими подстановками:
+
+<p style="padding-left: 10px"><b>%h</b> - час, например 1 час &rarr; 1 <br>
+<b>%hh</b> - час с ведущим нулем, например 1 час &rarr; 01 <br>
+<b>%hhh</b> - час с двумя ведущими нулями, например 1 час &rarr; 001<br>
+<b>%m</b> - минуты, например 5 мин &rarr; 5 <br>
+<b>%mm</b> - минуты с ведущим нулем, например 5 мин &rarr; 05 <br>
+<b>%s</b> - секунды, например 5 мин &rarr; 5 <br>
+<b>%ss</b> - секунды с ведущим нулем, например 5 мин &rarr; 05 <br>
+<b>%z</b> - тысячные доли секунды (= миллисекундам), например 25 мс &rarr; 25<br>
+<b>%fff</b> - тысячные доли секунды (= миллисекундам), c ведущими нулями, например 25 мс &rarr; 025<br>
+<b>%ff</b> - доли секунды, округленные до сотых, c ведущими нулями, например 125 мс &rarr; 13<br>
+<b>%f</b> - доли секунды, округленные до десятых, например 125 мс &rarr; 1<br>
+
+<p><b>Timing</b> - тайминг в миллисекундах
+
+<p>Возвращаемое значение - строка.
+
+<p>Пример: TimingFormat('%hh:%mm%:%ss.%fff', 183353) &rarr; "00:03:03.353"
+
+
+<h2>Перевод</h2>
+<p>Для перевода используйте стандартный механизм TC. Посмотрите содержимое файла TCMediaInfo.lng, его содержимое очевидно.
+
+<h2>История версий</h2>
+<pre>
+Version 0.7.1 (2012-07-09)
++ интегрирован WLX
++ в список поддерживаемых расширений добавлен FLV и 3GP
+- исправлен делитель битрейта
+- исправлено отображение некоторых полей
+
+Version 0.7.0 (2012-06-27)
+* Документация переведена в html.
+* Для возможности компиляции 64-битной версии использован другой скриптовый движок (потребуются небольшие изменения скриптов).
+* MediaInfo обновлена до версии 0.7.58.0.
+* Плагин записывает отладочные сообщения и ошибки в файл лога вместо сообщений
++ Добавлена специальная скриптовая функция TimingFormat
++ Добавлена опция для задания текста, который будет отображаться для полей без информации в базе (если поле было добавлено позже занесения информации по файлу в базу)
++ Добавление источников больше не требует пересоздания базы
+
+Version 0.6.2 (2011-02-06)
+- Исправлено появление лишнего сообщения на пустой базе
++ Заново добавлена ANSI-версия
+- Версия файла была недоступна под Windows 7
++ Возможность задать произвольный путь к базе.
+
+Version 0.6.1 (2010-09-14)
+- Кажется исправлен общий доступ к БД
++ Добавлена опция использования только сессионной БД в памяти
+
+Version 0.6 (2010-08-22)
+* Плагин полностью переписан
+* Скриптовый движок заменен на Pascal Script
+* Для хранения опций и определений используется XML
++ Значение колонки может быть собрано из нескольких источников
++ База для ускорения повторной загрузки (Sqlite3)
+- Исправлена работа с последними версиями библиотеки
+
+Version 0.51 (не выпускалась)
++ Поддержка списков замены
++ Плагин не использует DetectString, а проверяет расширения по списку, заданному в конфигурации
++ Добавлен стандартный конфиг, чтобы рабочий не перезаписывался при обновлении инсталлятором
+
+Version 0.50 (2009-09-07)
+  Первый релиз.
+
+</pre>
+
+<h2>Благодарности</h2>
+<p>Christian Ghisler - за бесконечно мощный инструмент.
+<p>Команде MediaInfo - за отличную библиотеку.
+<p>Alexey Boyko - за простой и удобный интерпретатор PasCalc.
+
+<h2>Лицензия</h2>
+<p>Copyright (c) 2009-2012 Dmitry Yudin
+<p><a href="http://total.darkhost.ru/page.php?id=wdx_tcmediainfo">Сайт плагина</a> 
+
+<p>Плагин распространяется бесплатно. 
+
+<p>Разрешено включение в любые сборки Total Commander, как персональные, так и публичные, при условии сохранения данного информационного файла.

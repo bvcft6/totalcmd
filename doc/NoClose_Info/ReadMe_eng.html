@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Description of the program NoClose Replacer</title>
+
+  <style type="text/css">
+    body {
+      background-color: #eeffff;
+      font-family: serif;
+      font-size: 12pt;
+    }
+    h1 {
+      font-size: 18pt;
+      font-weight: bold;
+    }
+    h3 {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+    p, blockquote {
+      text-align: justify;
+    }
+    td {
+      vertical-align: top;
+    }
+    .code {
+      border: solid 1px black;
+      background-color: #ffffff;
+      font-family: Courier New, monospace;
+      font-size: small;
+    }
+    table.code {
+      width: 80%;
+    }
+    .file {
+      color: #007f00;
+      font-weight: bold;
+      font-family: Courier New, monospace;
+      font-size: small;
+    }
+    .key {
+      color: #7f0000;
+      font-weight: bold;
+      font-family: Courier New, monospace;
+      font-size: small;
+    }
+    .inisection {
+      color: #0000C0;
+      font-family: Courier New, monospace;
+    }
+    .inikey {
+      font-weight: bold;
+      font-family: Courier New, monospace;
+      font-size: small;
+    }
+    .nobr {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+<a name="top"></a>
+<h1>NoClose Replacer</h1>
+<p>
+<b>Version 1.3</b>
+</p>
+<p>
+Replacer for the <span class="file">noclose.exe</span> program used by the <a href="http://ghisler.com/" target="_blank">Total Commander</a> file manager for starting console applications without closing the console window.
+</p>
+
+<table border="0" cellpadding="0" cellspacing="2">
+  <tr><td><b>Author:</b></td><td style="width: 0.3em;"></td><td>Konstantin Vlasov, 2011</td></tr>
+  <tr><td><b>Homepage:</b></td><td style="width: 0.3em;"></td><td><a href="http://flint-inc.ru/eng/info/noclose.html" target="_blank">http://flint-inc.ru/</a></td></tr>
+  <tr><td><b>E-mail:</b></td><td style="width: 0.3em;"></td><td><a href="mailto:support@flint_inc.ru?Subject=NoClose%20Replacement">support@flint_inc.ru</a></td></tr>
+</table>
+
+<h3>Contents</h3>
+<ol>
+  <li><a href="#descript">Description</a></li>
+  <li><a href="#sysreqs">System Requirements</a></li>
+  <li><a href="#install">Installation</a></li>
+  <li><a href="#settings">Settings</a></li>
+  <li><a href="#history">Versions History</a></li>
+  <li><a href="#thanks">Thanks</a></li>
+</ol>
+<hr />
+<ol>
+  <li><h3><a name="descript">Description</a></h3>
+    <p>
+      Usually when you start a console or DOS application from Total Commander, a console window appears with the program started, and after the program is finished this windows is closed immediately. This is very inconvenient if you need to view the text that the program printed. That's why Total Commander allows to start console applications without closing the console window. To do so the user should start the program by pressing <span class="key">Shift+Enter</span> hotkey instead of the usual <span class="key">Enter</span>.
+    </p>
+    <p>
+      In this case Total Commander executes the following command line:
+    </p>
+    <blockquote>
+      <table class="code"><tr><td>noclose.exe <i>&lt;parameters&gt;</i></td></tr></table>
+    </blockquote>
+    <p>
+      where <b><i>&lt;parameters&gt;</i></b> is the application you started (including its own command-line parameters if any), and <span class="file">noclose.exe</span> file is a part of TC distribution and located in its directory. This is just a small stub program that starts the system command interpreter <span class="file">cmd.exe</span> (in WinNT-based systems) or <span class="file">command.com</span> (in Win9x) with the parameter <b>/K</b> so that the console window remained active after execution. NoClose Replacer allows to customize the TC's behaviour to one's needs more flexibly.
+    </p>
+    <p>
+      <b>Note:</b> The described method was implemented starting with TC 8.0. Earlier a shortcut <span class="file">noclose.pif</span> was used that was installed into the <span class="file">Windows</span> system directory. If you are using TC version belo 8.0, please, use NoClose Replacer 1.2. Starting with 1.3 this old method is no longer supported.
+    </p>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+
+  <li><h3><a name="sysreqs">System Requirements</a></h3>
+    <p>
+      The minimal system requirements depend on the program's variant used.
+    </p>
+    <ul>
+      <li><b>32-bit non-Unicode</b> (for Win9x systems):<br />
+        Windows 98 or higher<br />
+        Total Commander 8.0 x32
+      </li>
+      <li><b>32-bit Unicode</b> (for 32-bit WinNT systems):<br />
+        Windows 2000 or higher<br />
+        Total Commander 8.0 x32
+      </li>
+      <li><b>64-bit</b> (for 64-bit systems with x86-64 architecture):<br />
+        Processor supporting 64-bit instruction set (Intel Pentium 4, AMD Athlon 64 or higher)<br />
+        Windows XP x64 or higher<br />
+        Total Commander 8.0 x64
+      </li>
+    </ul>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+
+  <li><h3><a name="install">Installation</a></h3>
+    <p>
+      Open the progam's archive in Total Commander and it will be suggested for automatic installation. If you turn it off just unpack the archive's contents into TC installation directory replacing existing files.
+    </p>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+
+  <li><h3><a name="settings">Settings</a></h3>
+    <p>
+      By default NoClose Replacer behaves identically to the standard <span class="file">noclose.exe</span>. If you put a <span class="file">NoClose.ini</span> file beside the program it will be read and processed when program starts. Description of all the supported keys follows.
+    </p>
+    <p class="inisection">Section <b>[General]</b></p>
+    <p>
+      <span class="inikey">CommandProcessor</span>
+    </p>
+    <blockquote>
+      Program that will be used as command line shell. You can specify additional parameters here as well. By default the Unicode and non-Unicode use the command lines
+      <blockquote>
+        <table class="code"><tr><td>cmd.exe /K</td></tr></table>
+      </blockquote>
+      and
+      <blockquote>
+        <table class="code"><tr><td>command.com /K</td></tr></table>
+      </blockquote>
+      respectively. If you wish to enclose the whole line into double quotes (e.g. because of spaces in paths) you need to double the quotes! (This is a feature of system functions that read INI files.) You can use the expression <b>%1</b> which will be replaced with the full command line passed to NoClose. If you don't specify <b>%1</b> the command line will be just appended to the end of the command.<br /><br />
+      <ul>
+        <li>
+          <b>Example 1</b>
+          <table class="code"><tr><td>
+            Starting:        <b>noclose.exe file.exe /param1 /param2</b><br />
+            CommandProcessor=<b>cmd.exe /K</b><br />
+            Result:          <b>cmd.exe /K file.exe /param1 /param2</b>
+          </td></tr></table><br />
+        </li>
+        <li>
+          <b>Example 2</b>
+          <table class="code"><tr><td>
+            Starting:        <b>noclose.exe file.exe /param1 /param2</b><br />
+            CommandProcessor=<b>""C:\Program Files\4DOS\4DOS.COM""</b><br />
+            Result:          <b>"C:\Program Files\4DOS\4DOS.COM" file.exe /param1 /param2</b>
+          </td></tr></table><br />
+        </li>
+        <li>
+          <b>Example 3</b>
+          <table class="code"><tr><td>
+            Starting:        <b>noclose.exe file.exe /param1 /param2</b><br />
+            CommandProcessor=<b>shell.exe "%1" /wait</b><br />
+            Result:          <b>shell.exe "file.exe /param1 /param2" /wait</b>
+          </td></tr></table><br />
+        </li>
+      </ul>
+    </blockquote>
+    <p>
+      <span class="inikey">ShowWindow</span>
+    </p>
+    <blockquote>
+      This parameter specifies how the console window will look after starting the program. Possible values:
+      <blockquote>
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr valign="top"><td width="65"><span class="inikey">normal</span></td><td width="15"> &mdash; </td><td>the window is opened as usual, in normal mode.</td></tr>
+          <tr valign="top"><td><span class="inikey">minimize</span></td><td> &mdash; </td><td>after creation the window is minimized.</td></tr>
+          <tr valign="top"><td><span class="inikey">maximize</span></td><td> &mdash; </td><td>after creation the window is maximized.</td></tr>
+          <tr valign="top"><td><span class="inikey">hide</span></td><td> &mdash; </td><td>the window will be hidden. Be careful, you will not be able to interact with application running in a hidden window!</td></tr>
+        </table>
+      </blockquote>
+      By default the <span class="inikey">normal</span> mode is used.
+    </blockquote>
+    <p>
+      <span class="inikey">ShortcutWaitDelay</span>
+    </p>
+    <blockquote>
+      Time (in milliseconds) to wait for pressing an additional hotkey. If this parameter is non-zero NoClose Replacer will not start the command interpreter immediately but will wait for the time specified. If a hotkey is pressed during this period the application checks for presence of this hotkey in the <span class="inisection"><b>[Shortcuts]</b></span> section (see below) and starts the application assigned to this hotkey. If no hotkey was pressed or the hotkey is not defined in the settings the default command interpreter defined by the <span class="inikey">CommandProcessor</span> key will be started.
+    </blockquote>
+
+    <p class="inisection">Section <b>[Shortcuts]</b></p>
+    <blockquote>
+      In this section specific hotkeys can be assigned for starting alternative programs instead of ones specified in the <span class="inikey">CommandProcessor</span> parameter. The format is following:
+      <blockquote>
+        <table class="code"><tr><td>&lt;Modifiers&gt;+&lt;Key&gt;=&lt;Command&gt;</td></tr></table>
+      </blockquote>
+      Possible values for modifiers:
+      <blockquote>
+        <table cellpadding="0" cellspacing="0" border="0" class="code">
+          <tr><td width="5"></td><td width="10"><span class="inikey">L</span></td><td width="25"> &mdash; </td><td>left key</td></tr>
+          <tr><td></td><td><span class="inikey">R</span></td><td> &mdash; </td><td>right key</td></tr>
+          <tr><td></td><td><span class="inikey">C</span></td><td> &mdash; </td><td>Ctrl</td></tr>
+          <tr><td></td><td><span class="inikey">A</span></td><td> &mdash; </td><td>Alt</td></tr>
+          <tr><td></td><td><span class="inikey">S</span></td><td> &mdash; </td><td>Shift</td></tr>
+          <tr><td></td><td><span class="inikey">W</span></td><td> &mdash; </td><td>Win</td></tr>
+          <tr><td></td><td><span class="inikey">M</span></td><td> &mdash; </td><td>ContextMenu</td></tr>
+        </table>
+      </blockquote>
+      <font color="darkred"><b>Please note:</b></font> In Win9x the left and right modifier keys (<b>Shift</b>, <b>Ctrl</b> and <b>Alt</b>) are not distinguished by the system, therefore NoClose Replacer will not be able to distinguish them too!<br /><br />
+      Examples:
+      <blockquote>
+        <table cellpadding="0" cellspacing="0" border="0" class="code">
+          <tr><td width="5"></td><td width="35"><span class="inikey">LW</span></td><td width="30" align="center"> &mdash; </td><td width="190">LeftWin</td><td>(left <b>Win</b> key)</td></tr>
+          <tr><td></td><td><span class="inikey">CRA</span></td><td align="center"> &mdash; </td><td>Ctrl + RightAlt</td><td>(any <b>Ctrl</b> key + right <b>Alt</b> key)</td></tr>
+          <tr><td></td><td><span class="inikey">LSRS</span></td><td align="center"> &mdash; </td><td>LeftShift + RightShift</td><td>(simultaneous pressing of left and right <b>Shift</b> keys)</td></tr>
+        </table>
+      </blockquote>
+      The main key is separated from the modifiers by the symbol <b>'+'</b> (plus) which must be specified in any case, even when there are no modifiers. If the main key is absent the plus sign must not be written.<br />
+      Examples:
+      <blockquote>
+        <table cellpadding="0" cellspacing="0" border="0" class="code">
+          <tr><td width="5"></td><td width="56"><span class="inikey">C+A</span></td><td width="30" align="center"> &mdash; </td><td colspan="2">Ctrl + A</td></tr>
+          <tr><td></td><td><span class="inikey">AS+F9</span></td><td align="center"> &mdash; </td><td colspan="2">Alt + Shift + F9</td></tr>
+          <tr><td></td><td><span class="inikey">LSW</span></td><td align="center"> &mdash; </td><td width="140">LeftShift + Win</td><td>(without the main key)</td></tr>
+          <tr><td></td><td><span class="inikey">+PRNSCR</span></td><td align="center"> &mdash; </td><td>PrintScreen</td><td>(without the modifiers)</td></tr>
+          <tr><td></td><td><span class="inikey">A</span></td><td align="center"> &mdash; </td><td width="140">Alt</td><td></td></tr>
+          <tr><td></td><td><span class="inikey">+A</span></td><td align="center"> &mdash; </td><td width="140">A</td><td>(that's why the plus sign is needed)</td></tr>
+        </table>
+      </blockquote>
+      The full list of the notations for all keys:
+      <blockquote>
+        <img src="keyboard.png" alt="Key codes" />
+      </blockquote>
+      Examples of command entries:
+      <blockquote>
+        <table cellpadding="0" cellspacing="0" border="0" class="code">
+          <tr><td width="5"></td><td><span class="inisection"><b>[Shortcuts]</b></span></td></tr>
+          <tr><td></td><td><span class="key">CS</span><b>=cmd.exe /C</b></td></tr>
+          <tr><td></td><td><span class="key">LAS+TAB</span><b>=4nt.com "%1"</b></td></tr>
+          <tr><td></td><td><span class="key">+SCROLLLOCK</span><b>=C:\run.bat</b></td></tr>
+        </table>
+      </blockquote>
+    </blockquote>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+
+  <li><h3><a name="history">Versions History</a></h3>
+    <ul>
+      <li>
+        <u>Version 1.3</u>
+        <ol>
+          <li>The program is adapted to Total Commander 8.0. Older TC versions are no longer supported; use NoClose Replacer 1.2 for them.</li>
+          <li>Automatic installer added.</li>
+          <li>The program now comes in three "flavours": non-Unicode (for Win9x), Unicode (WinNT) and 64-bit (WinNT x64).</li>
+          <li>Sections and keys with OS-dependent suffixes (<span class="inikey">NT</span> and <span class="inikey">9x</span>) are no longer supported because there are separate program versions for these OS families.</li>
+          <li>Source code is published under the <a href="License.html">BSD license</a>.</li>
+        </ol>
+        <br />
+      </li>
+      <li>
+        <u>Version 1.2</u>
+        <ol>
+          <li>Some bugs fixed that caused additional hotkeys not to work in Win9x systems.</li>
+          <li>Added support for environment variables.</li>
+          <li>Now the program can be started with empty command line (containing of spaces only). This can be useful for opening a console window without preliminary executing of any command.</li>
+        </ol>
+        <br />
+      </li>
+      <li>
+        <u>Version 1.1</u>
+        <ol>
+          <li>The parameters <span class="inikey">CommandProcessorNT</span> and <span class="inikey">CommandProcessor9x</span> were added.</li>
+          <li>When the explicit command interpreter is absent in the settings, the command <span class="code">&nbsp;cmd.exe&nbsp;/K&nbsp;</span> or <span class="code">&nbsp;command.com&nbsp;/K&nbsp;</span> is taken depending of the system (earlier it was always <b>cmd.exe</b>).</li>
+          <li>Added possibility to assign different programs to hotkeys in addition to ones specified in the <span class="inikey">CommandProcessor<i>NN</i></span> settings.</li>
+          <li>The documentation is converted into HTML format.</li>
+        </ol>
+        <br />
+      </li>
+      <li>
+        <u>Version 1.0</u>
+        <ol>
+          <li>The first public version. The following parameters supported: <span class="inikey">CommandProcessor</span> and <span class="inikey">ShowWindow</span>.</li>
+        </ol>
+      </li>
+    </ul>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+
+  <li><h3><a name="thanks">Thanks</a></h3>
+    <blockquote>
+      First, thanks to <b>Aleksey Fomin</b> (Led) who precisely described the idea of the program and created the first working prototype of it using <i><b>Delphi</b></i>. Unfortunately, this IDE creates very large EXE files, so now the program is developed in <i><b>Visual C++</b></i>.<br /><br />
+
+      Also thanks to <b>Vadim Kazakov</b> who acted as the beta-tester for this program, to <b>Icfu</b> and <b>mozers</b> who suggested and tested very interesting improvements, and to all users who reported about bugs in the program and gave ideas about making the program better.<br /><br />
+
+      And of course, I can't but thank <b>Christian Ghisler</b> who created such wonderful tool as Total Commander.
+    </blockquote>
+    <div align="right"><a href="#top">To top</a></div>
+  </li>
+</ol>
+
+</body>
+</html>

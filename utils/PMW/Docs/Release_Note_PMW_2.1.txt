@@ -1,0 +1,34 @@
+1. New features  in this release.
+
+ENH : Added a link to product blog in autoupdate dialog.
+ENH : Added an option in preferences to Enable/Disable Shortcuts.
+Bug : Fixed another non reproducible bug where, windows key use to bahve as if it's pressed, and while user is typing 
+          it use to execute shortcuts.
+BUG : Fixed Colloiding shortcuts... with Windows 7 
+
+# ENH : Autoupdate, Now PMW will be able to detect if new updates are available
+# ENH : Shortcuts, Now there are shortcuts for all frequently used operations.(In this release these shortcuts are not configurable)
+# ENH : Localized/Internationalized, All the messages strings are now externalized, any user can translate it into thier language.
+# ENH : Added a submenu "Save Priority" , in System menu "Priority" , that allows user to remember his favorite priority for each application.
+# ENH : Added A Tray menu "Kill All", that attempts to Kill All application other than explorer.
+# ENH : Added A Tray menu "Kill", that allows to kill application on the fly
+# ENH : Now PMW is portable, to Make it portable anytime, just create a text file "PMW.ini" in installation directory.
+# ENH : Now user can hide all icons of desktop by selecting one icon and pressing "Hide me" shortcut "Win+Z".
+# ENH : Now user can combine all PMW's system menu in one single System menu.
+# ENH : Lesser clicks are required to change preferences, Removed OK/cancel button from Pref dialog, Now changes done gets applied the moment user clicks on checkbox.
+# ENH : System menu "Hide Others" works for Vista and Windows 7 as well.
+# ENH : System menu "Hide Me" works for Vista and Windows 7 as well.
+# ENH : Added an option in preferences to "Show/Hide PMW icon in tray" 
+# ENH : Using preferences now user choose to hide some tray menus like  "Preference", "Language", "Hide All", "Unhide" , "Unhide All", "Kill", "Kill All"      
+# BUG : When Alt+Space is pressed the system menu that pops up in Titlebar had some Undrerscores..Now fixed..       
+# ENH : Installer now is capable of uninstalling older versions 1.6.192 and 1.6.216 (but not older than that)
+# ENH : Installer now is capable of detecting if .Net Frame work 2.0 is installed  
+# ENH : New 48x48 32 bit icon  
+
+2. List of known issue:
+	a) Uninstaller would be always unable to delete.
+         - %appdata%\PMW\2.0\*.*
+        b) sometime uninstaller would be  unable to delete.
+         - %Program Files%\PMW\2.0\*.*
+    
+        

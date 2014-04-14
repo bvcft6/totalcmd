@@ -1,0 +1,22 @@
+a) Operating Systems: Windows 2000/XP/2003/2008/Vista/7 
+
+b) Mircoprocessor:  Intel 32 bit machines only.
+  
+d) Disk Space Requirements: 2 MB free space
+
+e) Memory Requirements:  :  15 MB
+
+d) Required Software: 
+	i) Mirosoft Visual C++ Runtime 2008 SP1 
+         http://www.microsoft.com/downloads/details.aspx?familyid=A5C84275-3B97-4AB7-A40D-3802B2AF5FC2&displaylang=en
+     ii) Microsoft .NET Framework  v2.0 [Installer can detect it]
+         http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=aea55f2f-07b5-4a8c-8a44-b4e1b196d5c0      
+    iii) MSXML  v6.0
+         http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=993c0bcf-3bcf-4009-be21-27e85e1857b1
+
+     iv) A Hot fix from Microsoft for MSXML 6, Widows XP SP3.    
+         http://support.microsoft.com/kb/973687/ 			
+
+		
+-Arif 
+http://arif-ali-saiyed.blogspot.com/

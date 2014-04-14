@@ -1,0 +1,80 @@
+Lister-plugin for TotalCommander
+
+Use this plugin for display CSV-files 
+(Comma separated columns format)
+
+As delimeter used characters ';' or ',' or '|' or tab
+Also you can add your delimeters via registry.
+Plugin can autodetect delimeter.
+
+Recommended to use together with 
+Access Viewer Plugin (wñx_mdb).
+
+Current vervion  - 0.6
+
+Added from 0.5
++ Added new hot keys
++ Added content refresh option
++ Added recognition different extensions (configurable)
++ Added "Whole word search" option support
++ Added "Backward search" option support
++ Added first or next search support
++ Added support for ANSI/ASCII encodings
++ Added header support (first line in file)
++ Added second sorting algorithm
++ Added case sensitive/insitive serch
++ Added external command to show configuration window
+Added from 0.4
+* Settings moved to ini-file instead registry
++ Added def_max_width parameter
++ Added Config window
+Added from 0.2
+* Fixed sorting
+* Fixed windows manipulation
++ Added hotkeys
++ Added highlighting
++ Added find function
+Added from 0.1.1
++ Added settings in registry
++ Add sorting
++ Add copy to clipboard
+Added from 0.1
++ Fixed bugs
+
+Installation notes - as always.
+
+Description of settings
+
+[Global]
+def_row=16 - tab height (0-do not show)
+def_col=50 - tab width (0-do not show)
+def_delims=;,	| - delimiters in order of priority
+def_max_width=0 - column maximum width limitation - (0-do not limit)
+enc_dos=IBM866 - local DOS Encoding
+enc_win=WINDOWS-1251 - local Win Encoding
+sort_as_strings=1 - sort records as strings (0 - off, 1 - on)
+first_line_header=1 - use first line as header (0 - off, 1 - on)
+ext=.csv;.tab;.comma - list of supported extensions
+
+Notes:
+sort_as_strings=0 option can make sorting more slowly, 
+because records try translate into integer or date values.
+
+You can show config window usin command-line or link-file:
+rundll32 wlx_csv.wlx, ShowConfigWindow
+
+Distribution - freeware
+
+If you want to publish plugin on you site,
+please notify me by email.
+
+Any bug reports or suggestions are welcome.
+
+Great thanks to Dariusz J. Kawecki.
+
+Author: Ivan aka Atlanoff
+Email : atlanoff@yandex.ru
+http://atlanoff.narod.ru/
+
+Copyright © 2003 by Atlanoff
+

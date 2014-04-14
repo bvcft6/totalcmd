@@ -1,0 +1,136 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body, p, h1, h2, h3, h4, h5, h6, table, td, th, li, ul, ol, a {
+ font-family: tahoma, helvetica, arial, sans-serif;
+ line-height: 130'%';
+}
+
+body {
+ font-size: 100'%';
+ color: #000000;
+ background: #ffffff;
+ margin-left: 1.5em;
+ margin-right: 1.5em;
+ margin-top: 1.5em;
+ margin-bottom: 1.5em;
+ font-weight : normal;
+ font-style : normal;
+ text-decoration : none;
+}
+
+/* general headline setup */
+h1, h2, h3, h4, h5 {
+	color: Black;
+	background-color: transparent;
+	font-size: 100'%';
+	font-weight: normal;
+	margin: 0 0 1em 0;
+	padding: 0.5em 0 0 0;
+	border-bottom: 1px dotted #000000;
+	clear:left;
+}
+
+/* special headlines */
+h1 {font-size: 160'%'; font-weight: bold;}
+h2 {font-size: 150'%'; font-weight: bold; }
+h3 {font-size: 130'%'; font-weight: bold; border-bottom: none; }
+h4 {font-size: 120'%'; border-bottom: none; }
+h5 {font-size: 100'%'; border-bottom: none; }
+
+table {
+ empty-cells: show;
+ border-collapse: collapse;
+ background-color: #ffffff;
+}
+
+th, td {
+ border: none;
+ padding: 0 0.5em;
+}
+
+th {
+ text-align: left;
+ background-color: #eeeeff;
+}
+
+td {
+ vertical-align: top;
+}
+
+
+</style>
+</head>
+<body>
+<h2>Track Info:</h2>
+<table>
+	<tr>
+		<td>Album:&nbsp;</td>
+		<td>%album%</td>
+	</tr>
+	<tr>
+		<td>Artist:&nbsp;</td>
+		<td>%artist%</td>
+	</tr>
+	<tr>
+		<td>Comment:&nbsp;</td>
+		<td>%comment%</td>
+	</tr>
+	<tr>
+		<td>Genre:&nbsp;</td>
+		<td>%genre%</td>
+	</tr>
+	<tr>
+		<td>Title:&nbsp;</td>
+		<td>%title%</td>
+	</tr>
+	<tr>
+		<td>Track:&nbsp;</td>
+		<td>%track%</td>
+	</tr>
+	<tr>
+		<td>Year:&nbsp;</td>
+		<td>%year%</td>
+	</tr>
+</table>
+
+<br />
+	
+<h2>Technical Info:</h2>
+<table>
+	<tr>
+		<td>Codec:&nbsp;</td>
+		<td>%_codec%</td>
+	</tr>
+	<tr>
+		<td>Extra:&nbsp;</td>
+		<td>%_extra%</td>
+	</tr>
+	<tr>
+		<td>Bitrate:&nbsp;</td>
+		<td>%_bitrate% kbps</td>
+	</tr>
+	<tr>
+		<td>Length:&nbsp;</td>
+		<td>%_length%</td>
+	</tr>
+	<tr>
+		<td>Mode:&nbsp;</td>
+		<td>%_mode%</td>
+	</tr>
+	<tr>
+		<td>Samplerate:&nbsp;</td>
+		<td>%_samplerate% Hz</td>
+	</tr>
+</table>
+
+<br />
+
+<h2>All metadata:</h2>
+<table>
+	$list(<tr><td>,:&nbsp;</td><td>,</td></tr>)
+</table>
+</body>
+</html>

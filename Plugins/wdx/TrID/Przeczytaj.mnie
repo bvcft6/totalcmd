@@ -1,0 +1,81 @@
+/********************************/
+/* WDX TrID                     */
+/* Dodatek do Total Commandera  */
+/********************************/
+
+Opis:
+~~~~~
+
+    Wtyczka, która rozpoznaje typ pliku po jego binarnej sygnaturze.
+    Wykorzystuje TrID Marco Pontolleo (http://mark0.net/soft-trid-e.html).
+
+
+Licencja:
+~~~~~~~~~
+
+    Ten program jest typu freeware, mo¿esz go rozprowadzaæ bez mojej wiedzy i zgody,
+    ale tylko wraz ze wszystkimi plikami w tym archiwum.
+    wdx TrID jest rozpowszechniany wed³ug zasady "jest jaki jest", 
+    jeœli przez niego stracisz pliki czas lub cokolwiek innego, 
+    tylko Ty jesteœ temu winien. Zosta³eœ ostrze¿ony, u¿ywasz go na w³asne ryzyko.
+
+Konfiguracja:
+~~~~~~~~~~~~~
+
+    W pliku INI mo¿na ustawiæ nastêpuj¹ce opcje:
+    
+    TrIDPath   - œcie¿ka do TRiDa, mo¿e zawieraæ %COMMANDER_PATH% i inne zmienne œrodowiskowe
+                 (domyœlnie-TrID w katalogu programu)
+    Language   - wymusza u¿ycie podanego jêzyka (domyœlnie wdx TrID próbuje wykryæ u¿ywany) (*)
+
+    TrIDParams - dodatkowe parametry do przes³ania TrIDa (mo¿na u¿ywaæ zmiennych œrodowiskowych)
+    
+    MatchesNo  - maksymalna liczba dopasowañ, której TrID bêdzie szuka³
+
+    MaxLen     - maksymalna d³ugoœæ dopasowania (aby skróciæ)
+
+    (*)  Wymaga Total Commandera 7.0 lub nowszego.
+
+Znane ograniczenia:
+~~~~~~~~~~~~~~~~~~~
+
+    Jeœli zmienisz jêzyk w trakcie pracy wtyczki, musisz zrestartowaæ TC, aby zobaczyæ zmiany.
+
+Historia:
+~~~~~~~~~
+    0.1 b2    - [FIX] problemy jêzykowe w TC 6.x
+                [REM] pole "Oba" ju¿ nie istnieje
+                [FIX] Trafnoœæ przy katalogu
+                [FIX] Trafnoœæ w plikach ASCII
+                [ADD] nowa opcja ini - MaxLen
+                [FIX] drobne b³êdy
+                [FIX] buforowanie wyników (b³¹d tylko w beta1)
+                [FIX] lepsza obs³uga wielow¹tkowoœci
+    0.1 beta  - [ADD] lepsza obs³ug¹ jêzyków
+                [ADD] mo¿liwoœæ przes³ania dodatkowych parametrów do TrIDa
+                [ADD] definiowanie maksymalnej liczby dopasowañ
+                [ADD] nowe pole - trafnoœæ
+                      porz¹dki w katalogu TrIDa
+    0.1 a6    - [ADD] W œcie¿ce do TrIDa mo¿na u¿ywaæ zmiennych œrodowiskowych, w tym %COMMANDER_PATH%
+    0.1 a5    - [FIX] kilka pomy³ek w readme
+                [ADD] automatyczne wykrycie jêzyka
+                [FIX] kilka drobnych b³êdów
+    0.1 a4    - [ADD] obs³uga jêzyków
+              - [ADD] mo¿liwoœæ zmiany œcie¿ki do TrIDa
+    0.1 a3    - wyœwietla "-", aby pokazaæ, TrID nie znalaz³ dopasowania.
+    0.1 a2    - optymalizacja kodu, nowa baza sygnatur
+    0.1 alpha - pierwsza wersja
+
+Podziêkowania:
+~~~~~~~~~~~~~~
+
+    Wielkie dziêki dla DJK - za to, ¿e wiecznie coœ mu siê nie podoba³o
+    Marco Pontolleo - za TrIDa
+    Christiana Ghislera - autora Total Commandera
+
+Kontakt:
+~~~~~~~~
+    
+    Jeœli masz jakieœ pytania / sugestie / jeœli znalaz³eœ b³¹d, napisz do mnie
+    Maciej _ Adamczyk @ O2 . pl (bez spacji) 
+

@@ -1,0 +1,72 @@
+#####################################################################################################
+Version 2.1.920 [Release Date : 2010-04-23]
+----------------------------------------------------------------------------------------------------
+43. ENH : Added a link to product blog in autoupdate dialog.
+42. ENH : Added an option in preferences to Enable/Disable Shortcuts.
+41. Bug : Fixed another non reproducible bug where, windows key use to bahve as if it's pressed, and while user is typing 
+          it use to execute shortcuts.
+40. BUG : Fixed Colloiding shortcuts... with Windows 7 
+#####################################################################################################
+Version 2.0.886 [Release Date : 2010-04-08]
+----------------------------------------------------------------------------------------------------
+39. ENH : Autoupdate, Now PMW will be able to detect if new updates are available
+38. ENH : Shortcuts, Now there are shortcuts for all frequently used operations.(In this release these shortcuts are not configurable)
+37. ENH : Localized/Internationalized, All the messages strings are now externalized, any user can translate it into thier language.
+36. ENH : Added a submenu "Save Priority" , in System menu "Priority" , that allows user to remember his favorite priority for each application.
+35. ENH : Added A Tray menu "Kill All", that attempts to Kill All application other than explorer.
+34. ENH : Added A Tray menu "Kill", that allows to kill application on the fly
+33. ENH : Now PMW is portable, to Make it portable anytime, just create a text file "PMW.ini" in installation directory.
+32. ENH : Now user can hide all icons of desktop by selecting one icon and pressing "Hide me" shortcut "Win+Z".
+31. ENH : Now user can combine all PMW's system menu in one single System menu.
+30. ENH : Lesser clicks are required to change preferences, Removed OK/cancel button from Pref dialog, Now changes done gets applied the moment user clicks on checkbox.
+29. ENH : System menu "Hide Others" works for Vista and Windows 7 as well.
+28. ENH : System menu "Hide Me" works for Vista and Windows 7 as well.
+27. ENH : Added an option in preferences to "Show/Hide PMW icon in tray" 
+26. ENH : Using preferences now user choose to hide some tray menus like  "Preference", "Language", "Hide All", "Unhide" , "Unhide All", "Kill", "Kill All"      
+25. BUG : When Alt+Space is pressed the system menu that pops up in Titlebar had some Undrerscores..Now fixed..       
+24. ENH : Installer now is capable of uninstalling older versions 1.6.192 and 1.6.216 (but not older than that)
+23. ENH : Installer now is capable of detecting if .Net Frame work 2.0 is installed  
+22. ENH : New 48x48 32 bit icon  
+
+#####################################################################################################
+Version 1.6.216 [Release Date : 2009-01-20]
+----------------------------------------------------------------------------------------------------
+21. BUG : A bug was reported by Non-English OS user, PMW will keep on adding a seprator menu in system menu everytime clicked.
+
+#####################################################################################################
+Version 1.6.192 [Release Date : 2009-01-19]
+----------------------------------------------------------------------------------------------------
+20. ENH : Added a new System menu "Always on top".
+19. ENH : Added a new System menu "Hide me".    [windows 2000/Windows XP/Windows server 2003 only]
+18. ENH : Added a new System menu "Hide Others". [windows 2000/Windows XP/Windows server 2003 only] 
+17. ENH : Added a new System menu "Hide All"
+16. ENH : Added a new System menu "UnHide All"
+15. ENH : Added a new System menu "Unhide"
+14. ENH : Added a new System menu "Minimize to system tray"
+13. ENH : Added a new System menu "Transparency"
+12. ENH : Added a new Tray menu "Hide PMW's tray icon" [windows 2000/Windows XP/Windows server 2003 only] 
+11. ENH : Added a new Tray menu "Preferences" and ad a dialog that let user select which PMW system menu to show.
+10. ENH : A new NSIS installer
+
+#####################################################################################################
+Version 1.0.112 [Release Date : 2008-11-01]
+----------------------------------------------------------------------------------------------------
+9. ENH :Now Process Manager minimize itself in system tray( notification area)
+8. ENH :Process manager starts when you log on.
+7. ENH :Now PM is a single instance application
+6. ENH :Direct link to  request feature, report bug and to update process manager.
+5. ENH :Process manager has a installer
+4. ENH :Process manager has icons( though poor quality, developed in MS paint ;) 
+
+#####################################################################################################
+Version 0.007 Alpha [Release Date : 2008-05-20]
+----------------------------------------------------------------------------------------------------
+3. ENH : Now able to add menu into other applications
+2. ENH :Added a GUI for PMW which has two button ?Start Process Manager" and "Stop Process Manager"
+
+#####################################################################################################
+Version 0.001 Pre Alpha [Release date : 2008-04-07] 
+----------------------------------------------------------------------------------------------------
+1. ENH :Starting, Able to add an menu called "Priority" only in one application, that is self
+        Not able to add menu into other applications. 
+----------------------------------------------------------------------------------------------------

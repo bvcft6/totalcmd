@@ -1,0 +1,2 @@
+[1.9b]
+ - Fixed: Mistake at use of numeral in a shortcut (Evgen), In some systems the window list of editors could not appear in general (Wilhelm)

@@ -1,0 +1,286 @@
+[19-02-2012] Total Commander extDir 1.6 RC3
+* New: Korean language support (thanks to cmlee)
+* New: Updated Danish language (thanks to petermad)
+* New: Readme file (readme.txt) (extracted from resource on install)
+* New: Whatsnew file (whatsnew.txt) (extracted from resource on install)
+* New: The application recognizes if there are any external language file(s) in the utility's directory (NOT in subdir!), and they can be selected in the Configuration dialog / Language tab
+* New: Force install / configuration using command line parameter /install (/setup can be used too) (example: "tc extDir.exe" /install)
+* New: Saving the list of the created directories to the treeinfo.wc file (experimental) [see the "You can manually set" part for activation info]
+* New: You can manually set [Configuration] UpdateTreeInfo=True if you'd like the utility to update Total Commander's "treeinfo.wc" file after directory creation
+* New: You can manually set [Configuration] DoNotEnterDeepest=True if you'd like to disable the feature which makes TC to automatically enter into the deepest level of the path after creation
+* New: You can manually set [Configuration] ShowMenuShortcuts=True if you'd like to see the Option popup's shortcuts (disabled by default)
+* New: You can manually set [Configuration] IntelliModifiers=False if you'd like to disable the intelligent modifier feature (enabled by default)
+* Change: rewrote MkDirHistory loader function from scratch (optimized & more flexible method)
+* Change: rewrote MkDirHistory saver function from scratch (optimized & more flexible method)
+* Change: from now on now the Manage Template dialog is resizable (suggested by Peter)
+* Change: from now on the utility also saves the directory trees & directories with separators to MkDirHistory (only from Normal mode)
+* Change: completely removed Help dialog (replaced by html that is extracted from resource)
+* Change: reduced the filesize of the utility (now you can even copy it to a floppy disk - of course if you're able to find one ;))
+* Fixed: exception if the user-given MkDirHistory file's path doesn't exists - automatically try to create the missing directories (reported by SAPetrovich)
+* Fixed: ctrl + v hotkey in Normal mode with directory names containing enters didn't care about the current selection / caret position
+* Fixed: a problem causing the Configuration dialog to display "CHN - Chinese" as the current language in case it's an external file (reported by petermad)
+* Fixed: improper caret position & selection of the text on startup, in case Prefix or Suffix is active, and "Custom name" is active too
+* Fixed: installer always reset the language after choosing another hotkey combo (in case the user previously changed the language)
+* Fixed: wrong e-mail address has been copied to clipboard after clicking on a translator's mail in the Configuration dialog
+* Fixed: drag & drop bug did't allow the user to insert only one item to the list in Extended / Batch mode
+* Fixed: refreshing the "Manage Templates" dialog Preview after deleting an item / clearing the list
+* Fixed: it was impossible to select Win + F7 activation hotkey from the installer
+* Fixed: the utility didn't reload the flat OK button's pngimage after Enter state
+* Fixed: incorrectly positioned "<more>" label when user-given font(size) is used
+* Fixed: improved user-given MkDirHistory file handling
+* Fixed: various other bugs & GUI-related things...
+
+[16-01-2012] Total Commander extDir 1.6 RC2
+* New: Updated Danish language (thanks to petermad)
+* New: Updated German language (thanks to Der Schraube)
+* New: Ability to use placeholders & user-predefined structures (you can load them by pressing Ctrl + O if any has been defined in the utility's configuration file ("tc extDir.ini") [more info on ghisler.ch forum] (suggested by Peter)
+* New: Ability to use * (subdir) character in Normal mode's directory combobox too (example: Maindirectory*SubDir1*SubDir2*etc) [only in case not a full path has been typed to the combobox]
+* New: Ability to type full paths (like c:\Create\This\Dir) to the directory combobox (only in Normal mode)
+* New: Added a Language tab for the Configuration dialog - now its possible the change the utility's language runtime
+* New: From now on you can press CTRL + Z hotkey to use the Undo function (in case you are in Normal mode)
+* New: From now on you can press CTRL + 1, CTRL + 2 and CTRL + 3 hotkeys to activate the instant modifiers (Dot To Space, etc)
+* New: You can manually set [Configuration] SpeedBtnColor=000 (or any other color) to override the color of the "+", "Extended/Normal" and "Load" buttons (for example in case your display has low contrast)
+* New: You can use [ThemeInfo] SpeedBtnColor=359CEB (or any other color) in your user theme configuration files (theme.ini) - see more info on the ghisler.ch forum
+* Change: show the built-in "Load" popup instead of "Open file..." dialog in case the utility has been started on a ".txt" file (the TC's caret is on a txt file)
+* Change: now you can use Ctrl + V in Normal mode with directory names containing enters (example: #13#10 Once.Upon.a.Time.S01E01 #13#10)
+* Change: expand the environment variables (if any can be found) in the user-given MkDirHistory filename / path
+* Change: using a better, more stable algorithm to convert the HTML colors to TColor values
+* Change: do not automatically change the current path to the "directory name" in case the dirname contains a path-resolving environment variable (suggested by [Yustas.NeO])
+* Change: totalcmd.net links to ghisler.ch - main reason: this way the users can instantly write suggestions / bugreports
+* Fixed: some bugs regarding MkDirHistory-handling (thanks to SAPetrovich & EricB for the bug reports)
+* Fixed: loading & saving MkDirHistory if AlternateUserIni or RedirectSection contains environment variable(s)
+* Fixed: proper handling of user-given MkDirHistory file (do not load anything from wincmd.ini - or the AlternateUserIni file, if it's set - in case user-given file is used)
+* Fixed: extra space problem in the Attributes popup (caused by differences between system fonts) (reported by petermad)
+* Fixed: pressing Ctrl + V in Normal mode (in the directory combobox) with a single line starting and / or ending with enter(s) made the utility switch to Extended mode (instead of trimming the blank lines)
+* Fixed: problem causing access violation (and application termination) in case a complex env.var-named directory is pasted from clipboard (e.g. %APPDATA%\%OS%\%USERNAME%)
+* Fixed: a problem of * subdir-indicator character, which caused TC to incorrectly jump into (or set caret to) the newly created directory/directories
+* Fixed: incorrectly resolved replacements after manually modifying the current path (Ctrl + E)
+* Fixed: ctrl + Tab didn't work properly after using CTRL + V in the (Normal mode's) directory combobox
+* Fixed: ctrl + Tab didn't work with "|" separator characters
+* Fixed: rare cases of Undo button's improper working
+* Fixed: some other things...
+
+[31-12-2011] Total Commander extDir 1.6 RC1
+* New: Ukrainian language support (translated by LonerD - thanks!)
+* New: Now you can set the folders attributes before creating the directory (just click on the gray dropdown icon, right to the "New folder (directory)" label on the top-left)
+* New: The utility can work with the new WM_COPYDATA message that has been introduced in TC v8.0 Beta 10 (faster & more reliable method)
+       [read this file's "You can manually set" part to find out what to set in "tc extDir.ini" to use the new method]
+* New: Interactive User Guide (Help) [press F1 in any window] [only in the FINAL (non-RC) version!]
+* New: Ability to add your own applications to the (+) (replacements/variables) menu
+* New: Ability to use CTRL + V with more than one directories on clipboard in Normal mode (the utility will automatically enter to Extended mode)
+* New: Added additional mode selector to Batch directory creation mode (Mode: Decimal, Roman, ABC)
+* New: From now on you can use * character in the Suffix to set any subdirs in Batch mode
+* New: From now on you can press CTRL + D key if you'd like to add more subdirectory with automatic number increment
+* New: From now on you can use (a bit modified) intelligent selection (CTRL + TAB) in the manual path editbox too
+* New: Support of some Total Commander keyboard layouts (CTRL + PgUp: Change to parent directory; CTRL + PgDn: Enter into the dir under cursor; CTRL + <: Go to root directory (alternatively you can use CTRL + \ on US keyboards)
+* New: Support of shortcut keys (ALT+LEFT: Change to left TC pane & refresh; ALT+RIGHT: Change to right TC pane & refresh; CTRL+M: Manage Templates; CTRL+P: Configuration; Ctrl+T: Drop-down the template list; F3: Change between Normal / Extended / Batch mode) [check the Readme for more]
+* New: Added Prefix and Suffix feature for the initial preselection directory name (Configuration / General) [optional]
+* New: Added "Use transparency (only for main window)" (alphablending) option to Configuration / Window
+* New: Added new hints and tooltips (e.g. for the instant modifiers and some labels)
+* New: The utility is now able to handle the "AlternateUserIni" key, if it has been set in wincmd.ini (under [Configuration] section)
+* New: Special variable / replacement: {at} (Windows architecture - 32/64)
+* New: Special variable / replacement: {ax} (Windows architecture - x86/x64) [hidden]
+* New: Special variable / replacement: {kmct} (KMPlayer current title)
+* New: If you press (and hold) the SHIFT key after pressing Enter (or clicking the OK button), the utility will make TC enter to the new directory (overriding the current state of "Enter directory after create" checkbox) [won't affect the config settings]
+* New: If you press (and hold) the CTRL key after pressing Enter (or clicking the OK button), the utility will be closed after directory creation (overriding the current state of "Close the window after directory creation" checkbox) [won't affect the config settings]
+* New: If you press (and hold) the ALT key after pressing Enter (or clicking the OK button), the utility won't be closed after directory creation (overriding the current state of "Close the window after directory creation" checkbox) [won't affect the config settings]
+* New: You can manually set [Configuration] TC8B10Method=True to use the new WM_COPYDATA message to get the current path, current filename, etc
+* New: You can manually set [Configuration] TC8B10FixExt=False if you don't want to use the DirectoryExists method (default: True) to fix a filename / dirname preselection problem (which only affects directory names containing "." character)
+* New: You can manually set [Configuration] RefreshOnActivate=True if you'd like the utility to refresh each time it's window activates (after any deactivation) [IMPORTANT: TC8B10Method=True needs to be set for this function to work. It _does not_ work with the old method because of stability issues.]
+* New: You can manually set [Configuration] MkDirHistoryFile=myhistory.ini to override the automatic MkDirHistory writing with your custom file
+* New: You can manually set [Configuration] InitialMode=1 or 2 to change between Extended (1) and Batch (2) modes (Default value is 0: Normal mode)
+* New: You can manually set [Configuration] FocusTCAfterCreate=True if you'd like to force Total Commander's window to the foreground after directory creation
+* New: You can manually set [Configuration] DisablePlugins=1 if you don't want to use external "plugins" (user-given application replacements) for extDir
+* New: You can manually set [Configuration] LiveReplacements=False if you'd like to disable LiveReplacements (the live refreshing of special variables)
+* New: You can manually set [Configuration] HideFromTaskBar=True if you'd like to hide the application's taskbar icon
+* New: You can manually set [Configuration] AlphaBlendValue=200 (interval: 0-255) to set the window's transparency
+* New: You can manually set [Configuration] DoNotInstallEnterCmd=True if you don't want to install the extra usercmd to TC (em_extDirEnter) which is used to fix a Total Commander bug (related to env. variables)
+* New: You can manually set [Configuration] WindowStyle=1 or 2 to change between Dialog and ToolWindow styles (set 0 for the default Single borders)
+* New: You can manually set [Configuration] FontName=Arial (or any other) to change the main window's font to another one
+* New: You can manually set [Configuration] FontSize=10 (or larger) if you'd like to change the main window's font size
+* Change: improved intelligent selection (Ctrl + Tab) #01: enhanced delimiter & bracket detection
+* Change: improved intelligent selection (Ctrl + Tab) #02: automatically start the selection from the caret position on Ctrl + Tab keypress
+* Change: improved installer: disallow filenames like "totalcmd.exe" or "TcUsbRun.exe" (protect TC's internal files from overwriting)
+* Change: improved directory changer routine: able to enter environment variable-named directories
+* Change: no need to restart the utility after switching to another theme (instant activation)
+* Change: save current selection (start & length) when changing between modes with F3 key
+* Change: show the initial letters (the keys you can use to activate) of every user & internal templates inside square brackets in the template dropdown
+* Change: save exception logfiles with the utility's current exename instead of constant "tc extDir.exe"
+* Change: enhanced exception handler: now it saves the classname of the latest exception along with current OS, language & sw version
+* Change: now you can use the Delete key to remove items from the Template list
+* Change: from now on you can get the current Windows username by using the {un} replacement word by default ({user} and {usr} are still there for compatiblity)
+* Change: switch to the opposite pane in Total Commander if the cursor is on a directory in Treeview mode
+* Change: do not clear the whole directory name from the combobox when a path-returning environment variable has been inserted (instead just remove the given variable)
+* Change: changed some (Date, System & Application) popup icons to smoother ones
+* Fixed: [!] empty preselection filename on the start of the utility if the selected file in TC is extensionless
+* Fixed: [!] empty preselection filename on the start of the utility in case any custom column is set in Total Commander
+* Fixed: [!] empty preselection filename on the start of the utility if the cursor is in the command line in Total Commander
+* Fixed: [!] empty preselection filename & empty path on the start of the utility if Total Commander is not in the foreground
+* Fixed: [!] application crash on start (EAccessViolation) when the TC cursor is in treeview mode (Ctrl + F8)
+* Fixed: access violation if the directory list (in Extended mode) contains only directories which already exists in the given path
+* Fixed: directory creation failed if the manually edited path didn't exist (only when the current directory name is a dirtree (for example: Test\Dir\AnotherDir\End)
+* Fixed: improved check after manual path editing (do not accept the new path if it's incorrect)
+* Fixed: incorrect caret positioning on switching between Normal / Extended modes (in case theres no selection)
+* Fixed: incorrect cursor positioning in TC if the created directory is environment variable-named (rare)
+* Fixed: the OK button's state changed to disabled until a keypress after refreshing the current path (F5 or Ctrl + R) [if a directory with the name in the combobox exists in the current path]
+* Fixed: problem causing incorrect TC cursor positioning (directory entering) after creation if one or more subdirs for a directory tree has been set (in Extended mode)
+* Fixed: exception handler / error logging routine (some events weren't handled correctly)
+* Fixed: show the correct warning message if a file with the name as the needed directory already exists
+* Fixed: small GUI bug when changing to Extended mode from Batch mode on Drag & Drop events
+* Fixed: bug causing incorrect positioning of path editboxes in the installer in some cases
+* Fixed: flickering panel when changing between Normal / Extended / Batch modes (Vista / Win7)
+* Fixed: sometimes the utility wasn't able to recognize if the current side is an FTP connection in Total Commander
+* Fixed: allow only one instance of the installer at a time (automatically set the running copy foreground if another has been started)
+* Fixed: window hangs if Total Commander is minimized to tray on changing between Normal / Extended / Batch modes (reported by Myone)
+* Fixed: incorrect caret positioning in the directory combobox after pressing an initial letter of any user template (when template combobox is focused)
+* Fixed: bug causing "Enter to the directory after creation" option goes disabled if the dirname contains "/" character ("\" is not affected)
+* Fixed: the installer rewrote the utility's configuration settings (with default values) if they already existed
+* Fixed: bug causing the maximum value is 9999 instead of 10000 in Batch directory creation mode
+* Fixed: value 0 causes an infinite loop when its typed to Step by (Batch mode)
+* Fixed: automatically uncheck the "auto" checkbox on change of "Digits" value (Batch mode)
+* Fixed: do not close the utility on Esc keypress if any combobox is in dropped down state
+* Fixed: do not clear the current dirname if the selected Template is "- none -"
+* Fixed: up & down arrow keys weren't working at the directory combobox
+* Fixed: ctrl + a selection in the directory comboboxes (event has been fired on pressing AltGr + A hotkey too)
+* Fixed: rare problem with reloading OK button's png resource (only purple theme was affected)
+* Fixed: various problems related to "|" directory delimiter character
+* Fixed: problem that makes the Templates combobox forget the itemindex on dropdown
+* Fixed: selection lost after changing back to Normal mode from Batch mode
+* Fixed: incorrect action when clicking on developer label in the About dialog
+* Fixed: added Ctrl + A support for some controls
+* Fixed: quicker appearance of the About dialog
+* Fixed: better drag & drop support
+* Fixed: various other fixes...
+
+[09-11-2011] Total Commander extDir 1.5c
+* New: Chinese language support (translated by efree - thanks!)
+* New: You can manually set [Configuration] AlwaysOnTop=True (in "tc extDir.ini") if you'd like to see the utility's window always on top (suggested by LonerD)
+* New: You can manually set [Configuration] AlwaysActive=True (in "tc extDir.ini") if you'd like to disable the deactivation of the utility's window
+* Change: improved installer 01: it automatically detects the utility's directory & exe name (if it's already installed) and offers that
+* Change: improved installer 02: if you have previously 'installed' the utility manually (e.g. to use another key combination) the installer detects it, and won't reset your activation key settings to F7 or Shift + F7
+* Change: improved installer 03: from now on you can choose almost any activation hotkey (select "Other" option in the installer & click on the keyboard icon) [the list is the same as in TC]
+* Change: improved installer 04: from now on you don't need to unzip the installer to run it successfully
+* Change: writing %COMMANDER_PATH% to usercmd.ini file on install instead of absolute path to TC [the file stays portable] (suggested by petermad)
+* Change: invertStringCase (change case) function now uses AnsiLowerCase & AnsiUpperCase functions to operate
+* Fixed: now the utility can handle RedirectSection key under [left] and [right] sections (these are the main sections used to detect the current encoding of wincmd.ini)
+* Fixed: refresh the current path & get the currently active Total Commander pane (left/right) on Drag & Drop
+* Fixed: dot2Space instant modifier didn't work in Extended mode
+* Fixed: small correction of the Danish translation (by petermad - thanks!)
+* Fixed: window activation on start
+
+[06-11-2011] Total Commander extDir 1.5b
+* New: German language support (translated by Der Schrauber - thanks!)
+* New: Danish language support (translated by petermad - thanks!)
+* New: Ability to use your own color themes (more info on the ghisler.ch forum)
+* Change: added mouse wheel scroll capability to the language scrollbox
+* Change: refresh label is now uses the current color theme's settings instead of the static green color
+* Change: you can check the current number of valid directory lines (non empty strings) by hovering the <more> caption (below the Normal/Extended button)
+* Fixed: [!] installer shows a Unicode warning and closes if the currently active Total Commander language is not included in the utility (problem exists with English language settings too)
+* Fixed: undo button's icon now correctly changes (if color theme option is unchecked & use flat buttons is checked)
+* Fixed: ding sound when escape is pressed if directory combobox is focused before closing the application
+* Fixed: selection sometimes disappeared when changing between Normal / Extended mode
+
+[05-11-2011] Total Commander extDir 1.5a
+* New: Spanish language support (translated by Lopeshare - thanks!)
+* Fixed: < 7.50 compatibility 01: sometimes the utility wasn't able to correctly recognize if TC is inside a compressed file / on FTP
+* Fixed: < 7.50 compatibility 02: incorrect path return value if there are any opened tabs in Total Commander
+* Fixed: changed some components to Default charset instead of EASTEUROPE_CHARSET
+* Fixed: incorrect component & window positioning if the current Windows font size is different than the original system font size
+* Fixed: copyright notice was too long in the Dutch language file
+* Fixed: some other small GUI fixes...
+
+[03-11-2011] Total Commander extDir 1.5
+* New: Russian language support (translated by [Yustas.NeO] - thanks!)
+* New: Dutch language support (translated by A. Van Landschoot - thanks!)
+* New: Batch directory creation mode (just click on the tiny blue directory icon with an orange star to activate [left to OK button])
+* New: Template Manager (now you can add your own user templates) [Options - Manage templates...]
+* New: Configuration window (detailed customization of the utility)
+* New: Configuration: ability to change the suggested directory name
+* New: Configuration: user can set the action on invalid characters (show warning / replace them with a user-given character) (suggested by [Yustas.NeO])
+* New: Configuration: ability to set the startup window position, and some additional settings
+* New: Configuration: themes - 6 built-in window theme (sky, sand, nightfall, pink, purple, peach) with some tiny icons & ability to use flat buttons in the main window
+* New: Now the utility is compatible with VirtualPanel (wfx) Total Commander plugin (if AutoSaveListOnEachOp=1 is set in fsplugin.ini under [Virtual Panel] section [installer automatically tries to set it, if file is readable and non-unicode])
+* New: The utility is now able to handle the "RedirectSection" key, if it has been set in wincmd.ini (under [MkDirHistory] section)
+* New: Ability to use "path-returning" environment variables (like %windir%) in the manual path editbox (double click on current path)
+* New: Special variable / replacement: {wg} (current workgroup name)
+* New: Special variable / replacement: {ut} (current Windows uptime)
+* New: Special variable / replacement: {bsct} (BS.Player current filename)
+* New: Special variable / replacement: {aict} (AIMP current title)
+* New: Special variable / replacement: {vlct} (VideoLAN VLC current filename)
+* New: Realtime replacements - automatically refresh the directory preview every second (if "Enable replacements" option is checked) [in Normal & Extended mode (if theres only one line)]
+* New: List of the current environment variables can be reached by clicking the (+) (replacements/variables) button and selecting "Env. variables" popup item
+* New: Ability to position the utility in the center of the current TC pane [Options/Configuration] (Default: center depending on the Total Commander window's actual position) (suggested by [Yustas.NeO])
+* New: Ability to use "|" characters to create multiple directories in Normal mode
+* New: You can use PageUp & PageDown keys to jump to the start / end of the combobox
+* New: About dialog window (with complete changelog)
+* New: Window color theme: purple (created by Myone - thanks!)
+* New: Window color theme: peach (created by Myone - thanks!)
+* New: Load the utility's language from external file which has been manually set in INI (example: [Language] CurrentLng=Language\lng_name.ini)
+* New: Load the utility's language from external file using command line parameter /LNG (example: "tc extDir.exe" /LNG=lng_dut.ini <- ini must be in the running directory)
+* New: Now you can set [ReplaceChars] section in the utility's config file (manually), and type your own replace characters in ini format
+* New: Automatically show the "Load" button in Normal mode, if a file with ".txt" extension is selected in Total Commander
+* Change: lots of code improvements & cleaning (startup time decreased)
+* Change: the installer now creates a backup file of wincmd.ini in the same dir (wincmd.old) for more security
+* Change: modified the installer: now its impossible to install the utility out of TC's basedir & now you can change the filename to whatever you want
+* Change: the utility's configuration file is now stored in the same dir where it is running from; beside that, now it's saved with the exe file's name (suggested by [Yustas.NeO] and billiebub)
+* Change: load the previously saved MkDirHistory list only on combobox dropdown event / using the mouse wheel on combobox / on closing application (if the previous two events didn't happen)
+* Change: added some tiny png icons to the (+) (replacements/variables) popup window (date, system, application) & changed the icon of Undo button
+* Change: increased the input box's height in Extended mode (+ 25 px)
+* Change: changed the utility's icon & logo to a new, smooth one
+* Change: added copyright notice about Total Commander (installer & about)
+* Fixed: [!] the utility wasn't able to catch the TPathPanel's correct handle if any tabs were opened in the actual side of Total Commander
+* Fixed: [!] if wincmd.ini is Unicode encoded, the user have to install the utility manually (no more accidentally lost settings)
+* Fixed: [!] if wincmd.ini is Unicode encoded, the utility won't save the MkDirHistory to this file, instead it creates an external file in the extDir's directory (with filename "%exe_files_name%.lst") and works with that
+* Fixed: now the user can only install & run the utility from Total Commander
+* Fixed: window positioning problem [multi-monitor issue] (extDir's window always opened on primary monitor even if TC was active on second monitor) (reported by Axe1)
+* Fixed: the utility's positioning now depends on the Total Commander window's actual position (suggested by Axe1 - thanks!)
+* Fixed: update every control's font charset to the correct one (according to the current language)
+* Fixed: always insert the newly created directories to the top of the combobox list
+* Fixed: small visual glitch in Extended mode with more directories (if the first line is blank)
+* Fixed: language-related minor button-caption problem (@ installation)
+* Fixed: error on loading non-existent language resource (instead always load "ENG")
+* Fixed: sometimes the caret jumped to the start of the directory combobox on changing the active control
+* Fixed: invalid starting characters in the dir combobox after pressing Ctrl+V (if an environment variable was on clipboard, which returns a path)
+* Fixed: sometimes the installer didn't show the language files author correctly (now the contact mail can be seen in the button hint too)
+* Fixed: access violation in Extended mode after creating directories (if "Close the window after directory creation" option was unchecked)
+* Fixed: insert a new line with the selected template instead of changing the whole directory list to the selected template (in Extended mode)
+* Fixed: "do you want to create the missing folders?" popup: show only the path in Extended mode, without all the directories (sometimes they simply didn't fit screen)
+* Fixed: problem if the manually edited path didn't exist (only Extended mode was affected)
+* Fixed: automatically open the Load [from file] window with the current path (instead of the utility's basedir)
+* Fixed: disabled ShowAccelChar for the directory preview & template preview label (reported by [Yustas.NeO])
+* Fixed: the installer now correctly detects if Total Commander has been terminated & starts the installation automatically (instead of countdowning)
+* Fixed: a rare bug causing access violation if the directory was created right after starting the utility
+* Fixed: small (auto-)selection problems regarding templates
+* Fixed: quicker window repositioning (@formcreate instead of activate)
+* Fixed: window hangs if Total Commander is minimized to tray at the creation of the actual window (reported by Myone)
+* Fixed: the utility's main window's height is incorrect on OS before Vista (4px less than on Vista/Win7)
+* Fixed: blinking directory preview on XP (now it's doublebuffered)
+* Fixed: if "Replace the invalid character with" option is checked, show the preview with the replacement characters (suggested by [Yustas.NeO])
+* Fixed: automatically change the name of the future folder when replacement changes in the configuration (reported by [Yustas.NeO])
+* Fixed: lots of other bugs...
+
+[10-10-2011] Total Commander extDir 1.4b
+* Fixed: now the installer uses environment variables to get current Total Commander & wincmd.ini file's path
+* Fixed: language-related minor gui bugs
+* Fixed: version info (1.4.0.2)
+* Fixed: other minor bugfixes (mainly of the installer)
+
+[06-10-2011] Total Commander extDir 1.4a (First Public Release)
+* New: Multi-language support
+* New: Total Commander automatically navigates to the new path, if it's edited manually and exists
+* New: Basic variables [%s (current second), %h (current hour) etc]
+* Fixed: (<= 7.50) invalid path after refreshing the current directory
+* Fixed: sometimes the current path didn't refresh after manually entering it
+* Fixed: support for Total Commander versions older than 7.50
+* Fixed: a lot of bugs & incomplete functions
+
+[03-10-2011] Total Commander extDir 1.3a
+* New: Ability to manually edit the current path
+* New: Ability to load the list of directories from file
+* New: Built-in installer & uninstaller for easier usage
+* New: Drag & Drop function
+* Change: ~60% of the original program code has been rewritten
+* Fixed: access violation @ formclose (only in Extended mode)
+* Fixed: a really long path often doesn't fits the GUI
+* Fixed: now the utility automatically terminates in case TC is inside ZIP files / on FTP
+* Fixed: much more...

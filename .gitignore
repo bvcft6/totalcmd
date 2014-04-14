@@ -1,0 +1,51 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# total commander files
+/history.ini
+/wcx_ftp.ini
+/tcwebdav.ini
+/sftpplug.ini
+/wincmd.key
+
+# non-free components
+*.exe
+*.dll
+*.dll64
+
+*.wcx
+*.wcx64
+*.wdx
+*.wdx64
+*.wfx
+*.wfx64
+*.wlx
+*.wlx64
+
+*.bak
+*.log
+*.ttf
+
+*.vxd
+*.sys
+Russian.lng 
+
+*.db
+*.br2
+
+# want icons
+!icons/*.dll
+!Wcmicons.dll
+!WCICONEX.DLL
+
+
+
+# source folder
+/Plugins/wdx/wdx_mediainfo/src/
