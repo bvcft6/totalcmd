@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>TCMediaInfo documentation</title>
+  <meta name="Author" content="Dmitry Yudin">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Language" content="ru">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+  <!--
+  body {font-family: Verdana, Tahoma; font-size: 10pt}
+  h1 {font-size: 16pt}
+  h2 {font-size: 14pt}
+  .comment {width: 800px; padding-top: 8px; podding-bottom: 0px; font-family: Verdana; font-size: 10pt}
+  .image {margin-top: -5px}
+  -->
+  </style>
+</head>
+
+<body>
+
+<h1>TCMediaInfo plugin for Total Commander 0.7.1</h1>
+
+<h2>Plugin description</h2>
+<p>TCMediaInfo - is content/lister plugin that allow to retreive info about many video and audio formats. Plugin use MediaInfo library, and support all formats that MediaInfo library have support for. Full list of formats you can find <a href="http://mediainfo.sourceforge.net/Support/Formats">here</a>.
+
+<h2>Prerequisites</h2>
+<p>This plugin has been tested on:
+<ul>
+	<li>Total Commander 8.0 under Windows XP Professional SP3 (x86)
+	<li>Total Commander 8.0 x64 under Windows 7 (x64)
+</ul>
+
+<h2>Installation</h2>
+<p>Just open wdx_tcmediainfo_xxx.zip in Total Commander, this will install the plugin automatically.
+
+<h2>Usage</h2>
+<p>Since MediaInfo library can retreive a LOT information from file, plugin is fully customizable and allow to wrap any MediaInfo library's field. By default some most useful fields already configured and you can instantly start use plugun. 
+<p>Please refer Total Commander documentation on how to configure columns.
+
+<h2>Configuration</h2>
+<p>If you need additional information that not configured by default, you have to edit TCMediaInfo.xml file, where all plugin settings are set. Refer <b>allprops.txt</b> file for full list of library properties. If you update library MediaInfo.dll to new version, run <b>saveprops.bat</b> for creating newer version of this file.
+
+<p>In configurtion file you can see four main xml nodes.
+
+<h3>Settings node:</h3>
+
+<pre>
+<span style="color: 0000AA">&lt;options&gt;
+    &lt;Formats&gt;<b></span>AVI,DIVX,MPEG,...</b><span style="color: 0000AA">&lt;/Formats&gt;
+    &lt;MultiSeparator&gt; <b></span>/ </b><span style="color: 0000AA">&lt;/MultiSeparator&gt;
+    &lt;BasePath&gt;<b></span>base.db</b><span style="color: 0000AA">&lt;/BasePath&gt;
+    &lt;MemoryBase&gt;<b></span>False</b><span style="color: 0000AA">&lt;/MemoryBase&gt;
+    &lt;UseBase&gt;<b></span>True</b><span style="color: 0000AA">&lt;/UseBase&gt;
+    &lt;SqlitePath&gt;<b></span>Sqlite3.dll</b><span style="color: 0000AA">&lt;/SqlitePath&gt;
+    &lt;Sqlite64Path&gt;<b></span>Sqlite3_x64.dll</b><span style="color: 0000AA">&lt;/Sqlite64Path&gt;
+    &lt;MediaInfoPath&gt;<b></span>MediaInfo.dll</b><span style="color: 0000AA">&lt;/MediaInfoPath&gt;
+    &lt;MediaInfo64Path&gt;<b></span>MediaInfo_x64.dll</b><span style="color: 0000AA">&lt;/MediaInfo64Path&gt;
+    &lt;MissedField&gt;</span><span style="color: 800080">&lt;<b></span>empty</b><span style="color: 800080">&gt;</span><span style="color: 0000AA">&lt;/MissedField&gt;
+    &lt;DebugMode&gt;<b></span>False</b><span style="color: 0000AA">&lt;/DebugMode&gt;
+&lt;/options&gt;</span>
+</pre>
+
+<p><b>Formats</b> - here you set a list of all extensions supported by plugin, separated by comma.
+
+<p><b>MultiSeparator</b> - here you set string, that will separate multiple results (for example list of sound languages).
+
+<p><b>BaseFile</b> - path to database file. Environment variables are allowed. 
+
+<p><b>UseBase</b> - set to True if you want to use database. Base was implemented due slow work of the MediaInfo for speedup following data retrieving.
+
+<p><b>MemoryBase</b> - if this true, database will be created in memory only and reset when TC restarted.
+
+<p><b>SqlitePath</b> - path to Sqlite3.dll. By default plugin searching the library in it's folder. Environment variables are allowed.
+
+<p><b>Sqlite64Path</b> - path to Sqlite3_x64.dll for x64 plugin version. By default plugin searching the library in it's folder. Environment variables are allowed.
+
+<p><b>MediaInfoPath</b> - path to MediaInfo.dll. By default plugin searching the library in it's folder. Environment variables are allowed.
+
+<p><b>MediaInfo64Path</b> path to MediaInfo_x64.dll for x64 plugin version. By default plugin searching the library in it's folder. Environment variables are allowed.
+
+<p><b>MissedField</b> - this text will appear in fields, that have not data in database (for new sources).
+
+<p><b>DebugMode</b> - in this mode the debug and error messages are writing in the debug.log file
+
+<h3>Sources node:</h3>
+<pre>
+<span style="color: 0000AA">&lt;sources&gt;
+  &lt;source </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;SourceName&quot; </span><span style="color: 008080">field</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;MediaLibraryField&quot; </span><span style="color: 008080">context</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;MediaLibraryFieldContext&quot; </span><span style="color: 008080">stream</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;StreamNumber&quot;</span><span style="color: 000080">/&gt;
+</span><span style="color: 0000AA">&lt;/sources&gt;</span>
+</pre>
+
+<p>Here you define the "sources" - info that will be retrieved from library and (optionally) saved to database. Each &lt;source&gt; node can have attributes:
+
+<p><b>SourceName</b> - name of source. It can be only latin alphanumeric plus underscore. Defined name will become a database field name, and as variable in the scripts.
+
+<p><b>MediaLibraryField</b> - the MediaLibrary field name (for full list refer to allprops.txt)
+
+<p><b>MediaLibraryFieldContext</b> (optional) - since many library fields with the same name return different info for different kinds of objects (container, video, audio etc), and some work only in certain context, you can to set it. Context can be one of General, Video, Audio, Text, Chapters, Image, Menu. If this attribute omitted, will be retreived General context (usually container or just common properties).
+
+<p>StreamNumber</b> (optional) - number of stream, for which info will be retreived. If instead number will be "*" - info about all available streams of this kind will be collected (they will be separated with string, defined in MultiSeparator parameter).
+
+<h3>Columns node:</h3>
+<pre><span style="color: 0000AA">&lt;columns&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">coltype</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnOutputType&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;template&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName1, SourceName2</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;list&quot; </span><span style="color: 008080">list</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot;</span><span style="color: 0000AA">&gt;<b></span>SourceName</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;script&quot;</span><span style="color: 0000AA">&gt;<b></span>{script content here}</b><span style="color: 0000AA">&lt;/column&gt;
+  &lt;column </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ColumnName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;script&quot;</span><span style="color: 0000AA">&gt;
+  </span><span style="color: 800000">&lt;![CDATA[
+      {script content here} 
+  ]]&gt;  
+  </span><span style="color: 0000AA">&lt;/column&gt;
+&lt;/columns&gt;</span></pre>
+
+<p>Here you define the columns, as they are will be appeared in Total Commander.  
+
+<p>Each &lt;column&gt; node can have attributes:
+
+<p><b>ColumnName</b> - name (usually english, in order it can be translated with standard Total Commander language file) of column, as this will be appeared in Total Commander. 
+
+<p><b>type="<i>&lt;single|template|list|script&gt;</i>"</b> -  defining, how to treat the node text. 
+
+<p>This can be:
+
+<p style="padding: 10px"><b>single</b> - the node text is name of source itself.<br>
+<b>template</b> - source names in this text will be replaced by their values.<br>
+<b>list</b> - value of source will be searched in list and replaced by some value, if found (refer to &quot;lists&quot; section)<br>
+<b>script</b> - the script (refer to scripting section). 
+
+<p>If attribute omitted, text will treated as "single".
+
+<p>Text of node can be wrapped to CDATA section. It's recommend for scripts, in order to not convert special symbols, it also useful for multiline scripts.
+
+<p>&lt;column&gt; node also can contain &lt;unit&gt; subnodes. They are handling the same as columns and can have the same attributes. Don't use any "type" attribute in &lt;column&gt; node if you use units.
+
+<p><b>ColumnOutputType</b> (optional) - type of column's output value, it's need mostly for date/time format: ft_string, ft_numeric_32,  ft_numeric_32, ft_datetime. Default is ft_string.
+
+<p>Also, you can place &lt;separator/&gt; node between columns, this will appear as separator in Total Commander's menu.
+
+<h3>Lists node:</h3>
+
+<pre><span style="color: 0000AA">&lt;lists&gt;
+  &lt;list </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot;</span><span style="color: 0000AA">&gt;
+    &lt;line </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;SearchText&quot;</span><span style="color: 0000AA">&gt;<b></span>ReplaceText</b><span style="color: 0000AA">&lt;/line&gt;
+  &lt;/list&gt;
+  &lt;list </span><span style="color: 008080">name</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ListName&quot; </span><span style="color: 008080">type</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;ini&quot; </span><span style="color: 008080">file</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;{path to file, environment variables allowed}&quot; </span><span style="color: 008080">section</span><span style="color: 800080">=</span><span style="color: 5E5EAE">&quot;{load from}&quot;</span><span style="color: 000080">/&gt;
+</span><span style="color: 0000AA">&lt;/lists&gt;
+</span></pre>
+
+<p>In this node you can define lists of terms that need to be replaced.
+
+<p><b>ListName</b> - name of list. It can be only non-latin alphanumeric plus underscore. Defined name can be used in columns of "list" type, or called by that name from script.
+
+<p><b>SearchText</b> - search text
+
+<p><b>ReplaceText</b> - search text will be replaced by that text
+
+<p><b>type="ini"</b> - list can be loaded from external ini-file. The name of file should be in "file" attribute (environment variables allowed). Also you should set in "section" attribute name of ini-file section. Ini can be ANSI or UTF-8 encoded.
+
+<h2>Scripting</h2>
+
+<p>Scripting is allow you to visualize information in any kind.
+
+<p>In scripts you can use all names, defined for "sources", and special variable "Output" that will be displayed. All input variables and "Output" variable are have Variant type. This mean in many cases you can use it's value without additional conversions. Note, that when variant is string, it's actually UTF-8 stream.
+
+<p>It's no need to declare variables, labels and functions. PASCALC creates variables dynamically on first assignment. Variable type depends on the last value assigned, type checking is not carried out.
+
+<p>Expressions syntax:
+Arithmetic operators: +, -, *, /, ^ (power), SHL, SHL
+Bitwise operators:    BITOR,BITAND,BITXOR,BITNOT
+Logical operators:    >, <, >=, <=, =, <>, AND, OR, NOT,
+                         constants TRUE and FALSE.
+Operators precedence standard, you can use parentheses.
+
+<p>Statements supported:
+<ul>
+  <li>BEGIN ... END
+  <li>IF ... THEN ... ELSE
+  <li>CASE
+  <li>FOR ... TO/DOWNTO ... DO
+  <li>WHILE ... DO
+  <li>REPEAT ... UNTIL
+  <li>CONTINUE
+  <li>BREAK
+  <li>GOTO
+  <li>EXIT
+</ul>
+
+<p>Also supported procedures and functions.
+
+<h2>Special functions</h2>
+
+<p>For simplify handling plugin data some special functions was implemented.
+
+<p><b><span style="color: 0000AA">GetListValue</span>(<span style="color: AA0000">List</span>; <span style="color: AA0000">Default</span>)</b>
+
+<p>This function for working with lists. Parameters:
+
+<p><b>List</b> - name of list<br>
+<b>ID</b> - text that will be searched<br>
+<b>Default</b> - default value that will be used in case text not found
+
+<p>Return value - string.
+
+<p><b><span style="color: 0000AA">TimingFormat</span>(<span style="color: AA0000">TimingFmt</span>; <span style="color: AA0000">Timing</span>)</b>
+
+<p>This function for counting and format timing values from the value in milliseconds.
+
+<p><b>TimingFmt</b> - timing format, can be constructed from any text with following substitutes:
+
+<p style="padding-left: 10px"><b>%h</b> - hour, ex. 1 hour &rarr; 1 <br>
+<b>%hh</b> - hour with one leading zero, ex.  1 hour &rarr; 01 <br>
+<b>%hhh</b> - hour with two leading zeros, ex. 1 hour &rarr; 001<br>
+<b>%m</b> - мminutes, ex. 5 min &rarr; 5 <br>
+<b>%mm</b> -minutes with leading zero, ex. 5 min &rarr; 05 <br>
+<b>%s</b> - seconds, ex. 5 sec &rarr; 5 <br>
+<b>%ss</b> -  seconds with leading zero, ex. 5 sec &rarr; 05 <br>
+<b>%z</b> - thouthand's fractions of second (= milliseconds), ex. 25 ms &rarr; 25<br>
+<b>%fff</b> - thouthand's fractions of second (= milliseconds), with leading zeros, ex. 25 ms &rarr; 025<br>
+<b>%ff</b> - fractions of milliseconds rounded to hundreds, with leading zeros, ex. 125 ms &rarr; 13<br>
+<b>%f</b> - fractions of milliseconds rounded to ten's, ex. 125 ms &rarr; 1<br>
+
+<p><b>Timing</b> - timing in milliseconds
+
+<p>Return value - string.
+
+<p>Example: TimingFormat('%hh:%mm%:%ss.%fff', 183353) &rarr; "00:03:03.353"
+
+
+<h2>Translation</h2>
+<p>For translation of fields you can use standard TC's mechanism. Look to TCMediaInfo.lng file, it's content is obvious.
+
+<h2>Version history</h2>
+<pre>
+Version 0.7.1 (2012-07-09)
++ integrated WLX plugin
++ added FLV and 3GP to standard list of supported extensions
+- fixed bitrate divider
+- fixed displaying wrong information sometimes
+
+Version 0.7.0 (2012-06-27)
+* Documentation in html.
+* Changed scripting engine (some minor script modifications required) to be able make x64 build.
+* Updated MediaInfo to version 0.7.58.0.
+* Instead message boxes plugin write it's errors and debug info in log file
++ Added special scripting function TimingFormat
++ Added option, that set text which will be diplayed for fields without info in database (for fields that was added after the file info was added into base)
++ Adding sources not require base recreation anymore
+
+Version 0.6.2 (2011-02-06)
+- Fixed appearing unneeded message on empty database
++ Readded ANSI-version
+- Version info was not visible under Windows 7
++ Now possible to set custom database path
+
+Version 0.6.1 (2010-09-14)
+- Almost fixed shared DB access
++ Option to have in-memory (session) only database
+
+Version 0.6 (2010-08-22)
+* Plugin fully rewritten
+* Pascal Script as scripting engine
+* XML for store definitions and options
++ Column value can be constructed from multiple sources
++ Database for speedup loading (Sqlite3)
+- Fixed non-working latest releases of library
+
+Version 0.51 (unreleased)
++ Substitutions lists support
++ Now plugin not use detect string, it checks extension list that set in config
++ Added default config, so working one will not rewritten by installer
+
+Version 0.50 (2009-09-07)
+  First release.
+</pre>
+
+<h2>Credits</h2>
+<p>Christian Ghisler - for infinitely powerful tool.
+<p>MediaInfo team - for infinitely powerful tool.
+<p>Alexey Boyko - for simple and convenient PasCalc interpreter.
+
+<h2>License</h2>
+<p>Copyright (c) 2009-2012 Dmitry Yudin
+<p><a href="http://total.darkhost.ru/page.php?id=wdx_tcmediainfo">Plugin website</a>
+
+
+<p>This plugin is freeware.
+
+<p>Allowed inclusion of this plugin in any Total Commander packs, personal or publc, in case of this information file presence.
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
