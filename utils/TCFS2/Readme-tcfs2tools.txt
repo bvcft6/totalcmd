@@ -1,3 +1,134 @@
+TCFS2Tools Module for Total Commander
+-------------------------------------
+(English section is below)
+
+Расширяет функциональность утилиты TCFS2, позволяя:
++ скрывать/отображать строку главного меню
++ временно отображать главное меню программы при вызове
++ отображать главное меню в виде всплывающего по команде пользователя
++ получать/устанавливать позицию разделителя файловых панелей
++ получать текущие режимы панелей
++ получать системные величины, возвращаемые функцией GetSystemMetrics
++ получать размеры рабочей области экрана
+
+
+
+1. Файл конфигурации и описание команд
+
+Конфигурационный файл должен находиться в папке модуля и иметь такое же имя файла, но расширение INI. Файл конфигурации необходим только если нужно переопределить стандартные идентификаторы команд и опции (указаны ниже после знаков равенства). Команды делятся на 2 вида - TCM (с числовым идентификатором) и STR (со строковым идентификатором). Как вызывать те и другие, указано в разделе 2 данного файла.
+
+Параметры секции [HideMenu]:
+	MenuMode=0
+		Задает режим отображения главного меню при вызове, когда оно скрыто: 0 - при нажатии Alt главное меню временно включается; 1 - при нажатии Alt главное меню отображается в виде всплывающего.
+
+Команды секции [HideMenu]:
+	ShowMainMenu=65537
+		Показывает строку меню (если она была скрыта);
+	HideMainMenu=65538
+		Скрывает строку меню;
+	SwitchMainMenu=65539
+		Переключает видимость строки меню;
+	TrackMainMenu=65540
+		Отображает главное меню в виде всплывающего меню.
+
+Команды секции [Common]:
+	GetWindowMetrics=65550
+		Возвращает размеры и положение окна ТК. Параметр lParam определяет, какое именно значение возвращается: 0, 1, 2, 3 - координаты X, Y, ширина и высота окна; 4, 5, 6, 7 - координаты X, Y, ширина и высота клиентской части окна (без заголовка, меню и границ);
+	LeftIsActive=65551
+		Проверяет, активна ли левая (верхняя) панель, и возвращает 1 или 0;
+	RightIsActive=65552
+		Проверяет, активна ли правая (нижняя) панель, и возвращает 1 или 0;
+	LeftGetViewMode=65553
+		Возвращает индекс внутренней команды ТК для переключения левой панели в текущий режим (101 - краткий, 102 - подробный, 71 - первый пользовательский и т.д.);
+	RightGetViewMode=65554
+		Возвращает индекс внутренней команды ТК для переключения в текущий режим правой панели (201 - краткий, 202 - подробный, 171 - первый пользовательский и т.д.);
+	IsVerticalPanels=65555
+		Возвращает 1, если панели отображаются одна над другой;
+	SeparatorGet=65561
+		Возвращает позицию разделителя файловых панелей;
+	SeparatorSet=65562
+		Устанавливает позицию разделителя панелей, задаваемую в lParam. Если параметр меньше нуля, позицию сепаратора можно будет установить мышью.
+
+Команды секции [System]:
+	GetSystemMetrics=65570
+		Возвращает значение некоторой системной величины с индексом, задаваемым в параметре lParam. Значения поддерживаемых индексов смотрите в описании функции GetSystemMetrics (например, 0 - ширина экрана, 1 - высота экрана, 4 - высота заголовка окна) - доступно более 50 значений;
+	GetWorkArea=65571
+		Возвращает размеры рабочей области экрана (без панели задач). Значение параметра lParam определяет, какую именно величину нужно вернуть (0 - ширина рабочей области, 1 - высота рабочей области);
+	GetAsyncKeyState=65572
+		Возвращает информацию о состоянии клавиши. Значение lParam задает виртуальный код клавиши. Коды клавиш и возвращаемое значение смотрите в описании функции GetAsyncKeyState (например, 16 - Shift, 17 - Ctrl, 18 - Alt; отрицательный результат означает, что клавиша зажата);
+	GetSomeInfo=65573
+		Возвращает различную информацию в зависимости от значения lParam: 0 - количество миллисекунд с момента загрузки Windows.
+
+Команды секции [Registers]:
+	RegWrite=RegWrite
+		Записывает значение в один из регистров. Параметры: wParam - адрес регистра (начиная с 1), lParam - значение для записи;
+	RegRead=RegRead
+		Считывает значение из регистра. Параметры: wParam - адрес регистра, lParam - значение, возвращаемое при ошибке;
+	RegCount=RegCount
+		Возвращает количество доступных регистров (совпадает с максимальным номером регистра).
+
+Переопределяемые номера TCM-команд должны быть больше или равны 16384 (сообщения в диапазоне 0-16383 в той или иной степени используются Windows).
+
+При регистрации сообщения со строковым идентификатором оно получает приставку "TCFS2." (например, TCFS2.RegRead), даже если идентификатор переопределяется - при отправке сообщения также необходимо указывать эту приставку.
+
+
+
+2. Вызов команд
+
+2.1 Вызов TCM-команд
+
+Для вызова какой-либо команды нужно отправить оконное сообщение с номером WM_USER+51 ($433) окну ТК при загруженном модуле TCFS2Tools. Модуль обработает сообщение и вернет результат. В качестве параметра wParam сообщения нужно указать номер команды TCFS2Tools (указаны в разделе 1 данного файла). Если команда принимает параметр, его нужно указывать в качестве параметра lParam сообщения.
+
+Если модуль не загружен, ТК воспримет команду как внутреннюю и попытается её выполнить. При этом в большинстве случаев появится сообщение, что команда не реализована (внутренние команды ТК имеют другие индексы).
+
+
+2.2 Вызов команд со строковыми идентификаторами
+
+Для вызова команды необходимо получить номер оконного сообщения с помощью функции RegisterWindowMessage, указав идентификатор сообщения с приставкой "TCFS2." (например, TCFS2.RegRead). Если команда принимает параметры, их нужно указывать в качестве параметров wParam и lParam сообщения.
+
+Если модуль не загружен, сообщение не будет обработано.
+
+
+
+3. Интеграция с TCFS2
+
+Аддон TCFS2 (страница загрузки здесь: http://wincmd.ru/plugring/tcfs2.html) позволяет управлять режимами окна ТК, в том числе и посылать внутренние команды ТК. Чтобы выполнить команду TCFS2Tools без параметров, можно использовать функцию tcm, для выполнения команды с параметром - функцию msg. К слову, tcm(x) работает как msg($433, x, 0, 0). Для использования возможностей TCFS2Tools добавьте следующие команды в секцию [Items] файла конфигурации TCFS2:
+
+mm1=tcm(65537)
+mm0=tcm(65538)
+mm2=tcm(65539)
+mm_track=tcm(65540)
+set_separator=msg($433, 65562, #1)
+regwrite=msg(regmsg(TCFS2.RegWrite), #1, #2)
+...
+
+Команды, возвращающие значения, можно использовать в качестве команд проверки. Также в TCFS2 с версии 2.0 можно прописать их в секции [Macros] и вызывать из параметров функций:
+
+sepPos=msg($433, 65561)
+L_isActive=tcm(65551)
+L_viewMode=tcm(65553)
+cxScreen=msg($433, 65570, 0)
+cxWorkArea=msg($433, 65571, 0)
+pressedShift=msg($433, 65572, $10) < 0
+regread=msg(regmsg(TCFS2.RegRead), #1, #2-0)
+...
+
+Разумеется, номера команд или идентификаторы сообщений должны совпадать с указанными в файле конфигурации TCFS2Tools, если вы их переопределяете. В стандартном файле конфигурации TCFS2 уже прописаны некоторые команды, использующие TCFS2Tools. Для отправки сообщений по строковым идентификаторам необходима TCFS2 версии 2.0.4 и выше.
+
+
+
+4. Загрузка при запуске ТК
+
+Есть минимум 2 способа загрузки модуля при запуске ТК. Первый способ заключается в регистрации TCFS2Tools.dll в качестве WDX-модуля ТК с последующим определением специального шаблона цвета для типов файлов (Конфигурация, Цвета, для типов файлов, Добавить, Шаблон, вкладка Плагины, "TCFSTools.Autorun > 0", сохранить с любым именем, применить все изменения), заставляющего ТК загружать модуль автоматически.
+
+Вы также можете использовать контентный модуль автозапуска Autorun.wdx, тогда достаточно прописать в его Autorun.cfg следующую строку:
+
+LoadLibrary "X:\Path\To\TCFS2Tools.dll"
+
+
+Обсуждение на официальном русскоязычном форуме: http://forum.wincmd.ru/viewtopic.php?t=13332
+
+
 
 TCFS2Tools Module for Total Commander
 -------------------------------------
@@ -40,9 +171,9 @@ Commands for [Common] section:
 	RightIsActive=65552
 		Check if right (bottom) panel is active and returns 1 or 0.
 	LeftGetViewMode=65553
-		Get internal command index of current view mode for left panel (101 - brief, 102 - full, 71 - first custom mode etc.). Works only for modes listed in menu on cm_LeftCustomViewMenu;
+		Get view mode for left panel (0 - brief, 1 - full or custom, 2 - tree);
 	RightGetViewMode=65554
-		Like LeftGetViewMode but for right panel;
+		Get view mode for right panel;
 	IsVerticalPanels=65555
 		Check if vertical panels arrangement is enabled and returns 1 or 0;
 	SeparatorGet=65561
@@ -54,7 +185,7 @@ Commands for [System] section:
 	GetSystemMetrics=65570
 		Get system parameter value depending on index passed in lParam. Refer to GetSystemMetrics function documentation for supported indexes (e.g. 0 - screen width, 1 - screen height, 4 - window caption height) - there are more than 50 values;
 	GetWorkArea=65571
-		Get desktop work area dimensions and position (w/o taskbar). Parameter lParam specifies which value you need to return (0 - width, 1 - height, 2 - horizontal position, 3 - vertical position);
+		Get work area dimensions (w/o taskbar). Parameter lParam specifies which value you need to return (0 - work area width, 1 - work area height);
 	GetAsyncKeyState=65572
 		Get information about key state. Parameter lParam specifies virtual-key code. Refer to GetAsyncKeyState function documentation for virtual-key codes and return value description (e.g. 16 - Shift, 17 - Ctrl, 18 - Alt; negative return value tells that key is pressed);
 	GetSomeInfo=65573
@@ -68,7 +199,7 @@ Commands for [Registers] section:
 	RegCount=RegCount
 		Returns number of available cells (same as last cell address).
 
-You must choose numbers not used by TC if you redefine command indexes (read TOTALCMD.inc file for used numbers).
+You must choose numbers greater or equal than 16384 if you redefine command indexes (messages within range 0-16383 are reserved by Windows).
 
 Module adds "TCFS2." prefix to all literal ids that it registers (e.g. TCFS2.RegRead) even if you redefine it - when you send a message, you should add this prefix too.
 
@@ -132,11 +263,7 @@ Discussion page on official board: http://www.ghisler.ch/board/viewtopic.php?t=2
 
 History:
 
-2013-03-28	1.4.2.164
-	+ GetWorkArea is now able to return also work area position
-	* wrong work area size returned in case of left or top taskbar position
-
-2012-11-17	1.4.2.158
+2012-03-14	1.4.2.154
 	+ command to check vertical panels arrangement
 	+ get/set separator commands now work with vertical panels
 

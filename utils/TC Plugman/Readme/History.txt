@@ -1,9 +1,6 @@
 Versions history
 ----------------
 
-2.2.5
--fix: Totalcmd/64 exe support 
-
 2.2.4 (jun 2011)
 -fix: enabling of plugins with same filenames (diff. types)
 

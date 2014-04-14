@@ -1,4 +1,3 @@
-
 TCFS2 Addon for Total Commander
 -------------------------------
 (English section)
@@ -9,22 +8,15 @@ Tool allows to control TC window modes:
 + hide/show window title
 + enable topmost window mode
 + hide/show any TC interface item
-+ change dirs in panels
 + move file panels separator
-+ send keypresses
 + undo last action using backup command
 + etc...
 
 
-0. Some notation conventions
-
-In most places of this file C language syntax is used to indicate characters and strings: characters are enclosed with apostrophes '' and strings are enclosed with double quotes "".
-
-Working TC instance is the TC instance most recently used when TCFS2 is started. All commands work with that instance.
 
 1. Configuration file
 
-All functions are in configuration file and may be changed at any moment. Configuration file must be placed near application and have same name and extension INI. Sample configuration files with some commands are shipped with program (just copy it from EN folder to program's folder).
+All functions are in configuration file and may be changed at any moment. Configuration file must be placed near application and have same name and extension INI. Sample configuration files with some commands is shipped with program (just copy it from EN folder to program's folder).
 
 Configuration file contains following sections: Items (for commands), Actions (for actions) and Macros (for macroses). Each action is a sequence of comamnds to execute, commands contain list of function calls and optional condition checks. Both sections will be described below. Macroses are constants and functions that may be called from parameters of other functions. Each configuration file line may contain a comment that begins with ';' sign.
 
@@ -39,58 +31,50 @@ There are two groups of functions - functions that do some work and ones that ch
 Every numeric parameter can contain integer mathematical expression that corresponding to C language syntax (supported operators are ( ) ! ~ % * / + - << >> < > <= >= != == & ^ | && || ?:). You can also use # variable that will be expanded to actual parameter value in all functions where such thing makes sence. Numeric parameters may be specified in hexadecimal notation, in this case place '$' sign before number. Negative numbers should be started with '-' sign. Optional parameters are enclosed in square brackets. You must specify parameter braces after function name even if there is no parameters (like in C language).
 
 	0, 1
-		Returns corresponding constant, may be used in unconditional checks;
-	if(<condition>, [<true_expression>], [<false_expression>])
-		Calculates and returns true_expression or false_expression result depending on condition result (true_expression is calculated for nonzero condition). Returns 0 if corresponding expression is not specified. In contrast to ?: operator if function calculates only one of two output expressions;
+		Return corresponding constant, may be used in unconditional checks;
+	if(<condition>,[<true_expression>],[<false_expression>])
+		Calculate and return true_expression or false_expression result depending on condition result (true_expression is calculated for nonzero condition). Returns 0 if corresponding expression is not specified. In contrast to ?: operator if function calculates only one of two output expressions;
 	null(<something>)
-		Returns 1 if parameter is not an empty string. E.g. may be used to check if command/macro parameter is specified;
+		Return 1 if parameter is not an empty string. E.g. may be used to check if command/macro parameter is specified;
 	eval(<expression>), test(<expression>)
-		Returns expression result. May be used e.g. for checking some conditions at once;
+		Return expression result. May be used e.g. for checking some conditions at once;
 	style([<value>], [<exvalue>])
-		Checks window styles by comparing them with specified values. Compares results are combined by AND operation if both values are specified (i.e. true only when both comparisons are true). Variable # is expanded to actual set of flags. If # variable is not used parameter value is compared to its value automatically;
+		Check window styles by comparing them with specified values. Compare results are combined by AND operation if both values are specified (i.e. true only when both comparisons are true). Variable # is expanded to actual set of flags. If # variable is not used parameter value is compared to its value automatically;
 	tcini(<section>, <key>, <value>, [<error_value>], [<use_redirection>])
 		Compares specified numeric key in specified section of wincmd.ini with specified value or gets key value. Variable # is expanded to actual key value (or to value specified in error_value parameter if key is not found). If # variable is not used, return value is compare result of key value and parameter value. If # is used in parameter value, function returns expression result (specify just # as value parameter to get key value). Last parameter use_redirection allows to disable redirection of sections in wincmd.ini (by default it is enabled). Redirection works in same way as in TC, pseudo-variables %$PERSONAL%, %$APPDATA% and %$LOCAL_APPDATA% and environment variables are supported;
-	ini(`<inipath>`, <section>, <key>, <value>, [<error_value>])
-		Works exactly as tcini but with specified INI instead of wincmd.ini; file path must be enclosed with grave accents `` (character '`' is on key with '~') and shouldn't contain '`' char (you should define part of file path via envvar if it contains such char);
-	msg(<umsg>, <wparam>, <lparam>, [<async_mode>])
-		Sends a message to TC window. If async_mode>0, message will be sent using PostMessage function, if async_mode<0, it will be sent using SendMessage (as if async_mode=0), but w/o waiting for result;
+	ini(`<inipath>`, <section>, <key>, [<mode>]<value>, [<error_value>])
+		Works exactly as tcini but with specified INI instead of wincmd.ini; file path must be enclosed with single quotes `` (character '`' is on key with '~') and shouldn't contain '`' char (you should define part of file path via envvar if it contains quote char);
+	msg(<umsg>, <wparam>, <lparam>, [<post>])
+		Send window message. Non-zero post parameter allows to use PostMessage function instead of SendMessage;
 	regmsg(<msg_name>)
 		Retrieves message number associated with given name (via RegisterWindowMessage function);
 	regmsg(<msg_name>)
 		Returns registered message number approriate to given name (calls RegisterWindowMessage function);
-	findwnd([`<class>`], [`<text>`])
-		Retrieves a handle to the window with specified class name and window name belonging to working TC instance. If you need to find window with any class or text, just omit corresponding parameter;
-	tcd([`<left_path>`], [`<right_path>`], [S][T], [<async_mode>])
-		Sends change dir command to TC. Parameters left_path and and right_path specify paths for left and right panels, thirs parameter contains flags: S - interpret the passed dirs as source/target instead of left/right, T - open passed dir(s) in new tab(s).  You can set async_mode to 1 if you don't want to wait until TC completes the command;
-	tcm(<cm_index>, [<async_mode>])
-		Sends a message to execute specified TC internal command with specified index. Command indexes you may see in totalcmd.inc file and in TC command browser. Parameter async_mode works in the same way as for msg function;
-	tem(`<em_command_name> [<parameters>]`, [<async_mode>])
-		Sends a message to execute TC user command with specified name. You can pass parameters to that command, just specify them after command's name and a space and enclose entire line with grave accents `` (TC doesn't support Unicode here). You should set async_mode to 1 if you don't want to wait until TC completes the command;
-	send(`<keystrokes>`, [<hwnd>])
-		Sends the sequence of keystrokes to active window (e.g. dialog) of working TC instance, or to the window whose handle is specified in hwnd parameter. You can send special keys by enclosing their names with curly braces: BACKSPACE, BKSP, BS, BREAK, CAPSLOCK, DEL, DELETE, DOWN, DQ ('"' character), END, ENTER, ESC, HOME, INS, INSERT, LEFT, NUMLOCK, PGDN, PGUP, PRTSC, RIGHT, SCROLLLOCK, TAB, UP, F1-F12, ADD (Num +), SUBTRACT (Num -), MULTIPLY (Num *), DIVIDE (Num /). In order to repeat some key use curly braces with that key and repeat number after a space. Each keystroke (or a sequence of keystrokes enclosed with round brackets) may have a set of special prefixes: '+' - with Shift, '^' - with Ctrl, '%' - with Alt, '~' - send as characters instead of keystrokes (keeps character case and keyboard layout). In order to send service key ('+', '{', '(' etc) enclose it with curly braces;
-	sendmsg(<hwnd>, <umsg>, <wparam>, <lparam>, [<async_mode>])
-		Works like msg function but sends this message to window with given handle.
+	tcm(<cm_index>)
+		Send message to execute specified TC internal command with specified index. Command indexes you may see in totalcmd.inc file and in TC command browser;
+	tem(<em_command_name>)
+		Sends message to execute TC user command with specified name;
 
 	show(<state>)
-		Shows/hides window by calling ShowWindow API function with passed state parameter; you can read about available parameters in ShowWindow function's manual;
+		Show/hide window by calling ShowWindow API function with passed state parameter; you can read about available parameters in ShowWindow function's manual;
 	move([<x>], [<y>], [<cx>], [<cy>], [<topmost>])
-		Resizes/moves window. First 4 parameters allow to set window position and size. If parameter is omitted its value preserved. Variable # is expanded to actual parameter value, also additional variable @ is expanded to window width or height. Parameter topmost allows to turn topmost window mode on or off (if parameter is missed, mode is not changed);
+		Resize/move window. First 4 parameters allow to set window position and size. If parameter is omitted its value preserved. Variable # is expanded to actual parameter value, also additional variable @ is expanded to window width or height. Parameter topmost allows to turn topmost window mode on or off (if parameter is missed, mode is not changed);
 	redraw()
 		Causes full redraw of TC window. E.g. after switching caption or after blocking window redraw;
 	run_item(<item_name>, [<params>])
-		Executes command (item) with specified name, then return to current command. You may specify any number of parameters divided by comma if command accepts them;
+		Execute command (item) with specified name, then return to current command. You may specify any number of parameters divided by comma if command accepts them;
 	run_action(<action_name>)
-		Executes action with specified name, then return to current command;
+		Execute action with specified name, then return to current command;
 	set_style([<value>], [<exvalue>])
-		Changes normal and extended window styles. Each value is a set of flags (read more about style flags in manual on SetWindowLong function and its parameters GWL_STYLE and GWL_EXSTYLE). Variable # is expanded to actual set of flags;
-	set_tcini(<section>, <key>, [<value>], [<error_value>], [<use_redirection>])
-		Sets/modifies wincmd.ini keys. If value parameter contains string enclosed with grave accents ``, it will be written directly to INI, in the other case value should be a numeric expression. Variable # is expanded to actual key value (or to value specified in error_value parameter if key is not found). If value is not specified at all, key will be removed from INI;
-	set_ini(`<inipath>`, <section>, <key>, [<value>], [<error_value>])
-		Works exactly as set_tcini but with specified INI instead of wincmd.ini; file path must be enclosed with grave accents `` (see notes in description of ini function above);
+		Change normal and extended window styles. Each value is a set of flags (read more about style flags in manual on SetWindowLong function and its parameters GWL_STYLE and GWL_EXSTYLE). Variable # is expanded to actual set of flags;
+	set_tcini(<section>, <key>, <value>, [<error_value>], [<use_redirection>])
+		Allows to set/modify numeric wincmd.ini keys. Variable # is expanded to actual key value (or to value specified in error_value parameter if key is not found);
+	set_ini(`<inipath>`, <section>, <key>, [<mode>]<value>, [<error_value>])
+		Works exactly as set_tcini but with specified INI instead of wincmd.ini; file path must be enclosed with single quotes `` (see notes in description of ini function above);
 	save_undo(<undo_name>)
-		Saves current undo string to action with specified name;
+		Save current undo string to action with specified name;
 	delay(<msec>)
-		Pauses execution on specified time interval;
+		Pause execution on specified time interval;
 
 
 
@@ -157,15 +141,9 @@ Command checks if window title is visible (by calling hasCaption macro). If it i
 
 Example of command that hides buttonbar if %COMMANDER_PATH%\Default.bar file contains more than 30 buttons:
 
-bbhide_if30=if(ini(`%COMMANDER_PATH%\Default.bar`, Buttonbar, Buttoncount, #>30), run_item(tb0))
+bbhide_if30=if(ini('%COMMANDER_PATH%\Default.bar', Buttonbar, Buttoncount, #>30), run_item(tb0))
 
 Function ini reads parameter Buttoncount from BAR file and compares with 30. If it is greater than 30, tb0 command is called to hide buttonbar.
-
-Example of command that starts multi-rename tool and sets some fields:
-
-test_hello=send(`^m~(Goodbye, World! ;{)}){tab}{del}{tab}~(Goodbye|;){tab}~(Hello|:){tab 5}{home}`)
-
-Send function sends Ctrl+M and then jumps between text fields and fills them with some text.
 
 
 
@@ -200,9 +178,9 @@ Parameters:
 	/d=<msec>
 		Set sleep time before condition check after command execution (default value is 50 ms);
 	/ea, /ei, /ef
-		Choose how to treat following names in command line - as commands, actions or direct command contents;
+		Choose how to treat following names in command line - commands, actions or direct command contents;
 	/i="<path>"
-		Set path to wincmd.ini (by default COMMANDER_INI environment variable is used);
+		Set path to wimcnd.ini (by default COMMANDER_INI environment variable is used);
 	/u[-]
 		Enable/disable writing default Undo action on program exit;
 	/uc
@@ -238,12 +216,6 @@ TCFS2 /u- /ei switch_viewmode_S(302)
 Example of direct execution of command contents (expression must be quoted):
 TCFS2 /ef "run_action(fs) save_undo(fs_undo), style(# & $00C00000) | run_action(fs_undo)"
 
-Example of changing current path to D:\ (user-command em_CD must be defined with command CD and parameter %A):
-TCFS2 /ef "tem(`em_CD D:\`)"
-
-Example of changing target panel's path to D:\:
-TCFS2 /ef "tcd(, `D:\`, s)"
-
 
 
 3. TCFS2Tools
@@ -256,22 +228,6 @@ Discussion page on official board: http://www.ghisler.ch/board/viewtopic.php?t=2
 
 
 History:
-
-2013-05-24	2.1.0.394
-	+ tem function is now able to pass parameters
-	+ send function allowing to pass keypresses
-	+ additional parameters for tcm, tem and msg functions allowing to send messages asynchronously
-	+ findwnd function finds TC window
-	+ sendmsg function sends messages to specific TC window
-	+ optional parameter for send function allows to specify window
-	+ tcd function changes dir(s) in TC
-	+ terminate button in report error message
-	* strings may now contain syntax characters like ';', '|' and '('
-	* strings may now be passed as substituted parameters
-
-2012-11-17	2.0.5.310
-	+ set INI string values
-	+ remove INI keys
 
 2011-11-14	2.0.4.300
 	+ new redraw function
@@ -294,7 +250,7 @@ History:
 	+ tcini and set_tcini now support redirection (additional parameter allows to disable it, %$PERSONAL%, %$APPDATA% and %$LOCAL_APPDATA% are supported pseudo-variables)
 	+ heap is used for buffers instead of stack (more recursion levels available)
 	+ reports some errors, use parameter /w- to disable
-	+ tem function allowing to execute TC user commands
+	+ tem command allowing to execute TC user commands
 	- functions separator and set_separator are removed (their functionality moved to TCFS2Tools)
 	* set_tcini uses error_value as base if parameter doesn't exist
 
