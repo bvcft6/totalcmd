@@ -1,3 +1,12 @@
+2.0 release
+* незначительные изменения в справке
+
+1.6 beta 15
++ added variables %PROCESS_USERISADMIN%, %PROCESS_RUNASADMIN%, %PROCESS_ISELEVATED%, %PROCESS_INTEGRITYLEVEL% to Process plugin
++ added commands RegWrite, RegDelete
+* tweaks in API (older Process and Sysinfo plugins will not work)
+- fixed bug in MoveButton plugin on WinXP
+
 1.6 beta 14
 * help format changed, now in chm
 

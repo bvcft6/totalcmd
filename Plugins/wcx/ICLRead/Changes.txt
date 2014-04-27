@@ -25,5 +25,6 @@ A: save to 32-bit ICL files in Windows 2000 and up. In Pack dialog need manually
 v1.4.1
 Ñ: add/delete icons in 32-bit libraries don't change it to 16-bit.
 
-v1.4.1.1
-F: Delphi virus fix.
+v1.5
+A: add Unicode filename support;
+A: add Windows x64 support.

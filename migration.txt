@@ -1,0 +1,72 @@
+Shortcuts
+Farben / [colors]
+interne Befehle
+Dateiverknüpfungen
+INIs
+[DirMenu]
+[Associations]
+[user]
+[SyncOptions] && (S)FTP
+ICONS vista-std
+cmdline packer.exe
+lw-icon computer&documents
+
+Choiceeditor
+Autorun & Script Plugin (Ahkscript)
+Textinfo
+TrID & FileID
+AnyTag / Content-Media / mp3info
+Ausklappmenu für Custom Spalten
+
+
+[Shortcuts]
+C+F=cm_SearchFor
+F2=cm_RenameSingleFile
+C+SPACE=cm_FocusCmdLine
+C+BACK=cm_GoToRoot
+C+F7=em_extDir
+C+F5=em_teraCopy
+C+F6=em_teraMove
+C+F4=em_alt_choice
+CA+S=cm_ConfigSaveSettings
+CA+H=cm_SwitchHidSys
+CA+P=cm_Config
+C+F3=cm_ListInternalOnly
+C+F1=cm_SrcLong
+C+F2=cm_SrcShort
+C+OEM_US\|=cm_ContextMenu
+C+OEM_<\>=cm_GoToParent
+CS+OEM_<\>=cm_GoToRoot
+
+
+
+COLUMNS:
+--------
+File ID:
+Extension[=trid.Match 0.Extension]
+Name[=trid.Match 0.Name]
+Accuracy[=trid.Match 0.Accuracy]
+
+Textfiles:
+Encoding[=textinfo.CharacterEncoding]
+Ending[=textinfo.LineEndings]
+Größe[=tc.Größe.bkM2]
+Lines[=ahk-script.Result]
+Erstelldatum[=tc.Erstelldatum.D.M.y h:m]
+Signature[=textinfo.Sig16Hex]
+
+Anytag:
+Artist[=anytag.Artist]
+Track[=anytag.Track (leading zeros)]
+Title[=anytag.Title]
+Length[=anytag.Length]
+Album[=anytag.Album]
+Date[=anytag.Date]
+Genre[=anytag.Genre]
+Mode[=anytag.Mode]
+
+
+
+
+
+

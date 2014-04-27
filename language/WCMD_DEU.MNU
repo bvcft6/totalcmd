@@ -51,6 +51,7 @@ END_POPUP
 POPUP "&Befehle"
   MENUITEM "&CD-Verzeichnisbaum...\tAlt+F10", cm_CDtree
   MENUITEM "&Suchen...\tAlt+F7", cm_searchfor
+  MENUITEM "Suchen in separatem &Prozess...\tAlt+Shift+F7", 545
   MENUITEM "Daten&träger benennen...", cm_VolumeId
   MENUITEM "System-&Information...", cm_sysinfo
   MENUITEM "Verzeichnisse s&ynchronisieren...", 2020
@@ -130,7 +131,7 @@ POPUP "&Hilfe"
   MENUITEM "&Index\tF1", cm_HelpIndex
   MENUITEM "&Tastatur", cm_keyboard
   MENUITEM "&Registrier-Info", cm_register
-  MENUITEM "&Homepage von Totalcmd besuchen", 640
+  MENUITEM "&Website von Totalcmd besuchen", 640
   MENUITEM SEPARATOR
   MENUITEM "&Über Total Commander...", cm_About
 END_POPUP

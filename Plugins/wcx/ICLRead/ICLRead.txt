@@ -1,5 +1,5 @@
 ICLRead.wcx
-v.1.4.1.1 (see changes in Changes.txt)
+v.1.4.1 (see changes in Changes.txt)
 
 Bad English.
 
@@ -23,7 +23,7 @@ Supports extract/add/delete icons from/in icl files and creating new icl from ic
 3.3. At adding on F6 source files are NOT DELETED.
 4. Add 32768 icons will fault, author recommends using plugin only for extraction an icons and creation small libraries.
 5. When saving to 32-bit libraries icon names has system restrictions.
-
+6. On Windows x64 platforms is 32 bit files not supported. And on Windows x32 platforms is 64 bit files not supported.
 
  Install plugin.
 

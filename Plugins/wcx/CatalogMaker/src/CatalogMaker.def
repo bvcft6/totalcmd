@@ -1,0 +1,19 @@
+LIBRARY	CatalogMaker
+
+; Windows Commander API functions
+
+EXPORTS
+
+	CloseArchive
+	;DeleteFiles
+	GetPackerCaps
+	OpenArchive
+	PackFiles
+	PackSetDefaultParams
+	ProcessFile
+	ReadHeaderEx
+	ReadHeader
+	SetChangeVolProc
+	SetProcessDataProc
+	ConfigurePacker
+ 

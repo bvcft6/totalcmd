@@ -1,17 +1,18 @@
-LotsOfHashes plugin version 1.3 for Total Commander by Gamrasni Ariel
+LotsOfHashes plugin version 1.4 for Total Commander by Gamrasni Ariel
 
 A simple 32/64-bit content-plugin that calculates hash values for any file.
 
-The following 43 hash algorithms are currently supported:
+The following 47 hash algorithms are currently supported:
  (CRC32), (CRC32b), (eD2k/eMule), (GOST), (HAVAL 128,3),
  (HAVAL 128,4), (HAVAL 128,5), (HAVAL 160,3), (HAVAL 160,4), (HAVAL 160,5),
  (HAVAL 192,3), (HAVAL 192,4), (HAVAL 192,5), (HAVAL 224,3), (HAVAL 224,4),
  (HAVAL 224,5), (HAVAL 256,3), (HAVAL 256,4), (HAVAL 256,5), (MD4),
  (MD5), (Murmur 32), (Murmur 128), (RIPEMD 128), (RIPEMD 160),
  (RIPEMD 256), (RIPEMD 320), (Salsa10), (Salsa20), (SHA1 160),
- (SHA2 224), (SHA2 256), (SHA2 384), (SHA2 512), (Snefru 128),
- (Snefru 256), (Tiger 128,3), (Tiger 128,4), (Tiger 160,3), (Tiger 160,4),
- (Tiger 192,3), (Tiger 192,4), (Whirlpool)
+ (SHA2 224), (SHA2 256), (SHA2 384), (SHA2 512), (SHA3 224),
+ (SHA3 256), (SHA3 384), (SHA3 512), (Snefru 128), (Snefru 256),
+ (Tiger 128,3), (Tiger 128,4), (Tiger 160,3), (Tiger 160,4), (Tiger 192,3),
+ (Tiger 192,4), (Whirlpool)
 
 Notes:
  - The modification of field names in version 1.1 may impact user configured custom columns.
@@ -21,6 +22,10 @@ Notes:
     2. MaxCacheElements - Maximum number of hash values that will be cached before oldest values are overwritten.
 
 Changelog:
+  2013-12-01: v1.4
+   * ADDED     SHA3 (Keccak) hash algorithm in now supported (224-bit, 256-bit, 384-bit and 512-bit).
+   * CHANGED   Shorted field name format of compare content (removed the "codes" string).
+
   2013-01-09: v1.3
    * CHANGED   A better way to handle errors after CreateFile.
    * CHANGED   Close the file handle after CreateFileMapping; it's no longer needed.
@@ -41,7 +46,7 @@ Changelog:
    * CHANGED  32bit file extension renamed from .uwdx to .wdx. LotsOfHashes.uwdx is obsolete and can safely be deleted.
    * ADDED    MD4 hash algorithm is now supported.
    * ADDED    eD2k/eMule hash algorithm is now supported.
-   * CHANGED  Field names slightly modified for better categorization. Format: "<hash_name> [digest_size],[passes]".
+   * CHANGED  Field names slightly modified for better categorization. Format: "hash_name [digest_size],[passes]".
    * ADDED    Two new field units/choices. 'Delimited uppercase' and 'Delimited lowercase'.
    * ADDED    In-memory cache for performance (avoid recalculation of large unchanged files).
    * ADDED    Configuration file (LotsOfHashes.ini) for cache parameters. See Notes.

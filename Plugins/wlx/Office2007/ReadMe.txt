@@ -1,5 +1,5 @@
-Office2007.wlx plugin (0.0.4)
-2009.03.14
+Office2007.wlx plugin (0.0.6.3)
+2013.04.26
 --------------------------------
 
 = About =
@@ -27,7 +27,20 @@ Office2007.wlx plugin allows to Microsoft Ofice files as plain text in the liste
  Headers and footnotes does not work yet.
  
  If you found a bug, please, send me problematic file (if it's possible) attached to e-mail.
+
+ = Additional file types =
  
+ It is possible to use plugin with following files extensions:
+ 
+  - docm, dotm, dotx,
+  - potm, potx, ppam, ppsm, pptm,
+  - xlam, xlsm, xltm, xltx.
+  
+ You can enable them by wincmd.ini only using proper syntax, similar to:
+ 
+  25_detect="ext="DOCM" |ext="DOCX" | ext="PPTX" | ext="XLSX""
+ 
+ *PLEASE NOTE THAT ADDITIONAL FILES FORMATS HAVE NOT BEEN TESTED*
  
  = Author =
  
@@ -35,8 +48,12 @@ Office2007.wlx plugin allows to Microsoft Ofice files as plain text in the liste
  
  fenixproductions at o2 dot pl
  http://fenixproductions.qsh.eu
-  
-  
+ 
+ 64-bit build and minor modifications by Konstantin Vlasov
+ support at flint-inc dot ru
+ http://flint-inc.ru/
+ 
+   
  = Credits =
  
  Office2007.wlx plugin is using:
@@ -57,7 +74,18 @@ Office2007.wlx plugin allows to Microsoft Ofice files as plain text in the liste
  For more information, please, read "licence.txt" file.
  
  = History =
- 0.04
+ 0.0.6.3 (by Konstantin Vlasov)
+ - 64-bit build
+ - minor fixes and improvements
+ 0.0.6.2
+ - added (test only) - images and WordArt objects in whole documents (Word only)
+ 0.0.6.1
+ - added (test only) - support for tables in Word documents
+ 0.0.6
+ - ulocked more documents extensions
+ 0.0.5 (private)
+ - small Unicode issues fix
+ 0.0.4
   - fixed national characters display (for systems without Unicode fonts),
  0.0.3
   - better Unicode support,

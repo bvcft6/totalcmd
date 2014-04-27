@@ -1,1 +1,0 @@
-rundll32 wlx_csv.wlx , ShowConfigWindow

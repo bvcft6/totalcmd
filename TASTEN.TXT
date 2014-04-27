@@ -22,6 +22,7 @@ ALT+F5       Packen
 ALT+UMSCH+F5 Packen und anschließend löschen
 ALT+F6       Mehrere Dateien aus Archiv unter Cursor entpacken
 ALT+F7       Suchen
+ALT+UMSCH+F7 Suchen in separatem Prozess
 ALT+F8       Klappt History-Liste der Kommandozeile auf
 ALT+F9       Wie ALT+F6 (weil ALT+F6 unter Windows 95 nicht geht!)
 ALT+UMSCH+F9 Archive auf Integrität testen
@@ -103,9 +104,9 @@ Enter        Verzeichnis wechseln/Programm starten/ Assoziiertes Programm aufruf
              bzw. Kommandozeile ausführen, falls etwas drin steht. Sofern das 
              Quellverzeichnis den Inhalt einer gepackte Datei anzeigt, werden
              weitere Informationen zur Datei unter dem Cursor angezeigt.
-UMSCH+ENTER  1. Kommandozeile bzw. Programm unter Cursor mit command /c aufrufen
+UMSCH+ENTER  1. Kommandozeile bzw. Programm unter Cursor via Windows-Shell aufrufen
                 und am Schluss Fenster nicht automatisch schließen (nützlich
-                bei Umleitungen > oder <). Geht nur wenn NOCLOSE.PIF im Windows-
+                bei Umleitungen > oder <). Geht nur wenn NOCLOSE.EXE im Totalcmd-
                 Verzeichnis steht!
              2. Bei ZIP-Dateien: Alternative Wahl aufrufen (wie Verz. behandeln
                 <-> externe Packershell wie Winzip)
@@ -167,9 +168,9 @@ ENTER            Die Kommandozeile wird ausgeführt, falls sie mindestens ein
                  oder rd, wird er intern direkt ausgeführt. Ist er ein anderer
                  DOS-Befehl, wird DOS gestartet. Sonst wird versucht, ein
                  Programm des angegebenen Namens zu starten.
-UMSCH-ENTER      Wie ENTER, nur mit vorangestelltem command /c. Fenster wird
+UMSCH-ENTER      Wie ENTER, aber Start via Windows-Shell. Fenster wird
                  nach Programmende nicht automatisch geschlossen. Geht nur wenn
-                 NOCLOSE.PIF im Windows-Verzeichnis steht!
+                 NOCLOSE.EXE im Totalcmd-Verzeichnis steht!
 STRG-ENTER       Die aktuell markierte Datei im Quellverzeichnis wird hinten 
                  an die Kommandozeile angehaengt.
 STRG-UMSCH-ENTER Die aktuell markierte Datei inklusive Suchpfad wird an die 
