@@ -1,0 +1,463 @@
+;    ******************************************************************************
+;    *                                                                            *
+;    *     Erweiteres Menü für den Total Commander V. 8.5x und Folgeversionen     *
+;    *                                                                            *
+;    *     (C) 27.02.2014 Dieter W. Rehfeld (D)                                   *
+;    *                                                                            *
+;    * -------------------------------------------------------------------------- *
+;    *                                                                            *
+;    * Enthalten sind fast alle internen TC-Kommandos.                            *
+;    *                                                                            *
+;    * Herausgelassen wurden:                                                     *
+;    * - die Trennungen für das linke und rechte Dateifenster zu gunsten der Be-  *
+;    *   fehle für das jeweils aktive Quellfenster (Source/Src) - soweit möglich; *
+;    * - die Kommandos zum Laufwerk- und Tab-Wechsel;                             *
+;    * - die Einträge für das Startermenü (sind in der WINCMD.INI besser aufgeho- *
+;    *   ben)                                                                     *
+;    * - die direkte Detailhandhabungen der benutzerdefinierten Spalten, da Ein-  *
+;    *   Einträge dazu in "Ansicht" vorhanden sind;                               *
+;    * - die Sortierung der Spalten in den Datefenstern, da sich das über die     *
+;    *   Spaltenüberschriften bequem machen lässt.                                *
+;    * - cm_versioninfo, da das laut Herrn Ghisler ein veraltetes Kommando ist.   *
+;    *                                                                            *
+;    * Verzichtet wurden auf alle Shortcuts über die Alt-Taste (außer zum Anwäh-  *
+;    * len in der Menüzeile), da ich sie ansonsten nicht benutze.                 *
+;    *                                                                            *
+;    * Eine Garantie oder sonstige Gewährleistung wird meinerseits für absolut    *
+;    * gar nichts übernommen. Die Verwendung erfolgt auf eigenes Risiko, wenn es  *
+;    * denn hierbei überhaupt eines gibt (:-)).                                   *
+;    *                                                                            *
+;    * Es ist jedem freigestellt, die Datei nach seinen Wünschen anzupassen !     *
+;    *                                                                            *
+;    ******************************************************************************
+
+POPUP "&Datei"
+  MENUITEM "Als anderer Benutzer öffnen",cm_OpenAsUser
+  MENUITEM SEPARATOR
+  MENUITEM "Ansehen\tF3",cm_List
+  MENUITEM "Bearbeiten\tF4",cm_Edit
+  MENUITEM SEPARATOR
+  POPUP "Kopieren"
+     MENUITEM "Datei(en) kopieren\tF5",cm_Copy
+     MENUITEM SEPARATOR
+     MENUITEM "Kopieren innerhalb eines Dateifensters\tUmsch+F5",cm_copySamepanel
+     MENUITEM "Kopieren zum anderen Dateifenster",cm_copyOtherpanel
+  END_POPUP
+  POPUP "Umbennen / verschieben"
+    MENUITEM "Datei(en) umbenennen / verschieben\tF6",cm_RenMov
+    MENUITEM "Datei unter Cursour umbenennen",cm_RenameSingleFile
+    MENUITEM "Nur verschieben",cm_MoveOnly
+  END_POPUP
+  MENUITEM "Löschen\tF8/Entf",cm_Delete
+  MENUITEM "Umbenennen\tUmsch+F6",cm_RenameOnly
+  MENUITEM "Mehrfach-Umbenenn-Tool\tStrg+M", 2400
+  MENUITEM "Dateiattribute ändern", cm_SetAttrib
+  MENUITEM SEPARATOR
+  POPUP "Archive"
+    MENUITEM "Archiv anlegen\tAlt+(Umsch)+F5",cm_PackFiles
+    MENUITEM "Archiv entpacken\tAlt+(F9/F6)",cm_UnpackFiles
+    MENUITEM "Archiv(e) testen\tAlt+Umsch+(F9/F6)",cm_TestArchive
+    MENUITEM "Markierten Ordner oder markiertes Archiv öffnen\tStrg+[Bild abwärts]",cm_GoToDir
+  END_POPUP
+  POPUP "Dateiinhalte vergleichen"
+    MENUITEM "Vergleich durch externes Programm",cm_CompareFilesByContent
+    MENUITEM "Vergleich durch internes Modul",cm_IntCompareFilesByContent
+  END_POPUP
+  POPUP "Aufteilen und Zusammenfügen"
+    MENUITEM "Datei aufteilen",cm_Split
+    MENUITEM "Datei zusammenfügen",cm_Combine
+  END_POPUP
+  POPUP "Dateiintegrität / -verschüsselung"
+     MENUITEM "Datei verschlüsseln (MIME,UUE,XXE)",cm_Encode
+     MENUITEM "Datei entschlüsseln (MIME,UUE,XXE,BinHex)",cm_Decode
+     MENUITEM SEPARATOR
+     MENUITEM "Erzeuge Quersummen (CRC32, MD5, SHA1)",cm_CRCcreate
+     MENUITEM "Prüfe Quersumme (aus Quersummendateien)",cm_CRCcheck
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "Drucken"
+     MENUITEM "Dateiliste",cm_PrintDir
+     MENUITEM "Dateiliste mit Unterordnern",cm_printdirsub
+     MENUITEM SEPARATOR
+     MENUITEM "Dateiinhalt\tStrg+F9",cm_PrintFile
+  END_POPUP
+  POPUP "Verknüpfungen"
+    MENUITEM "Verknüpfen mit",cm_Associate
+    MENUITEM "Interne Verknüpfung festlegen",cm_InternalAssociate
+  END_POPUP
+  POPUP "Eigenschaften und Kommentare"
+    MENUITEM "Eigenschaften (Windows-Dialog)\tAlt+Enter",cm_Properties
+    MENUITEM "Belegten Speicherplatz ermitteln\tStrg+L",cm_GetFileSpace
+    MENUITEM "Speicherlatz der Unterordner ermitteln\tAlt+Umsch+Enter",cm_countdircontent
+    MENUITEM "Kommentar anzeigen",cm_SrcComments
+    MENUITEM "Kommentare anlegen/bearbeiten\tStrg+Z",cm_EditComment
+  END_POPUP
+  MENUITEM "Shortcut erzeugen\tStrg+Umsch+F5",cm_CreateShortcut
+  MENUITEM SEPARATOR
+  MENUITEM "Total Commander beenden\tAlt+(F4/X)",cm_Exit
+END_POPUP
+
+POPUP "&Ordner"
+  MENUITEM "Ordner anlegen\tF7",cm_MkDir
+  MENUITEM "Ordner vergleichen\tUmsch+F2",cm_CompareDirs
+  MENUITEM "Ordner incl. Unterordner vergleichen",cm_CompareDirsWithSubdirs
+  MENUITEM "Ordner synchronisieren",cm_FileSync
+  MENUITEM "Pfadangabe über Dateifenster bearbeiten\tAlt+P",cm_editpath
+  MENUITEM SEPARATOR
+  MENUITEM "Ordnerwechsel über Verzeichnisbaum\tAlt+F10",cm_CDtree
+  MENUITEM "Anwenderdefinierte Ordnerliste\tStrg+D",cm_DirectoryHotlist
+  MENUITEM SEPARATOR
+  MENUITEM "Zum Wurzelverzeichnis (Root) wechseln\tStrg+<",cm_GoToRoot
+  MENUITEM "Zum darüberliegenden Ordner wechseln\t(Strg+[Bild aufwärts])/Rückschritt",cm_GoToParent
+  MENUITEM SEPARATOR
+  MENUITEM "Zurück zum letzten Ordner (ohne FTP)",cm_GotoPreviousLocalDir
+  MENUITEM "Vorwärts zum vorherigen Ordner (ohne FTP)",cm_GotoNextLocalDir
+  MENUITEM SEPARATOR
+  MENUITEM "Synchronisierter Verzeichniswechsel\tStrg+Alt+Tab",cm_SyncChangeDir
+  MENUITEM "Verzeichnishistorie\tAlt+[Pfeil abwärts]",cm_DirectoryHistory
+  MENUITEM "Markierten Ordner im linken Dateifenster öffnen\tStrg+[Pfeil links]",cm_TransferLeft
+  MENUITEM "Markierten Ordner im rechten Dateifenster öffnen\tStrg+[Pfeil rechts]",cm_TransferRight
+END_POPUP
+
+POPUP "Aus&wahl"
+  POPUP "Datei-/Ordner-Auswahl"
+     MENUITEM "Alles auswählen: Dateien und Ordner",cm_SelectAllBoth
+     MENUITEM "Alle Dateien auswählen\tStrg+[Num +]/Strg+A/[Num *]",cm_SelectAllFiles
+     MENUITEM "Alle Dateien mit gleichem Namen auswählen",cm_SelectCurrentName
+     MENUITEM "Alle Dateien mit gleicher Erweiterung auswählen\tAlt+[Num +]",cm_SelectCurrentExtension
+     MENUITEM "Alle Dateien mit gleichem Namen und gleicher Erweiterung auswählen",cm_SelectCurrentNameExt
+     MENUITEM "Alle Ordner auswählen",cm_SelectAllFolders
+     MENUITEM "Alles im gleichen Pfad auswählen (für Ansicht und Suche)",cm_SelectCurrentPath
+     MENUITEM "Alles auswählen: wie konfiguriert (Dateien oder beides)",cm_SelectAll
+     MENUITEM SEPARATOR
+     MENUITEM "Gruppe auswählen",cm_SpreadSelection
+     MENUITEM "Gruppe auswählen: Dateien und Ordner)",cm_SelectBoth
+     MENUITEM "Gruppe auswählen: nur Dateien",cm_SelectFiles
+     MENUITEM "Gruppe auswählen: nur Ordner",cm_SelectFolders
+     MENUITEM SEPARATOR
+     MENUITEM "Auswahl umkehren",cm_ExchangeSelection
+     MENUITEM "Auswahl umkehren: Dateien und Ordner",cm_ExchangeSelBoth
+     MENUITEM "Auswahl umkehren: nur Dateien",cm_ExchangeSelFiles
+     MENUITEM "Auswahl umkehren: nur Ordner",cm_ExchangeSelFolders
+  END_POPUP
+  POPUP "Datei-/Ordner-Abwahl"
+     MENUITEM "Alles abwählen: Dateien und Ordner",cm_ClearAll
+     MENUITEM "Alle Dateien abwählen\tStrg+[Num -]/[Num *]",cm_ClearAllFiles
+     MENUITEM "Alle Dateien mit gleichem Namen abwählen",cm_UnselectCurrentName
+     MENUITEM "Alle Dateien mit gleicher Erweiterung abwählen\tAlt+[Num -]",cm_UnselectCurrentExtension
+     MENUITEM "Alle Dateien mit gleichem Namen und gleicher Erweiterung abwählen",cm_UnselectCurrentNameExt
+     MENUITEM "Alle Ordner abwählen",cm_ClearAllFolders
+     MENUITEM "Alles im gleichen Pfad abwählen",cm_UnselectCurrentPath
+     MENUITEM "Alles abwählen: wie konfiguriert (Dateien oder beides)",cm_ClearAllCfg
+     MENUITEM SEPARATOR
+     MENUITEM "Gruppe abwählen",cm_ShrinkSelection
+     MENUITEM "Gruppe abwählen: nur Dateien",cm_ClearFiles
+     MENUITEM "Gruppe abwählen: nur Ordner",cm_ClearFolders
+     MENUITEM "Gruppe abwählen: wie konfiguriert (Dateien oder beides)",cm_ClearSelCfg
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Gehe zur nächsten markierten Dateien",cm_GotoNextSelected
+  MENUITEM "Gehe zur vorherigen markierten Datei",cm_GotoPrevSelected
+  MENUITEM SEPARATOR
+  MENUITEM "Markiere neue und verstecke gleiche Dateien",cm_DirMatch
+  MENUITEM SEPARATOR
+  MENUITEM "Auswahl merken (temporär)",cm_SaveSelection
+  MENUITEM "Auswahl vor dem letzten Befehl",cm_RestoreSelection
+  MENUITEM "Auswahl in Datei speichern",cm_SaveSelectionToFile
+  MENUITEM "Auswahl aus Datei laden",cm_LoadSelectionFromFile
+  MENUITEM SEPARATOR
+  MENUITEM "Alle angezeigten Spalten in Datei speichern",cm_SaveDetailsToFile
+  MENUITEM "Alle angezeigten Spalten in ANSI-Datei speichern",cm_SaveDetailsToFileA
+  MENUITEM "Alle angezeigten Spalten in UNICODE-Datei speichern",cm_SaveDetailsToFileW
+  MENUITEM SEPARATOR
+  MENUITEM "Dateiauswahl in einer ANSI-Datei speichern",cm_SaveSelectionToFileA
+  MENUITEM "Dateiauswahl in einer UNICODE-Datei speichern",cm_SaveSelectionToFileW
+END_POPUP
+
+POPUP "&Zwischenablage"
+  MENUITEM "Auswahl aus der Zwischenablage lesen",cm_LoadSelectionFromClip
+  MENUITEM SEPARATOR
+  MENUITEM "Markierte Datei(en) in die Zwischenablage verschieben\tStrg+X",cm_CutToClipboard
+  MENUITEM "Markierte Datei(en) in die Zwischenablage kopieren\tStrg+C",cm_CopyToClipboard
+  MENUITEM SEPARATOR
+  MENUITEM "Dateiname(n) in die Zwischenablage kopieren\tStrg+Alt+X",cm_CopyNamesToClip
+  MENUITEM "Kompletten Pfadnamen in die Zwischenablage kopieren\tStrg+Alt+C",cm_CopyFullNamesToClip
+  MENUITEM SEPARATOR
+  MENUITEM "Quellpfad in die Zwischenablage kopieren",cm_CopySrcPathToClip
+  MENUITEM "Zielpfad in die Zwischenablage kopieren",cm_CopyTrgPathToClip
+  MENUITEM SEPARATOR
+  MENUITEM "Name(n) mit UNC-Pfad kopieren",cm_CopyNetNamesToClip
+  MENUITEM SEPARATOR
+  MENUITEM "Kopiere alle gezeigten Spalten in die Zwischenablage",cm_CopyFileDetailsToClip
+  MENUITEM "Kopiere alle Spalten mit vollem Namen in die Zwischenablage",cm_CopyFpFileDetailsToClip
+  MENUITEM "Kopiere alle Spalten mit UNC-Pfad in die Zwischenablage",cm_CopyNetFileDetailsToClip
+  MENUITEM SEPARATOR
+  MENUITEM "Inhalt der Zwischenablage in den aktuellen Ordner einfügen\tStrg+V",cm_PasteFromClipboard
+END_POPUP
+
+POPUP "&Befehle"
+  MENUITEM "Suchen\tAlt+F7",cm_SearchFor
+  MENUITEM "Suchen - in eigenem Prozess",cm_SearchStandalone
+  MENUITEM "Schnellsuche",cm_ShowQuickSearch
+  MENUITEM SEPARATOR
+  MENUITEM "Interne Befehle",cm_CommandBrowser
+  MENUITEM SEPARATOR
+  MENUITEM "Kommandozeile leeren\tStrg+Y",cm_ClearCmdLine
+  MENUITEM "Nächste Kommandozeile\tAlt+E",cm_NextCommand
+  MENUITEM "Vorherige Kommandozeile\tStrg+E",cm_PrevCommand
+  MENUITEM "Aktuellen Pfad in die Kommandozeile kopieren\t(Strg+Umsch+Enter)/(Strg+P)",cm_AddPathToCmdline
+  MENUITEM SEPARATOR
+  MENUITEM "Öffne Kommandozeilenfenster\tcmd",cm_ExecuteDOS
+  MENUITEM SEPARATOR
+  MENUITEM "Ausführen\tEnter",cm_Return
+  MENUITEM SEPARATOR
+  MENUITEM "Nur 64-bit: Umleitung 32-bit-Verzeichnis 'system32' an / aus",cm_SwitchX64Redirection
+END_POPUP
+
+POPUP "&Ansicht"
+  MENUITEM "Laufwerkliste öffnen\tAlt+(F1/F2)",cm_SrcOpenDrives
+  MENUITEM "Aktuelles Fenster neu einlesen\tF2/(Strg+R)",cm_RereadSource
+  MENUITEM SEPARATOR
+  MENUITEM "Alle Dateien\tStrg+F10",cm_SrcAllFiles
+  MENUITEM "Nur Programme\tStrg+F11",cm_SrcExecs
+  MENUITEM "*.*",cm_SrcUserSpec
+  MENUITEM "Benutzerdefiniert\tStrg+F12",cm_SrcUserDef
+  MENUITEM "Auswahl umkehren",cm_SrcNegOrder
+  MENUITEM "Setze Fokus auf den Pfad",cm_SrcPathFocus
+  MENUITEM SEPARATOR
+  POPUP "Dateilisten"
+    MENUITEM "Dateiliste incl. der Dateien in Unterordnern (ohne Ordnernamen)",cm_DirBranch
+    MENUITEM "Zeige ausgewählte Dateien und alle in ausgewählten Unterordnern",cm_DirBranchSel
+    MENUITEM SEPARATOR
+    MENUITEM "Links - Dateiliste incl. der Dateien in Unterordnern (ohne Anzeige der Ordnernamen)",cm_LeftDirBranch
+    MENUITEM "Links - Zweigansicht (nur wie ausgewählt)",cm_LeftDirBranchSel
+    MENUITEM SEPARATOR
+    MENUITEM "Rechts - Dateiliste incl. der Dateien in Unterordnern (ohne Anzeige der Ordnernamen)",cm_RightDirBranch
+    MENUITEM "Rechts - Zweigansicht (nur wie ausgewählt)",cm_RightDirBranchSel
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Nur markierte Dateien anzeigen\tStrg+S",cm_ShowOnlySelected
+  MENUITEM SEPARATOR
+  POPUP "Sortierung"
+     MENUITEM "Sortiere nur Dateien, keine Verzeichnisse",cm_SwitchDirSort
+     MENUITEM "Nach Namen sortiert aufsteigend / absteigend\tStrg+F3",cm_SrcByName
+     MENUITEM "Nach Erweiterung sortiert aufsteigend / absteigend\tStrg+F4",cm_SrcByExt
+     MENUITEM "Nach Größe sortiert aufsteigend / absteigend\tStrg+F6",cm_SrcBySize
+     MENUITEM "Nach Datum/Uhrzeit sortiert aufsteigend / absteigend\tStrg+F5",cm_SrcByDateTime
+     MENUITEM "Unsortiert\tStrg+F7",cm_SrcUnsorted
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "Dateidetails und -inhalte"
+     MENUITEM "Alle Dateidetails\tStrg+F2",cm_SrcLong
+     MENUITEM "Nur Dateinamen\tStrg+F1",cm_SrcShort
+     MENUITEM "Schnellansicht\tStrg+Q",cm_SrcQuickview
+     MENUITEM "Schnellansicht aus",cm_SrcHideQuickview
+     MENUITEM "Schnellansicht ohne Plugins bzw. Multimedia",cm_ListInternalOnly
+     MENUITEM "Kommentare anzeigen\tStrg+Umsch+F2",cm_SrcComments
+     MENUITEM "Miniaturansicht (Thumbnails)\tStrg+Umsch+F1", cm_SrcThumbs
+     MENUITEM "Thumbnails für markierte Dateien erneut laden",cm_ReloadSelThumbs
+     MENUITEM "Abgeschnittene Informationen im Tip-Fenster anzeigen",cm_ShowHint
+     MENUITEM SEPARATOR
+     MENUITEM "Benutzerdefinierte Spalten",cm_SrcCustomViewMenu
+     MENUITEM "Lade ausgewählte Felder für alle Dateien",cm_LoadAllOnDemandFields
+     MENUITEM "Lade ausgewählte Felder für ausgewählte Dateien",cm_LoadSelOnDemandFields
+     MENUITEM "Laden ausgewählter Felder abbrechen",cm_ContentStopLoadFields
+     MENUITEM SEPARATOR
+     MENUITEM "Automatisches Aktualisieren der Verzeichnisse vorübergehend an / aus",cm_SwitchWatchDirs
+     MENUITEM "Ignorierliste für Dateianzeige an / aus",cm_SwitchIgnoreList
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Lange Dateinamen an / aus",cm_SwitchLongNames
+  MENUITEM "Versteckte und Systemdateien an / aus\tStrg+H",cm_SwitchHidSys
+  MENUITEM "Versteckte Dateien anzeigen an / aus",cm_SwitchHid
+  MENUITEM "Systemdateien anzeigen an / aus",cm_SwitchSys
+  MENUITEM "8.3-Namen in Kleinbuchstaben an / aus",cm_Switch83Names
+  MENUITEM SEPARATOR
+  POPUP "Dateifenster"
+     MENUITEM "Dateifenster tauschen\tStrg+U",cm_Exchange
+     MENUITEM "Alle Tabulatoren tauschen\tStrg+Umsch+U",cm_ExchangeWithTabs
+     MENUITEM SEPARATOR
+     MENUITEM "Fensteransicht angleichen (Quelle=Ziel)\tAlt+Z",cm_MatchSrc
+     MENUITEM SEPARATOR
+     MENUITEM "Zum linken Dateifenster wechseln\tTab",cm_focusleft
+     MENUITEM "Zum rechten Datefenster wechseln\tTab",cm_focusright
+     MENUITEM SEPARATOR
+     MENUITEM "Horizontale bzw. vertikale Anordnung der Dateifenster",cm_VerticalPanels
+     MENUITEM "Dateifenster 50:50 aufteilen",cm_50percent
+     MENUITEM "Dateifenster 100% aufteilen",cm_100Percent
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "Kontextmenüs"
+    MENUITEM "Kontextmenü anzeigen\tUmsch+F10",cm_ContextMenu
+    MENUITEM "Kontextmenü für interne Verknüpfung",cm_ContextMenuInternal
+    MENUITEM "Kontextmenü für Datei unter Cursor",cm_ContextMenuInternalCursor
+    MENUITEM "Kontextmenü für Media Center Bedienung 'Wiedergabe/Pause'",cm_ShowRemoteMenu
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Verzeichnisbaum\tStrg+F8",cm_SrcTree
+  POPUP "Optionen für Baumansicht(en)"
+     MENUITEM "Verzeichnisbaum links",cm_LeftTree
+     MENUITEM "Verzeichnisbaum rechts",cm_RightTree
+     MENUITEM SEPARATOR
+     MENUITEM "Ein separates Baumfenster",cm_SeparateTree1
+     MENUITEM "Zwei separate Baumfenster",cm_SeparateTree2
+     MENUITEM "Zu den Baumfenster-Optionen wechseln",cm_SwitchSeparateTree
+     MENUITEM "Ein separates Baumfenster an / aus",cm_ToggleSeparateTree1
+     MENUITEM "Zwei separate Baumfenster an / aus",cm_ToggleSeparateTree2
+     MENUITEM SEPARATOR
+     MENUITEM "Separate(s) Baumfenster abschalten",cm_SeparateTreeOff
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "Bedienelemente des Total Commander"
+     MENUITEM "Symbolleiste an / aus",cm_visButtonbar
+     MENUITEM "Laufwerkleiste an / aus",cm_visDriveButtons
+     MENUITEM "Laufwerksleiste für jedes Dateifenster an / aus",cm_visTwoDriveButtons
+     MENUITEM "Laufwerkliste mit Statusinformationen an / aus",cm_visDriveCombo
+     MENUITEM "Brotkrumen-Navigation an / aus",cm_VisBreadCrumbs
+     MENUITEM "Name(n) des/der aktuellen Pfade(s) an / aus",cm_visCurDir
+     MENUITEM "Spaltenüberschriften in den Dateifenstern an / aus",cm_visTabheader
+     MENUITEM "Unterere Statuszeile an / aus",cm_visStatusbar
+     MENUITEM "Kommandozeile an / aus",cm_visCmdLine
+     MENUITEM "Fokus zur Kommandozeile setzen",cm_FocusCmdLine
+     MENUITEM "Funktionstastenzeile an / aus",cm_visKeyButtons
+     MENUITEM "Fokus auf die Symbolleiste setzen",cm_FocusButtonBar
+     MENUITEM SEPARATOR
+     MENUITEM "Icon-Overlays an / aus",cm_SwitchOverlayIcons
+     MENUITEM "Flache Symbolleiste(n) an / aus",cm_visFlatdriveButtons
+     MENUITEM "Flache Statusinformationen/-zeile an / aus",cm_visFlatInterface
+     MENUITEM "XP-Theme-Hintergrund an / aus",cm_VisXPThemeBackground
+     MENUITEM SEPARATOR
+     MENUITEM "Ordner-Tabs (Register) an / aus",cm_visDirTabs
+     MENUITEM SEPARATOR
+     MENUITEM "Verzeichnisliste und Verlauf für Laufwerke an / aus",cm_visHistHotButtons
+  END_POPUP
+END_POPUP
+
+POPUP "Ordner-&Tabs"
+  MENUITEM "Neuen Tabulator öffnen\tStrg+T",cm_OpenNewTab
+  MENUITEM "Neuen Tabulator im Hintergrund öffnen\tStrg+Umsch+T",cm_OpenNewTabBg
+  MENUITEM SEPARATOR
+  MENUITEM "Markierten Ordner als Tabulator\tStrg+[Pfeil aufwärts]",cm_OpenDirInNewTab
+  MENUITEM "Markierten Ordner als Tabulator im anderen Fenster\tStrg+Umsch+[Pfeil aufwärts]",cm_OpenDirInNewTabOther
+  MENUITEM SEPARATOR
+  MENUITEM "Zum nächsten Tabulator wechseln\tStrg+Tab",cm_SwitchToNextTab
+  MENUITEM "Zum vorherigen Tabulator wechseln\tStrg+Umsch+Tab",cm_SwitchToPreviousTab
+  MENUITEM SEPARATOR
+  MENUITEM "Tabulator schließen\tStrg+W",cm_CloseCurrentTab
+  MENUITEM "Alle schließen\tStrg+Umsch+W",cm_CloseAllTabs
+  MENUITEM SEPARATOR
+  MENUITEM "Ordner-Tabulator an / aus",cm_visDirTabs
+  MENUITEM "Ordner-Tabulator sperren (*) an / aus",cm_ToggleLockCurrentTab
+  MENUITEM "Tabulator-(Kontext-) Menü anzeigen",cm_DirTabsShowMenu
+END_POPUP
+
+POPUP "&Netzwerk"
+  MENUITEM "Mit Netzlaufwerk verbinden",cm_NetConnect
+  MENUITEM "Von Netzlaufwerk trennen",cm_NetDisconnect
+  MENUITEM SEPARATOR
+  MENUITEM "Mit der administrativen Freigabe (x$) verbinden",cm_AdministerServer
+  MENUITEM "Aktuellen Ordner über Windows-Eigenschaften freigeben",cm_NetShareDir
+  MENUITEM "Freigabe über Windows-Eigenschaften entfernen",cm_NetUnshareDir
+  MENUITEM SEPARATOR
+  MENUITEM "Neue FTP-Verbindung\tStrg+N",cm_FtpNew
+  MENUITEM "FTP-Verbindung herstellen\tStrg+F",cm_FtpConnect
+  MENUITEM "FTP-Verbindung trennen\tStrg+Umsch+F",cm_FtpDisconnect
+  MENUITEM "FTP versteckte Dateien anzeigen",cm_FtpHiddenFiles
+  MENUITEM "FTP zur Download-Liste hinzufügen",cm_ftpaddtolist
+  MENUITEM "FTP Dateien aus Liste herunterladen",cm_ftpdownloadlist
+  MENUITEM "FTP Übertragungsmodus auswählen\tStrg+Umsch+M",cm_FtpSelectTransferMode
+  MENUITEM "FTP Zusammenfassung abgebrochener Downloads",cm_FtpResumeDownload
+  MENUITEM "FTP Aktuelles FTP-Kommando abbrechen",cm_FtpAbort
+  MENUITEM SEPARATOR
+  POPUP "NTFS Aktionen"
+     MENUITEM "Verzeichnisberechtigungen",cm_EditPermissionInfo
+     MENUITEM "Dateiüberwachung",cm_EditAuditInfo
+     MENUITEM "Besitz übernehmen",cm_EditOwnerInfo
+     MENUITEM SEPARATOR
+     MENUITEM "Remote-Anwender einer lokalen Datei anzeigen",cm_ShowFileUser
+  END_POPUP
+  MENUITEM SEPARATOR
+  POPUP "Verbindung über die parallele bzw. USB-Schnittstelle"
+     MENUITEM "Direkte Kabelverbindung",cm_DirectCableConnect
+     MENUITEM SEPARATOR
+     MENUITEM "LPT-Treiber installieren (NT)",cm_NTinstallDriver
+     MENUITEM "LPT-Treiber entfernen (NT)",cm_NTremoveDriver
+  END_POPUP
+  MENUITEM SEPARATOR
+  MENUITEM "Übertragungsmanager für Transfer im Hintergrund",cm_OpenTransferManager
+END_POPUP
+
+POPUP "S&ystem"
+  MENUITEM "Systeminformationen",cm_SysInfo
+  MENUITEM "Datenträger anzeigen",cm_OpenDrives
+  MENUITEM "Datenträgerbezeichnung",cm_VolumeId
+  MENUITEM "Desktop-Ordner",cm_OpenDesktop
+  MENUITEM "Systemsteuerung",cm_OpenControls
+  MENUITEM SEPARATOR
+  MENUITEM "Netzwerkumgebung",cm_OpenNetwork
+  MENUITEM SEPARATOR
+  MENUITEM "Fonts-Ordner",cm_OpenFonts
+  MENUITEM "Drucker-Ordner",cm_OpenPrinters
+  MENUITEM "Windows-Papierkorb öffnen",cm_OpenRecycled
+END_POPUP
+
+STARTMENU
+
+;HELP_BREAK
+
+POPUP "&Einstellungen"
+  MENUITEM "Layout",cm_Config
+  MENUITEM "Ansicht",cm_DisplayConfig
+  MENUITEM "Icons",cm_IconConfig
+  MENUITEM "Schrift",cm_FontConfig
+  MENUITEM "Farben",cm_ColorConfig
+  MENUITEM "Tabulatoren",cm_ConfTabChange
+  MENUITEM "Ordner-Tabs (Register)",cm_DirTabsConfig
+  MENUITEM "Benutzerdefinierte Spalten",cm_CustomColumnConfig
+  MENUITEM "Aktuelle benutzerdefinierte Spalten anpassen",cm_CustomColumnDlg
+  MENUITEM "Sprache",cm_LanguageConfig
+  MENUITEM SEPARATOR
+  MENUITEM "Operation",cm_Config2
+  MENUITEM "Viewer/Editor",cm_EditConfig
+  MENUITEM "Kopieren/Löschen",cm_CopyConfig
+  MENUITEM "Dateilisten",cm_RefreshConfig
+  MENUITEM "Schnellsuche",cm_QuickSearchConfig
+  MENUITEM "FTP",cm_FtpConfig
+  MENUITEM SEPARATOR
+  MENUITEM "Plugins",cm_PluginsConfig
+  MENUITEM "Miniaturansicht (Thumbnails)",cm_ThumbnailsConfig
+  MENUITEM SEPARATOR
+  MENUITEM "Packer",cm_PackerConfig
+  MENUITEM "ZIP-Packer",cm_ZipPackerConfig
+  MENUITEM SEPARATOR
+  MENUITEM "Diverses",cm_Confirmation
+  MENUITEM SEPARATOR
+  MENUITEM "Symbolleiste (Buttonbar)",cm_ButtonConfig
+  MENUITEM SEPARATOR
+  MENUITEM "Log-Datei",cm_LogConfig
+  MENUITEM "Ignorierliste bearbeiten",cm_IgnoreConfig
+  MENUITEM "INI-Datei manuell bearbeiten",cm_configChangeIniFiles
+  MENUITEM "Alle Plugins entladen",cm_UnloadPlugins
+  MENUITEM SEPARATOR
+  MENUITEM "Startermenü ändern",cm_ChangeStartMenu
+  MENUITEM SEPARATOR
+  MENUITEM "Verzeichnis-Historie speichern",cm_ConfigSaveDirHistory
+  MENUITEM "Aktuelle Position speichern",cm_ConfigSavePos
+  MENUITEM "Einstellungen speichern",cm_configSaveSettings
+END_POPUP
+
+POPUP "&Fenster"
+  MENUITEM "Minimieren\tUmsch+Esc",cm_Minimize
+  MENUITEM "Maximieren",cm_Maximize
+  MENUITEM "Wiederherstellen",cm_Restore
+END_POPUP
+
+POPUP "&Hilfe"
+  MENUITEM "Index\tF1",cm_HelpIndex
+  MENUITEM SEPARATOR
+  MENUITEM "Tastatur",cm_Keyboard
+  MENUITEM "Registrierungsinformation",cm_Register
+  MENUITEM "Total Commander im Internet",cm_VisitHomepage
+  MENUITEM SEPARATOR
+  MENUITEM "Über Total Commander",cm_About
+END_POPUP

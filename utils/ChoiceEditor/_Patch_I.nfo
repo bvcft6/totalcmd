@@ -1,0 +1,18 @@
+The original ChoiceEditor.exe (renamed to ChoiceEditor.exe.orig) includes some
+hardcoded accelerator shortcuts which make it impossible to use A, O and U as
+standard hotkeys throughout the program.
+
+In this patched version this annoyance has been fixed by stripping the & from
+the following strings:
+
+  Button: &other program...
+Checkbox: &Use as additional
+Checkbox: &Always use this program to open this filetype
+
+Also the Button O&K has been changed to &OK.
+
+All credits go to mozers for coding ChoiceEditor and for giving his OK to
+release this patched version!
+
+Have fun! :)
+Icfu

@@ -1,0 +1,31 @@
+[Services2]
+;--- ShowState=1
+;    Show the service's states in TC's file panel
+ShowState=1
+
+;--- ClassicTreeStyle=1
+;    Use classic tree style and buttons
+;    (plus/minus signs instead of triangles) on Vista and higher
+;ClassicTreeStyle=0
+
+;--- AllowDeleteInPanel=1
+;    Allow deletion of services in TC's file panel
+AllowDeleteInPanel=1
+
+;--- LoadCustomColumns=1
+;    Automatically load custom columns view when entering the plugin
+;    Note that this setting only affects the default custom columns
+;    view which this plugin provides! More specifically the setting controls
+;    whether the plugin reports a custom columns default view to TC or not.
+;LoadCustomColumns=0
+
+;--- Language=English.lng
+;    Use the specified language file
+;    Note: Missing strings are replaced with default English ones!
+;Language=German.lng
+
+;--- AddTxtExtensionOnDownload=0
+;    Append an additional '.txt' extension when a service "file" is downloaded.
+;    This is a way to control whether the service "files" are loaded into
+;    TC's Lister plugins (if any are installed).
+;AddTxtExtensionOnDownload=1

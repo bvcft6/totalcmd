@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>ChoiceEditor for Total Comander</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Notepad ;)">
+<META NAME="Autor" CONTENT="SAM">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="default.css">
+<style type="text/css">
+	BODY,TR,TD {FONT-FAMILY:Verdana, Geneva, Arial; FONT-SIZE: x-small;}
+	A          {color: #000080; text-decoration: none;}
+	P          {margin-left:24;}
+	A:hover    {color: red;}
+	H3         {color: #336600;}
+	TD         {vertical-align: top;}
+	TABLE      {position: relative; left:30px; }
+</style>
+</HEAD>
+
+<BODY>
+<H1><FONT COLOR=BLUE>ChoiceEditor</FONT> for <FONT COLOR=RED>Total Comander</FONT> version 1.95c</H1>
+
+<H3>DESCRIPTION</H3>
+<P>This utility allows you to assign any program installed on your system to open  various filetypes via Total Commander.<br>
+As a result, whenever you hit F4 in Total Commander your file will be opened in the program you selected earlier and which you consider to be the most appropriate for viewing or editing that filetype.
+
+<H3>INSTALLATION AND USE</H3>
+<P>Unpack to any directory. Enter the program's full path in the Total Commander settings.
+<br>(In the Configuration menu: Settings - Editing/Viewing - Program-editor)
+<P>Now if you press F4 ChoiceEditor will appear and you will have to choose an editor/viewer to open the selected file. Your choice is stored in an ini file which is created in the ChoiceEditor folder.<br>
+Once you have opened a file of the selected type in your favorite editor/viewer, that filetype will be always opened in it.
+
+<H3>POTENTIALITIES</H3>
+<UL><LI>Automatic interface language selection (english/russian). Depends on your current system language settings.
+<LI>Editing files in archives and on FTP servers.
+<LI>Editing of a new file (created by pressing Shift+F4) will be also carried out in your selected editor.
+<LI>This utility does not make any changes to your system registry. All the settings are stored in an ini file created in the program's folder. The ini file is a plain text file so you can edit it manually.
+<LI>If you wish to make a choice just before you open a file then it is possible to add the necessary extension to the ChoiceEditor's ini file. If the same extension is specified more than once then on pressing F4 the selected file will not open immediately but the editor selection dialog will appear instead. In case you get bored with having to make a choice - the "Always use the selected program" checkbox will come to your rescue.
+<LI>Now you can assign more than just a text editor to the F4 button. For example, EXE-files can be opened in a hexadecimal editor (e.g. WinHEX) or in a resource editor (e.g. PE Explorer). It is also possible to pack executables with UPX. All that can be easily realized by editing ChoiceEditor.ini<BR> Now after pressing F4 you have only to select the necessary action :)</UL>
+
+<H3>HISTORY</H3>
+<TABLE>
+<TR><TD>1.0</TD><TD><LI></TD><TD>The first release</TD></TR>
+<TR><TD>1.1</TD><TD><LI></TD><TD>Small corrections (autosize, etc.)</TD></TR>
+<TR><TD>1.5</TD><TD><LI></TD><TD>The program practically is completely rewrited. The algorithm of her work is changed.</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Mistakes are corrected: the Centering of the form on the screen, restriction of the autosize of the form, correct display of symbols of national codings, checking of the editor on the specified path, possible to delete manually from a INI-file is unnecessary editors not caring about numberings.
+<TR><TD> </TD><TD><LI></TD><TD>Support COMMANDER_PATH in a path to the editor. 
+<TR><TD> </TD><TD><LI></TD><TD>Support of a mask of extension of edited files (It is possible to use ? * [a-z] [0-9])</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>If the cursor of the mouse is in a right top corner of the screen (an alternative way - Ins+F4) the window of a choice will open irrespective of quantity of the editors established on the given extension. It - a way of fast addition on the given extension additional handlers.</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Right click of the mouse on the chosen editor causes dialogue of options.</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>New key AlwaysChecked defines value CheckBox "Always use this program to open this filetype".</TD></TR>
+<TR><TD>1.6</TD><TD><LI></TD><TD>It became possible to specify parameters of a command line handlers. (For example: <nobr>C:\Program Files\IrfanView\i_view32.exe %1 /resize=(300,0) /aspectratio</nobr> , where %1 - a place for an insert of a name of a processable file).</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>It is possible to change the order of following of editors in the list. Press Ctrl and drag the chosen editor on any place of your list with use arrow keys or mouse.</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Support of hot keys in dialogue of a choice of the editor. The task of a hot key is carried out through addition of a badge ampersand (&) before the corresponding letter in a name of the handler. (For example: Edit&Plus - start after pressing a key "P")</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Start ChoiceEditor without any parameters results in opening the panel with the list of editors. I.e. now, it is possible to cause quickly dialogue of option with use of any keyboard combination appointed by you.</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Fixed: The Window of the program now always atop of all. The list of types supported programms is expanded. Search of programs take into account a variable of environment PATH.</TD></TR>
+<TR><TD>1.7</TD><TD><LI></TD><TD>Changing program entries by keyboard (in addition to Right Click): Alt+Enter or Space (AnexeR)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>New INI key: Language=0/1 (override automatical language detection: 0=eng/1=rus)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Shortcut INS+F4 removed (formerly been used for displaying list of all editors at startup)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>New INI key: CheckKey=x (x=keycode of key to hold down while pressing F4, for displaying list of all editors at startup: 27 (Esc, default), 144 (NumLock), 145 (ScrollLock), 20 (CapsLock), 45 (Insert), etc...) (Robin Siebler)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>New INI key: CheckCursor=0/1 (Cursor location in upper right corner of screen while pressing F4 displays list of all editors at startup: 1=on/0=off) (uneasy)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Expanding list of associated to all editors at runtime: NumPad+ or arrow button (Icfu)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Added fast correction of erroneous command line</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Fixed: Overlapping of "Open file" windows (token), Additional "protection against the fool" (Icfu), Display of file extensions when ordering editors (djk), Scrolling if too much programs (djk, token), Empty keys are not saved in INI file anymore, Preventing multiple instances of the program (Icfu)</TD></TR>
+<TR><TD>1.8</TD><TD><LI></TD><TD>New INI key: DefaultEditor=full_path_to_editor in section [Options]. This editor will be used for opening all unregister filetypes (I.e. window a ChoiceEditor you can see ONLY on Esc+F4) (token).</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>About Dialog. Mouse right click in the form. (nobody requested ;)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Fixed: Problems with scroll huge lists (token), shortcuts (AnexeR), loss of focus at start of the editor from the keyboard (Led), etc.</TD></TR>
+<TR><TD>1.9</TD><TD><LI></TD><TD>Now allows to open several selected files simultaneously! (Decision Иван aka Atlanoff)</TD></TR>
+<TR><TD> </TD><TD><LI></TD><TD>Program file now much less</TD></TR>
+<TR><TD>1.9a</TD><TD><LI></TD><TD>Fixed: TC alert at creation of a new file in empty folder (Aggod), small corrections</TD></TR>
+<TR><TD>1.9b</TD><TD><LI></TD><TD>Fixed: Mistake at use of numeral in a shortcut (Evgen), In some systems the window list of editors could not appear in general (Wilhelm)</TD></TR>
+<TR><TD>1.95c</TD><TD><LI></TD><TD>Project closed. Source code perish :(</TD></TR>
+</TABLE>
+<H3>DEVELOPER</H3>
+<P><A HREF="mailto:mozers@mail.ru?subject=ChoiceEditor">mozers&trade;</A> &lt;<A HREF="http://total.altruistic.ru" TARGET=_blank>total.altruistic.ru</A>&gt;  (Translation on English: Garfunkel & Icfu)
+</BODY>
+</HTML>

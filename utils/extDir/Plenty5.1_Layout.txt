@@ -1,0 +1,59 @@
+01_Layout\01_PageDesign
+* 01_PageDesignContent\
+* 02_PageDesignCheckout\
+* 03_PageDesignMyAccount\
+* 04_PageDesignCustom\
+* 05_PageDesignCustom2\
+* 06_PageDesignCustom3\
+* 07_PageDesignBlog\
+* 08_PageDesignForum\
+* 0X_Unbenutzt\
+01_Layout\02_Navigation
+* 01_NavigationCategories\
+* 02_NavigationCategories4\
+* 03_NavigationCategoriesStepByStepList\
+* 04_NavigationCategoriesStepByStepList2\
+* 05_NavigationCategoriesSublevelSelect\
+* 06_NavigationBreadcrumbsList\
+* 0X_Unbenutzt\
+01_Layout\03_CategoryView
+* 01_CategoryViewContent\
+* 0X_Unbenutzt\
+01_Layout\04_ItemView
+* 01_ItemViewSingleItem
+* 02_ItemViewSearchResultsList
+* 03_ItemViewBasketPreviewList
+* 04_ItemViewCategoriesList
+* 05_ItemViewCrossSellingItemsList
+* 06_ItemViewCrossSellingItemsList2
+* 07_ItemViewTopSellersList
+* 08_ItemViewTopSellersList2
+* 09_ItemViewSpecialOffersList
+* 10_ItemViewLatestItemsList
+* 11_ItemViewManualSelectionList
+* 12_ItemViewManualSelectionList3
+* 13_ItemViewFurtherItemsList6
+* 14_ItemViewRandomList
+* 15_ItemViewItemImagesList
+* 16_ItemViewSingleCrossSellingItem
+* 17_ItemViewLiveShopping
+* 18_ItemViewItemPriceSelectDropDown
+* 19_ItemViewItemPriceSelectRadioButtonsList
+* 20_ItemViewStockList
+* 21_ItemViewItemToBasketConfirmation
+* 22_ItemViewItemToBasketConfirmationOverlay
+* 0X_Unbenutzt
+01_Layout\05_Misc
+* 01_MiscDatesList
+* 0X_Unbenutzt
+01_Layout\06_BlogDesign
+* 01_BlogDesignBlogEntry
+* 02_BlogDesignBlogList
+* 03_BlogDesignBlogArchivesList
+* 04_BlogDesignBlogCategoriesList
+* 05_BlogDesignSearchResultsList
+* 0X_Unbenutzt
+01_Layout\07_CSS
+* 01_CSSOrder
+* 02_CSSMyAccount
+* 0X_Unbenutzt

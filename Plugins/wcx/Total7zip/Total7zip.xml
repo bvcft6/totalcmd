@@ -95,6 +95,7 @@
 			<ext val="img" />
 		</format>
 		<format description="MBR" guid="{23170F69-40C1-278A-1000-000110DB0000}">
+			<ext val="img" />
 			<ext val="mbr" />
 		</format>
 		<format description="VHD" guid="{23170F69-40C1-278A-1000-000110DC0000}">

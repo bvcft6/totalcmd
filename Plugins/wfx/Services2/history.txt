@@ -1,0 +1,29 @@
+Version 0.4.2  [2014-07-25]
+[+]  Added Chinese translation, thanks to SunX!
+[+]  Added Russian translation, thanks to Alexander Gvaramiya (Nero Wolfe)!
+[+]  Added translation_instructions.txt which contains some instructions
+     for translators. I hope the pluginst.inf and Services2.lng files are
+     not forgotten that often anymore ;)
+[*]  (Hopefully) Fixed the issue that the icon of a service didn't reflect
+     its real state when the option "Show service state in the extension
+     column of TC's panel" was disabled
+[*]  Service properties dialog, Advanced page:
+     Repositioned the controls and made some of them wider to allow longer
+     strings for translations
+[*]  Fixed: Restart service function (in the service properties dialog)
+     didn't show confirmation dialog to stop dependent services
+[*]  Changed "file download": string padding is now based on the longest
+     (translated) string in the whole "file" instead of a fixed value of
+     20 characters. I hope this is better for translations.
+[+]  Added a new option (not available in settings dialog)
+     AddTxtExtensionOnDownload, see Services2.ini.sample for explanation
+[*]  Some internal optimizations
+
+Version 0.4.1  [2014-04-21]
+[+]  Added Hungarian translation, thanks to Bluestar!
+[+]  Added Danish translation, thanks to petermad!
+[+]  Added Italian translation, thanks to squeeze69!
+[*]  Made the settings dialog and plugin properties dialog wider to allow
+     longer strings for translations
+[*]  Return icon state strings in FsExtractCustomIcon properly to allow TC
+     to cache them only once per state (should decrease memory consumption)
