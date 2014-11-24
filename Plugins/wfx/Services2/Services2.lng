@@ -1,0 +1,76 @@
+[eng]
+Service Name=Service Name
+Display Name=Display Name
+State=State
+Startup Type=Startup Type
+Description=Description
+Log on as=Log on as
+Executable Path=Executable Path
+Own Process=Own Process
+Interactive=Interactive
+
+[deu]
+Service Name=Dienstname
+Display Name=Anzeigename
+State=Status
+Startup Type=Starttyp
+Description=Beschreibung
+Log on as=Anmelden als
+Executable Path=Ausführbare Datei
+Own Process=Eigener Prozess
+Interactive=Interaktiv
+
+[hun]
+Service Name=Szolgáltatás neve
+Display Name=Megjelenítési név
+State=Állapot
+Startup Type=Indítás típusa
+Description=Leírás
+Log on as=Bejelentkezés mint
+Executable Path=Elérési út
+Own Process=Saját folyamat
+Interactive=Interaktív
+
+[dan]
+Service Name=Navn på tjeneste
+Display Name=Vist navn
+State=Tjenestestatus
+Startup Type=Starttype
+Description=Beskrivelse
+Log on as=Log på som
+Executable Path=Sti til eksekverbar fil
+Own Process=Egen proces
+Interactive=Interaktiv
+
+[ita]
+Service Name=Nome Servizio
+Display Name=Nome Mostrato
+State=Stato
+Startup Type=Tipo di Avvio
+Description=Descrizione
+Log on as=Collegato come
+Executable Path=Percorso Eseguibile
+Own Process=Processo Proprio
+Interactive=Interattivo
+
+[chn]
+Service Name=·şÎñÃû³Æ
+Display Name=ÏÔÊ¾Ãû³Æ
+State=×´Ì¬
+Startup Type=Æô¶¯ÀàĞÍ
+Description=ÃèÊö
+Log on as=µÇÂ¼Éí·İ
+Executable Path=¿ÉÖ´ĞĞÎÄ¼şÂ·¾¶
+Own Process=×Ô¼ºµÄ½ø³Ì
+Interactive=½»»¥
+
+[rus]
+Service Name=Èìÿ ñëóæáû
+Display Name=Âûâîäèìîå èìÿ
+State=Ñîñòîÿíèå
+Startup Type=Òèï çàïóñêà
+Description=Îïèñàíèå
+Log on as=Âõîä â ñèñòåìó
+Executable Path=Èñïîëíÿåìûé ôàéë
+Own Process=Ñîáñòâåííûé ïğîöåññ
+Interactive=Âçàèìîäåéñòâèå

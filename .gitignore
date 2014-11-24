@@ -1,15 +1,8 @@
-# Windows image file caches
 Thumbs.db
 ehthumbs.db
-
-# Folder config file
 Desktop.ini
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-
-# total commander
+# Total Commander
 /history.ini
 /wcx_ftp.ini
 /tcwebdav.ini
@@ -35,18 +28,29 @@ $RECYCLE.BIN/
 
 *.vxd
 *.sys
-*.lng
 
 *.db
 *.br2
 *.!sync
+
+# language files
+/Plugins/wfx/Registry/*.lng
+/Plugins/wfx/Services2/Language/*.lng
+/Plugins/wfx/Uninstaller64/Language/*.lng
+/Plugins/wfx/VirtualPanel/Language/*.lng
+/Plugins/wlx/Imagine/Language/*.lng
+/utils/TC Plugman/Language/*.lng
+!German.lng
+
+/Plugins/wlx/slister/sumatrapdfcache
 
 # want icons
 !icons/*.dll
 !Wcmicons.dll
 !WCICONEX.DLL
 
-
-
 # source folder
 /Plugins/wdx/wdx_mediainfo/src/
+
+/theme/filetype-samples/*
+!/theme/filetype-samples/make.bat

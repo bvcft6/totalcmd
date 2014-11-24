@@ -50,6 +50,37 @@ closeTimer:
 ;#ifWinActive ahk_class TTOTAL_CMD
 ;  $Escape::WinMinimize A
 
+; Mark Important Files Permanently (via Comment & Highlight)
+
+#IfWinActive, ahk_class TTOTAL_CMD
+^+z::
+PostMessage, 1075, 2700
+WinWaitActive, ahk_class TCmtEditForm, , 1
+If Errorlevel
+  Return
+Marker := "*** "
+ControlGetText, Comment, Edit1
+StringLeft, Check, Comment, 4
+If Check <> %Marker%
+  Comment := Marker Comment
+Else
+  StringTrimLeft, Comment, Comment, 4
+ControlSetText, Edit1, %Comment%
+SendInput, {F2}
+Return
+
+; Pressing F4 in TC Lister starts Notepad with the active document. 
+#IfWinActive, ahk_class TLister
+F4::
+editor = notepad.exe
+WinGetTitle, title
+left := InStr(title, "[") + 1
+right := InStr(title, "]") - left
+StringMid, listerpath, title, left, right
+WinClose
+Run, %editor% "%listerpath%"
+Return
+
 ; TOTALCMD: always unpack into seperate directory
 ~!F6:: 
 ~!F9:: 
