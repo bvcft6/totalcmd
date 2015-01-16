@@ -1,6 +1,5 @@
 #NoEnv  
 #SingleInstance, force
-
 SetWorkingDir %A_ScriptDir%
 FileEncoding UTF-8
 
@@ -13,45 +12,17 @@ Menu,Tray,Icon, %COMMANDER_PATH%\TOTALCMD.EXE,1
 sTitle = Total Commander (x64) 8.50 - Portable Version
 
 OnExit, ExitSub
-
 SetTimer subTimer, 250
 
-WinWait, ahk_class TTOTAL_CMD, , 5
-if ErrorLevel
-{
-    MsgBox, Totalcmd not running?
-    ExitApp
-}
-else
-{
-    SetTimer closeTimer, 2500
-}
+SetTimer closeTimer, 5000
 
-subTimer:
-  if WinActive( "ahk_class TTOTAL_CMD" )
-  {
-    WinGetTitle sWindowTitle
-    if ( sWindowTitle != sTitle )
-      WinSetTitle %sTitle%
-  }
-  Return
 
-closeTimer:
-  DetectHiddenWindows, on
-  if !WinExist( "ahk_class TTOTAL_CMD" )
-  {
-    Msgbox, wech?
-    ExitApp
-  }
-  DetectHiddenWindows, off
-  Return
 
 ; TOTALCMD: minimize on esc  
 ;#ifWinActive ahk_class TTOTAL_CMD
 ;  $Escape::WinMinimize A
 
 ; Mark Important Files Permanently (via Comment & Highlight)
-
 #IfWinActive, ahk_class TTOTAL_CMD
 ^+z::
 PostMessage, 1075, 2700
@@ -103,9 +74,66 @@ $#a::
   ClipboardBackup =
 Return
 
+; launch diff program from the internal compare window
+~F2::
+  if WinActive( "ahk_class TFileCompForm" )
+  {
+    ControlGetText sFile1, Edit1
+    ControlGetText sFile2, Edit2
+    Run "C:\Program Files (x86)\WinMerge\WinMergeU.exe" "%sFile2%" "%sFile1%"
+    Return
+  }
+  Return
+
+; Scroll, keeping the cursor in place
+^+Down:: TCScrollKeep( 1 )
+^+Up:: TCScrollKeep( 0 )
+TCScrollKeep( xnDirecton )
+{
+  if WinActive( "ahk_class TTOTAL_CMD" )
+  {
+    if xnDirecton = 1
+      Send {Down}
+    else
+      Send {Up}
+  ControlGetFocus sActivePanel, A
+  PostMessage 0x115, xnDirecton, 0, %sActivePanel%, A
+  }
+  Return
+}
+
+; If the MRT-WIndow is opened it is sufficient to press [Alt]+[Backspace] to
+; load the default settings.
+~!BS::
+if WinActive( "ahk_class TMultiRename" )
+{
+	Send {F2}{Home}{Down}{Enter}
+}
+Return
+
+subTimer:
+  if WinActive( "ahk_class TTOTAL_CMD" )
+  {
+    WinGetTitle sWindowTitle
+    if ( sWindowTitle != sTitle )
+      WinSetTitle %sTitle%
+  }
+  Return
+
+closeTimer:
+  DetectHiddenWindows, on
+  if !WinExist( "ahk_class TTOTAL_CMD" )
+  {
+SplashTextOn, , , TC is gone
+    sleep 1500
+    SplashtextOff
+    ExitApp
+  }
+  DetectHiddenWindows, off
+  Return
 
 ExitSub:
-  if A_ExitReason not in Logoff,Shutdown  ; Avoid spaces around the comma in this line.
+  if A_ExitReason not in Logoff,Shutdown,Close,Exit  ; Avoid spaces around the comma in this line.
   {
       MsgBox, 4, , Are you sure you want to exit?
       IfMsgBox, No
