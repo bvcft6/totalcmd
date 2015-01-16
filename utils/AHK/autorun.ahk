@@ -81,17 +81,26 @@ WinClose
 Run, %editor% "%listerpath%"
 Return
 
-; TOTALCMD: always unpack into seperate directory
-~!F6:: 
-~!F9:: 
-If WinActive("ahk_class TTOTAL_CMD") or WinActive("ahk_class TDLGUNZIPALL")
-{
-  WinWaitActive, ahk_class TDLGUNZIPALL
-  ControlSend, TCheckBox1, {SPACE}
-  ControlFocus, TAltEdit1
-  ; If you always want to extract to the active panel, uncomment:
-  ; Send {DEL}
-}
+; Paste TC's active path anywhere
+#IfWinExist, ahk_class TTOTAL_CMD
+; Default shortcut is Win-A
+$#a::
+  ; Backup the clipboard
+  ClipboardBackup = %ClipboardAll%
+  ; Empty the clipboard
+  Clipboard =
+  ; Ask TC for the path
+  PostMessage, 1075, 2029, , , ahk_class TTOTAL_CMD
+  ; Wait at most 2 seconds for the path
+  ; You can change the value below
+  ClipWait, 2
+  ; Paste and append a backslash
+  ; You can remove the backslash from the following line if you prefer
+  Send, ^v\
+  ; Restore clipboard from backup
+  Clipboard = %ClipboardBackup%
+  ; Release memory
+  ClipboardBackup =
 Return
 
 
