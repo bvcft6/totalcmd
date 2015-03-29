@@ -1,0 +1,90 @@
+;Please send me your translation to kzoladek(at)o2.pl
+[Main]
+0=Aktuálne súbory v
+1=Celková ve¾kos: 
+2=Adresár je prázdny...
+3=Adresár obsahuje len súbory...
+4=Okno je príliš malé !! 
+5=Skenovanie.. Prosím èakajte
+6=Skenovanie yrušené pouívate¾om...
+7=Ståpcovı diagram
+8=Kruhovı diagram
+9=Zoradenie pod¾a ve¾kosti
+10=Zoradenie pod¾a mena
+11=Ukáza ve¾kos súboru
+12=Ukáza percenta
+13=Ukáza len adresáre
+14=Obnovi
+15=Monosti
+16=Ukáza súbory a prieèinky
+17=Celkom súborov:
+18=Celkové iné rozšírenie:
+19=Uká poèet súborov
+20=Vytvori správu
+21=Skenovací filter
+22=Rozšírenı diagram
+23=Zobrazenı adresár sa zmenil. Kliknite OBNOVI tlaèítko aby sa aktualizovali zmeny prieèinka
+24=alebo kliknite tlaèítko Automatické Obnovovanie aby sa zrušila detekcia zmien v adresároch.
+25=Automatické Obnovovanie zaloené na momentálnej zmene oznámenia
+26=Uloi VisualDirsize správu
+27=HTML správa (*.html)|*.html|TXT správa (*.txt)|*.txt|Len obrázok (*.jpg)|*.jpg
+28=Is o prieèinok vyššie /materskı/
+29=Blokovı graf
+30=B
+31=kB
+32=MB
+33=GB
+
+[Config]
+0=Zobrazenie
+1=Externá kninica ikoniek:
+2=Farba pozadia
+3=Farba písma
+4=Triedi ako WinXP
+5=Importova TC nastavenia
+6=Farebnos schém
+7=Max zafarbenia
+8=Min zafarbenia
+9=Kontrast
+10=Jas
+11=Uloi aktuálnu schému
+12=Ïa¾šie
+13=Neukazova viac ståpcov ne:
+14=Jazyk
+15=OK
+16=Zruši
+17=Spusti browser /preh¾adaè/ po vytvorení HTML správy
+18=VisualDirSize konfigurácia
+19=Zmeni písmo
+20=Pomoc?
+21=Mierka v Blokovom móde:
+22=Rozmer zobrazenia:
+23=Bytes
+24=kBytes
+25=MBytes
+26=GBytes
+27=BkM
+28=BkM2
+
+[Report]
+0=VisualDirSize správa
+1=Cesta správy
+2=Celková skenovaná ve¾kos
+3=Celkové skenované súbory
+4=Celkové iné rozšírenie
+5=Názov
+6=Ve¾kos
+7=Poèet súborov
+8=% z aktuálneho prieèinka
+
+[Filter]
+0=Skenovací filter
+1=Súborové mená masiek
+2=Súborové meno masiek:
+3=TC h¾adanie
+4=Separácia mnohonásobnej masky pri strednej pomlèke alebo medzere; stlaèením tlaèítka TC h¾adanie na zobrazenie
+5=Pouitie pravidelnıch vırazov
+6=Vyradi porovnávané súbory
+7=OK
+8=Zruši
+9=Pomoc?

@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Help of &#147;VisualDirSize&#148;</title>
+<LINK REL=STYLESHEET HREF="vds.css" TYPE="text/css">
+</head>
+<BODY>
+<A HREF="help_english.htm"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+<table width="770" align="center">
+<tr><td>
+<CENTER><H2>Help of VisualDirSize 1.3</H2><HR CLASS="med2"></CENTER>
+<br><br>
+
+<h2>&#160;&#160;Synopsis<A ID="syn"><IMG SRC="img/ancre.bmp" BORDER="0"></A></h2>
+<OL CLASS="det">
+  <li><a CLASS="som" href="#description">Description</a>
+  <li><a CLASS="som" href="#installation">Installation</a>
+  <li><a CLASS="som" href="#location">Location of VisualDirSize.ini </a>
+  <li><a CLASS="som" href="#usage">Use</a>
+  <li><a CLASS="som" href="#faq">FAQ</a>
+  <li><a CLASS="som" href="#charts">Charts</a>
+  <li><a CLASS="som" href="#filter">Scan Filtering</a>
+  <li><a CLASS="som" href="#report">Report Generating</a>
+  <li><a CLASS="som" href="#configuration">Configuration Dialog</a>
+  <li><a CLASS="som" href="#history">&#160;&#160;History</a> 
+  <li><a CLASS="som" href="#license">&#160;&#160;Licence</a>
+  <li><a CLASS="som" href="#author">&#160;&#160;Author</a>  
+</OL>
+</TR></TD></TABLE>
+<CENTER><HR CLASS="sep2"></CENTER><BLOCKQUOTE>
+					<!-- DESCRIPTION -->
+<H3> 1) Description<a ID="description"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="inf">VisualDirSize provides a graphical overview of the files/folders in a selected directory. 
+<LI CLASS="aff">You can view a chart by putting the cursor on any directory and pressing &#60;<B>Ctrl+Q</B>&#62;. 
+<LI CLASS="his">The selected directory shall be scanned and the sizes of the files¦folders will be displayed as a bar chart in the Quick View panel.
+<LI CLASS="his2">Such a bar chart is useful to show the relative sizes of files¦folders. 
+<LI CLASS="pvt">For instance : you can quickly locate the biggest file¦folder in the directory. 
+<LI CLASS="warn"> Because the way in which the plugin works, it's <B CLASS="rge">not</B> recommended to use it on very big directories.  
+<LI CLASS="zerow">The delays might be pretty significant.
+<LI CLASS="zero"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+<HR CLASS="sep2">
+</UL>
+							<!-- INSTALLATION -->
+<H3> 2) Installation<a ID="installation"></a></H3>
+<OL CLASS="alph" COMPACT>
+<LI>TC 5.51</OL>
+
+<DL COMPACT>
+<DD>Copy the &#60;visualdirsize.wlx&#62; file into your Total Commander plugins directory. 
+<DD>Then add the following line to [ListerPlugins] section in the wincmd.ini file:
+<DT>0=C:\totalcmd\plugins\visualdirsize.wlx (Change the path to your real one )</DL>
+
+<OL CLASS="alph" COMPACT START="2"> 
+<LI>TC 6.5 and newer</OL> 
+<DL COMPACT>
+<DD>This version of TC has an "auto install plugin" feature. Just strike <B CLASS="demi">Enter</B> on the archive of the plugin and TC'll ask you whether you want to install it.
+<DD><IMG SRC="img/tool.png">Using the free tool <A CLASS="ext" HREF="http://perso.wanadoo.fr/charries/tc-plugins-manager.htm">TC Plugman</A>, you can also install the plugin very easily for all versions of TC quoted above.
+<DD><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+</DL> <CENTER><HR CLASS="sep2"></CENTER>
+						<!-- LOCATION OF THE INI FILE -->
+<H3> 3) Location of VisualDirSize.ini<a ID="location"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="sav">&#60;VisualDirSize.ini&#62; shall be saved in the same directory as &#60;Wincmd.ini&#62; by default.
+<LI CLASS="nsm">If you don't like this location you can simply move the file to one of the following destinations : 
+<LI CLASS="sav">In a subdirectory called "VisualDirSize" relative to the directory where Wincmd.ini is located 
+<LI CLASS="sav">The directory of the Plugin. 
+<LI CLASS="sav">The directory of Total Commander.
+<LI CLASS="zero"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+<HR CLASS="sep2"></UL>
+								<!-- USE -->								
+<H3>4) Use<a ID="usage"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">Put the cursor on any directory then press &#147;<B>Ctrl+Q</B>&#148;. 
+<LI CLASS="pen"> It's impossible to execute the plugin with F3 - it works ONLY with <B CLASS="demi">Ctrl+Q</B>.
+<LI CLASS="ks">You can use the arrow-keys<IMG SRC="img/2_fleches.png" HEIGHT="17" WIDTH="15">and Home<IMG SRC="img/home.png">, End<IMG SRC="img/end.png" HEIGHT="13" WIDTH="23" CLASS="al">, PgUp<IMG SRC="img/p_precedente.png" HEIGHT="13" WIDTH="17"> and PgDn<IMG SRC="img/p_suivante.png" HEIGHT="13" WIDTH="17"> or SPACE-BAR to scroll trough the bars.
+<LI CLASS="mus">You can do a mouse left double-click on a graph to land into the corresponding sub-folder and a right double-click to go up towards the parent folder.
+<LI CLASS="sup">To abort the scanning simply press longer the <B CLASS="demi">ESC</B> key.
+<LI CLASS="zero"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+<HR CLASS="sep2"></UL>
+								<!-- FAQ -->
+<H3>5) F. A. Q.<a ID="faq"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="inter">I don't understand how this plugin can be used. When I press CTRL+Q,  the quick view panel appears, but not any graphical overview
+<LI CLASS="zer">is offered by this plugin. What do I wrong ?
+<LI CLASS="pink">If after pressing Ctrl+Q there is still the Total Commander default list displayed for a directory-entry, showing the directory info as plain text, move <I>VisualDirSize</I> higher up in the list of the installed Lister plugins. <HR CLASS="med">
+<LI CLASS="inter">Sometimes when moving the cursor FAST up and down the filelist/folder list, the plugin hangs. I guess it is trying to read them all as I navigate upwards or downwards. 
+<LI CLASS="pink">Well, in fact the plugin starts to read all directories on which you put the cursor. 
+<LI CLASS="zer">You have simply to wait until the plugin scans the selected directory and then select the next one. 
+<LI CLASS="zero"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+<HR CLASS="sep2"></UL>
+								<!-- CHARTS -->
+<H3>6) Charts<a name="charts"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="aff"><I>VisualDirSize</I> can visualize the folder sizes in four types of charts. A chart shows always the size of the sub-folders of the currently selected folder. 
+<LI CLASS="pvt">The  charts can be sorted by size¦name and show the size¦percent¦number of files dependant on which kind of view-type the user selected in the tool-bar.
+<LI CLASS="pvt">Double-clicking on a bar will land into the associated folder.</UL> 
+</BLOCKQUOTE><CENTER>
+
+ <table width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+     <td width="17%" valign="top" CLASS="subj" ALIGN="left">Bar chart</td>
+     <td CLASS="std" width="*"> Represent the results of scanning the currently selected drive¦folder graphically, with a bar-graph.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Pie chart</td>
+     <td CLASS="std"> Represents the results of scanning the currently selected drive¦folder graphically, with a pie (sectors) graph. In this mode small file¦folders may be summarized in a single slice named &#147;Other&#148;.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Block chart</td>
+     <td CLASS="std"> Represents the results of scanning the currently selected drive¦folder graphically, with colored blocks. If the block represents a directory, all files contained within that directory and sub directories are displayed as blocks representing them close it. All directories that are too small to be displayed individually get merged together.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Extensions chart</td>
+     <td CLASS="std"> Represents the results of scanning the currently selected drive¦folder as text with a bar-graph, generalized by file types (extensions).</td>
+   </tr>
+ </table></CENTER>
+<P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+							<!-- SCAN FILTERING -->
+<BLOCKQUOTE><H3>7) Scan Filtering<a name="filter"></a></H3>
+
+<A HREF="help_english.htm#filter"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm#filter"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm#filter"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+<BR>
+
+<UL CLASS="rien" COMPACT>
+<LI CLASS="filt">The <B CLASS="demi">Scan Filtering</B> feature allows you to filter the scanned files and folders. 
+<LI CLASS="pav">With the scan filtering, you can specify precisely which files would be included in charts. 
+<LI CLASS="pav">So, if you want to get information about certain file-types only, for example graphic files, use the filter "*.jpg *.gif" here.
+</UL></BLOCKQUOTE><CENTER>
+ 
+ <table width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+<TD width="27%" valign="top" CLASS="subj" ALIGN="left">File-name masks</td>
+ <TD width="*" valign="top" CLASS="std" ALIGN="left">
+<OL COMPACT CLASS="alph">
+<LI>In this field, you can enter the search mask(s) for the files you want to find.
+<LI>Names with spaces <B CLASS="rge">must </B>be put within double quotes, e.g. "Letter to Mr. Smith.doc", otherwise VisualDirSize should look for each part of the name, individually. 
+<LI>You may use several filters separated by a semi-colon or a space. 
+</OL>
+<P>Examples :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">*.txt; *.exe (*.txt *.exe)  finds all files with <B CLASS="demi">txt</B> or <B CLASS="demi">exe</B> extension 
+ <LI CLASS="pav">*.ini finds for example <B CLASS="demi">win.ini</B> 
+<LI CLASS="pav">Smith finds "Letter to Mr. Smith.doc" 
+<LI CLASS="pav">The exclusion-masks are placed after a &#147;|&#148;.</UL>   
+<P>Example :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">w*.* | *.bak   finds files which start with <B>w</B> and do <B CLASS="rge">not</B> end with <B>.bak</B> 
+<LI CLASS="pav">To Include¦Exclude certain directories into¦from the search, their names must have a trailing backslash <B>\</B>.</UL> 
+<P>Example :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">windows\ system32\ *.ini  finds <B CLASS="demi">ini</B> files only in the dirs. of windows\ and system32 
+<LI CLASS="pav">*.ini | windows\   finds all ini files except those in directories named "Windows" and their sub-dirs.</UL> 
+   </td>
+   </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">TC Searches</td>
+<td width="*" valign="top" CLASS="std" ALIGN="left"> Use the <B CLASS="demi">TC Searches</B> button at the <B CLASS="vtf">right</B> of the dialogue-box to see the parameters for frequent searches that Total Commander has saved. <br>&nbsp;</td> 
+  </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">Use Regular Expressions</td>
+<TD CLASS="std" ALIGN="left"> Search in file names using the &#147;Regular Expressions&#148;. &nbsp;</td> 
+  </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">Exclude matching files</td>
+<TD CLASS="std" ALIGN="left"> Exclude (rather than include) matching files. </td> 
+  </tr>
+ </table></CENTER>
+ <br>
+<P CLASS="tx">These options will <B CLASS="rge">not</B> be saved when you exit VisualDirSize in order to avoid wrong results when using it the next time.</P>
+<P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+  <CENTER><HR CLASS="sep2"></CENTER>
+								<!-- REPORTS… -->
+<BLOCKQUOTE><H3>8) Report generating<a ID="report"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pen">VisualDirSize has powerful built-in report exporting capabilities. 
+<LI CLASS="pen">Exported report contents can often be imported or otherwise consumed by third-party applications for an additional processing. 
+<LI CLASS="pvt">A wide range of export formats are available, including :
+</UL></BLOCKQUOTE><CENTER>
+ <TABLE width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+     <TD width="27%" valign="top" CLASS="subj" ALIGN="left">HTML report</td>
+     <TD width="*" valign="top" CLASS="std" ALIGN="left"> Allows you to save a report as HTML file, which can be viewed with any HTML browser later.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <TD valign="top" CLASS="subj" ALIGN="left">TXT</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Save the collected data to a &#147;Tab separated text file&#148; that can be imported by applications like Microsoft Excel.<br>&#160;</td>
+   </tr>
+   <tr>
+     <TD valign="top" CLASS="subj" ALIGN="left">Only image</td>
+     <td valign="top" CLASS="std" ALIGN="left"> The main application chart can be exported directly as a JPEG image-file.</td>
+   </tr>
+ </table></CENTER>
+ <br>
+<P CLASS="tx">Report exporting functionality can be accessed by pressing the “Generate report” button.</P>
+<P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+							<!-- CONFIGURATION… -->
+<BLOCKQUOTE><H3>9) Configuration Dialogue<a ID="configuration"></a></H3></BLOCKQUOTE>
+
+<CENTER>
+ <TABLE width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+<A HREF="help_english.htm#configuration"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm#configuration"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm#configuration"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+   <tr>
+     <TD width="35%" valign="top" CLASS="subj" ALIGN="left">External icon library</td>
+     <TD width="*" valign="top" CLASS="std" ALIGN="left"> This option allows you to choose an external library from witch the default icons for files and directories will be loaded  (you can use also the %COMMANDER_PATH% variable in the path).<br>&nbsp; </td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Background colour</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Select the background colour for the charts.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Font colour</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Use this option to select the text colour for the charts.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Change font</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Choose a font for the charts in VisualDirSize. The font can be bold or normal, italic is NOT supported.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Sort like WinXP</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Uses mixed lexical and numerical sorting, e.g. file10.txt comes AFTER file1.txt. This option works only in Windows XP, in other systems it's normal sorting (this is <B CLASS="rge">not</B> quite true).<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Import TC Settings</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Import the above settings from the current Total Commander instance.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">ColourTheme_x</td>
+     <td valign="top" CLASS="std" ALIGN="left"> You can select a colour setting for the charts from that list.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Max Hue, Min Hue, Saturation, Lightness</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Colour theme for the bars. All values are in HSL (Hue, Saturation, Lightness). Bars' colors will be generated from <br> 
+     (Max Hue, Saturation, Lightness) to (Min Hue, Saturation, Lightness) in HSL.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Save current schema</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Here you can save the current colours setting. It shall be added at the bottom of the <I>ColourTheme_x</I> list.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Don’t show more bars than</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Sets how many bars are displayed (default = 500). Reason : <br>
+          The plugin scans all files and folders in selected directory but only the first 500 are displayed, because with slower machines, a  problem with refreshing appears. If your computer is powerful enough, you can increase that value.<br>&nbsp;      
+     </td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Scale factor in Block mode</td>
+     <td valign="top" CLASS="std" ALIGN="left"> This option allows you to specify how much directory information gets "lumped" together. <br> 
+          A scale factor of 1 will draw exactly to the boundaries of the VisualDirSize plugin window. <br>
+          A scale factor of 2 will draw twice as much information as can be displayed in the plugin window.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Size display</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Determines how the file size is shown in the main file lists. You can choose between <br> 
+          <b>bytes</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        The size is shown in bytes, as in previous versions of Total Commander<br>
+          <b>kbytes</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Size is shown in kbytes. 1 kbyte = 1024 bytes<br>
+          <b>Mbytes</b> &nbsp;&nbsp;&nbsp;&nbsp;
+                        Size is shown in Mbytes. 1 kbyte = 1024*1024 bytes<br>
+          <b>Gbytes</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Size is shown in Gbytes. 1 kbyte = 1024*1024*1024 bytes<br>          
+          <b>bkM</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        depeding on the file size, it is displayed in bytes, kbytes, MBytes or GBytes<br>
+          <b>bkM2</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        same as above, but with one digit after the comma to get a more exact size (default)<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Launch browser after HTML report is generated</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Automatically, opens the HTML exports in the default web browser after its generation is completed.<br>&nbsp;<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Language</td>
+     <td valign="top" CLASS="std" ALIGN="left"> Allows you to choose a language from the list. If you’d like to translate <I>VisualDirSize</I> into your language, please email me. If your language isn't included in the package, contact me by email.<br>&nbsp;</td>
+   </tr>
+ </table></CENTER>
+<P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+								<!-- HISTORY -->
+<BLOCKQUOTE><H3>10) History<a ID="history"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="titre2">Caption :
+<LI CLASS="add">Added…
+<LI CLASS="fix">Fixed&#133;
+<LI CLASS="mod">Modified¦Completed&#133;
+<LI CLASS="sup">Removed&#133;
+<LI CLASS="pen">Author's note&#133;
+<LI CLASS="pen-w">Other note&#133;<HR CLASS="med" ALIGN="left">
+
+<LI CLASS="titre2">1.3 beta6 [10.12.2007]
+<LI CLASS="add">When "Show only directories" option is enabled total size, total number of files are displayed correctly  
+<LI CLASS="fix">Some corrections in Configuration dialog
+<LI CLASS="fix">Some corrections in Scan Filtering dialog
+<LI CLASS="pink">Some other small improvements.<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.3 beta5 [10.12.2007]
+<LI CLASS="add">Added buttons "New schema", "Delete schema" in Configuration dialog
+<LI CLASS="pen">"New schema" copies actual settings into new schema while "Save current schema" saves changes in active schema
+<LI CLASS="add">Mask selected in Scan Filtering is added to button tooltip, so it's possible to see what mask is currently used 
+<LI CLASS="fix">Some corrections in Configuration dialog
+<LI CLASS="fix">Some corrections in Scan Filtering dialog
+<LI CLASS="pink">Some other small improvements.<HR CLASS="sep2">
+<LI CLASS="titre2">1.3 beta4 [10.03.2007]
+<LI CLASS="add">Plugin now implements ListLoadNext function to avoid flickering
+<LI CLASS="add">Little red marker to show where the splitter is located
+<LI CLASS="add">New icons in toolbar to look more like TC 7.0
+<LI CLASS="add">Added implementation of ListGetDetectString - plugin is loaded only when necessary.
+<LI CLASS="fix">Sometimes shadow of the buttons tooltip didn't disappear
+<LI CLASS="pink">Some stability fixes
+<LI CLASS="pink">Some other small improvements.<HR CLASS="sep2">
+<LI CLASS="titre2">1.3 beta3 [07.06.2006]
+<LI CLASS="add">Size display. Determines how the file size is shown in charts. You can choose between 
+   bytes, kbytes, Mbytes, Gbytes, bkM, bkM2
+<LI CLASS="pink">Some small fixes and internal improvements<HR CLASS="sep2">
+<LI CLASS="titre2">1.3 beta2 [05.13.2006]
+<LI CLASS="pink">Some other small improvements.<HR CLASS="sep2">
+<LI CLASS="titre2">1.3 beta1 [03.17.2006]
+<LI CLASS="add">Block chart. The idea of this mode is taken from the great DirGraph program. 
+   You can download it here: <a CLASS="ext" href="http://www.spillett.net/~dirgraph/">http://www.spillett.net/~dirgraph/</a> 
+<LI CLASS="add">New option in Configuration "Scale factor in Block mode". 
+<LI CLASS="add">Scan Filtering also works in block mode. 
+<LI CLASS="add">Now it's possible to use wildcards in folder names when using Scan Filtering. 
+<LI CLASS="fix">Small errors in Configuration.
+<LI CLASS="add">New help file rewritten in HTML.
+<LI CLASS="pink">Some other small improvements.<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 [03.17.2006] 
+<LI CLASS="mod">Updated LNG files<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 beta2 [03.05.2006]
+<LI CLASS="add">Button to go to the parent folder. 
+<LI CLASS="mod">Default font for dialogs to Tahoma. Therefore plugin probably don't run in (some) Win95.
+<LI CLASS="fix">Sometimes the plugin didn't get values from &#171;wincmd.ini&#187; after pressing the &#147;TC Searches&#148; button.
+<LI CLASS="fix">File name masks history extended to 20 entries in the&#147; Scan Filtering&#148; dialogue. 
+<LI CLASS="fix">Sometimes the plugin didn't display a bold font in the &#147;Show only directories&#148; mode
+<LI CLASS="fix">The plugin now imports the colours and fonts from the TC file panel setting, not TC Lister settings.
+<LI CLASS="fix">Problem with saving a pie chart.<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 beta1 [02.04.2006]
+<LI CLASS="add">Filter option
+<LI CLASS="pen">The plugin currently works in Win95 WITH IE4.0 and above because the use of <B CLASS="rge">PathMatchSpec</B> API function. 
+<LI CLASS="zerop"><B CLASS="rge">MatchesMask()</B> included in Delphi 7 contains a non-corrected bug still with &#147;<B>?</B>&#148;. 
+<A CLASS="ext" HREF="http://qc.borland.com/wc/qcmain.aspx?d=5744">See http://qc.borland.com/wc/qcmain.aspx?d=5744</A>
+<LI CLASS="add">Possibility to change the font in graphs.
+<LI CLASS="add">Hint when resizing the file-name column in the bar chart.
+<LI CLASS="mod">The plugin works now on [••] and shows the chart for the current directory. 
+<LI CLASS="pen">The plugin isn't loaded when one puts the cursor on &#147;••&#148;in the first directory of a drive (like C:\directory\) because a bug in the plugin-interface 
+<LI CLASS="zerop">of TC Lister. Mr. Ghisler is informed about this. 
+<LI CLASS="fix">Problem while displaying a too long path.
+<LI CLASS="fix">Problem while displaying 120 DPI fonts (&#147;large fonts&#148;)
+<LI CLASS="fix">Problem to detect the location of &#171;wincmd.ini&#187;. Now, it's possible to get settings from the TC Power Pack 
+<LI CLASS="zer">(a <B CLASS="rge">unofficial</B> extended edition of Total Commander)
+<LI CLASS="fix">Some small fixes&#133;<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta5  [11.01.2005]
+<LI CLASS="fix">Problem while hiding the config. window 
+<LI CLASS="fix">The plugin should be more stable when switching folders quickly
+<LI CLASS="pink">Some small fixes and internal improvements<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta4  [10.17.2005]
+<LI CLASS="pink">Some bug fixes and internal improvements<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta3  [10.14.2005]
+<LI CLASS="add">On¦off button to watch changes in the currently scanned directory 
+<LI CLASS="sup">The aforesaid option from the configuration-dialogue 
+<LI CLASS="add">In Configuration,  a on¦off check-box to launch the browser automatically as soon as the HTML report is available. 
+<LI CLASS="sup">&#60;Visualdirsize.ini&#62; from the distribution 
+<LI CLASS="fix">Sometimes buttons on the button-bar were not visible
+<LI CLASS="pink">Some small fixes and internal improvements<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta2  [10.10.2005]
+<LI CLASS="mod">Changed the name of the plugin into <B CLASS="demi">VisualDirSize</B>. The previous name sounds too similar to other TC plugins and commercial programs ones
+<LI CLASS="add">Possibility to sort by number of files in a directory 
+<LI CLASS="add">Option to group by extensions. 
+<LI CLASS="add">Report generation function. There are three possible report types : HTML, plain text and graph image. 
+<LI CLASS="add">Possibility to resize the file-name column in the bar chart : 
+<DL COMPACT>
+<DD>Simply click on the left bar border and drag the mouse to the right (to make wider) or left (to make narrower). 
+<DD>Loosen the mouse button when the file-name column is wide enough. 
+<DD>Double click on the left bar border to resize the file-name column to the default position.</DL> 
+<LI CLASS="mod">Default location for &#60;VisualDirSize.ini&#62;. Now, &#60;visualdirsize.ini&#62; shall be saved in the same directory than &#60;wincmd.ini&#62;
+<LI CLASS="nsm">If you don't like this location, you can simply move the file to one of the following destinations :
+<LI CLASS="exi">In a subdirectory called <B>VisualDirSize</B> relative to the directory where wincmd.ini is located
+<LI CLASS="exi">The directory of the  plugin
+<LI CLASS="exi">The directory of Total Commander<HR CLASS="med" ALIGN="left">	  
+<LI CLASS="add">Option to watch changes in the currently scanned directory (works like <B CLASS="demi">WatchDirs=1</B> in &#171;wincmd.ini&#187;)
+<LI CLASS="warn">It's <B CLASS="rge">not</B> recommended to use this option on directories that changes regularly like a firewall-log directory or a browser-cache directory. 
+<LI CLASS="fix">Plugin should works in systems older than WinXP<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta1  [09.01.2005]
+<LI CLASS="add">Button-bar
+<LI CLASS="add">Pie chart
+<LI CLASS="add">Possibility to go through catalogs 
+<LI CLASS="add">Double-click a graph to land into the corresponding sub-folder
+<LI CLASS="add">Right double-click to go to the parent folder
+<LI CLASS="add">Configuration-dialogue 
+<LI CLASS="add">Support for language files
+<LI CLASS="add">Support for colours schemes 
+<LI CLASS="add">Option to sort the directories¦files names like WinXp does (works like <B CLASS="demi">SortUpper=3</B> in &#171;wincmd.ini&#187;). 
+<LI CLASS="pen">In other systems it's normal sorting.
+<LI CLASS="pen-w">This is not quite true
+<LI CLASS="fix">Sometimes, it was necessary to hold the <B CLASS="demi">Esc</B> key for long to stop a folder-size calculation
+<LI CLASS="pink">Other small improvements and fixes<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 [08.17.2005]
+<LI CLASS="fix">Problem with alpha blended icons in WinXP
+<LI CLASS="fix">Bug in the scan code <IMG SRC="img/sm-arrow.png" CLASS="bas">VisualDirSize sometimes showed wrong sizes
+<LI CLASS="fix">Bug when using %COMMANDER_PATH% <IMG SRC="sm-arrow.png" CLASS="al">On close, VisualDirSize overwrote the %COMMANDER_PATH% with the real path of IcoLibPath.
+<LI CLASS="pink">Some other small corrections<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 beta3 [08.13.2005]
+<LI CLASS="add">Option to show only directories (key &#147;S&#148;, show with files key &#147;A&#148;)
+<LI CLASS="add">Displays the total size of the examined directory
+<LI CLASS="add">Real-time scrolling 
+<LI CLASS="add"><B CLASS="demi">Esc</B> key to cancel the operation when calculating a folder size.
+<LI CLASS="add">Option to show &#147;Percents&#148; instead file-sizes (key &#147;<B>Z</B>&#148;) 
+<LI CLASS="add">Option to show bars sorted by name (key &#147;<B>X</B>&#148;)
+<LI CLASS="pink">Some small corrections<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 beta2 [08.10.2005]
+<LI CLASS="fix">Display of very big files¦directories
+<LI CLASS="add">Possibility to use %COMMANDER_PATH% in <B CLASS="demi">IcoLibPath</B><HR CLASS="sep2"> 
+<LI CLASS="titre2">1.0 beta  [08.08.2005]
+<LI CLASS="pink">Initial public release
+<LI CLASS="zero"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A>
+<HR CLASS="sep">
+</UL>
+								<!-- LICENCE -->
+<H3> 11) Licence<a ID="license"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="prge">This software is provided &#147;as-is&#148;. No warranty provided. You use this programme at your own risk. <LI CLASS="prge">The author shall not response for data loss, damages, etc. while using or misusing this software. 
+<LI CLASS="pen-w">According to the in force laws of some countries, the aforesaid statement might value *peanuts* -Clo-.
+<LI CLASS="pink">This plugin is <B CLASS="vt">freeware</B>.
+</UL><P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+								<!-- AUTHOR -->
+<H3>12) Author<a ID="author"></a></H3>
+<P CLASS="tx"><B CLASS="demi">Karol Zoladek</B> <a CLASS="ext" href="mailto:kzoladek@o2.pl"><IMG SRC="img/mail.png" BORDER="0" HEIGHT="13" WIDTH="34"></a></P>
+<P CLASS="tx">Or visit the official <a CLASS="ext" href="http://www.ghisler.ch/board/index.php?language=english">Total Commander Forum</a></p>
+<P CLASS="tx"><A HREF="#syn"><IMG SRC="img/back_syn.png" BORDER="0" TITLE="Back to the Synopsis"></A></P>
+</BLOCKQUOTE>
+ <BR><CENTER><IMG SRC="img/point--.png" HEIGHT="2" WIDTH="700"><BR>
+
+<IMG SRC="img/spacerub.png" HEIGHT="500" WIDTH="2"></CENTER>
+</body>
+</html>
+
+

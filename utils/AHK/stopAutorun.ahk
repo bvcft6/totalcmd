@@ -9,17 +9,5 @@ PostMessage, 0x12,,,, ahk_pid %PID% ; WM_QUIT
 
 CleanEx(Needle)
 { ; Sanitize the RegEx input
-    StringReplace, Needle, Needle, \, \\, All
-    StringReplace, Needle, Needle, ., \., All
-    StringReplace, Needle, Needle, *, \*, All
-    StringReplace, Needle, Needle, ?, \?, All
-    StringReplace, Needle, Needle, +, \+, All
-    StringReplace, Needle, Needle, [, \[, All
-    StringReplace, Needle, Needle, `{, \`{, All
-    StringReplace, Needle, Needle, |, \|, All
-    StringReplace, Needle, Needle, (, \(, All
-    StringReplace, Needle, Needle, ), \), All
-    StringReplace, Needle, Needle, ^, \^, All
-    StringReplace, Needle, Needle, $, \$, All
-    return Needle
+    return RegExReplace(Needle, "[\\\.\*\?\+\[\{\|\(\)\^\$]", "\$0")
 }

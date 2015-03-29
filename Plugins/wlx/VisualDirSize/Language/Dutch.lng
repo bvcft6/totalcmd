@@ -1,0 +1,80 @@
+;Please send me your translation to kzoladek(at)o2.pl
+;Vertaling door Hans Niesten d.d. 03-04-2006
+[Main]
+0=Actuele bestanden in
+1=Totale grootte:
+2=Map is leeg...
+3=Map bevat alleen bestanden...
+4=Venster te klein!! 
+5=Scanning... ogenblikje a.u.b.
+6=Scannen door gebruiker afgebroken...
+7=Balkendiagram
+8=Taartpuntdiagram 
+9=Sorteer items op grootte
+10=Sorteer items op naam
+11=Toon bestandsgrootte
+12=Toon percentage
+13=Toon alleen mappen
+14=Opnieuw scannen
+15=Opties
+16=Toon bestanden en mappen
+17=Totaal aan bestanden:
+18=Totaal aantal verschillende extensies:
+19=Toon het aantal bestanden
+20=Rapportage maken
+21=Scanfilter
+22=Extensie-overzicht
+23=Mapinhoud is gewijzigd. Klik op de vernieuwknop om de gewijzigde map te actualiseren.
+24=of klik op "Automatische Updates" om het detecteren van mapwijzigen uit te schakelen.
+25=Automatische updates gebaseerd op wijzigingsvermeldingen
+26=Opslaan van VisualDirsize-rapport
+27=HTML Rapport (*.html)|*.html|TXT Rapport (*.txt)|*.txt|Alleen afbeelding (*.jpg)|*.jpg
+28=Toon inhoud bovenliggende map
+29=Blokdiagram
+
+[Config]
+0=Uiterlijk van VDS
+1=Externe icoonbibliotheek:
+2=Achtergrondkleur
+3=Letterkleur
+4=Sorteer op WinXP-wijze
+5=TC instellingen importeren
+6=Kleurenschema's
+7=Max. Tint
+8=Min. Tint
+9=Verzadiging
+10=Helderheid
+11=Sla huidige schema op
+12=Overigen
+13=Toon niet meer balken dan:
+14=Taal
+15=OK
+16=Annuleren
+17=Start browser nadat het HTML rapport is opgemaakt
+18=VisualDirSize configuratie
+19=Wijzig lettertype
+20=Help
+21=Schaalfactor in blokmode:
+
+[Report]
+0=VisualDirSize rapport
+1=Rapport-pad
+2=Totale scan-grootte
+3=Totaal gescande bestanden
+4=Totaal aantal verschillende extensies
+5=Naam
+6=Grootte
+7=Bestanden
+8=% van totaal
+
+[Filter]
+0=Scanfilter
+1=Bestandsnaamfilter
+2=Bestandsnaamfilter(s):
+3=TC zoek-items...
+4=Separate meervoudige maskering met ; (punt-komma) of spatie - druk op de knop voor de TC zoek-items
+5=Gebruik reguliere uitdrukkingen
+6=Gelijke bestanden uitsluiten
+7=OK
+8=Annuleren
+9=Help

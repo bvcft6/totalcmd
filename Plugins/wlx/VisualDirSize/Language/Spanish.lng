@@ -1,0 +1,95 @@
+; Translated to spanish by: JMBL  (sombra) versión 1.3.0.160
+; Last version http://www.breto.net/totalcmd/traducciones.php
+
+[Main]
+0=Ficheros actuales en
+1=Tamaño total:
+2=El directorio está vacío...
+3=El directorio sólo contiene ficheros...
+4=¡Ventana muy pequeña!
+5=Escaneando... Espere por favor.
+6=Escaneado abortado por el usuario
+7=Gráfico de barras
+8=Gráfico por sectores
+9=Ordenar por tamaño
+10=Ordenar por nombre
+11=Mostrar tamaño de ficheros
+12=Mostrar en porcentaje
+13=Mostrar solamente directorios
+14=Refrescar
+15=Opciones
+16=Mostrar directorios y ficheros
+17=Total ficheros:
+18=Tipos de fichero diferentes en total:
+19=Mostrar cantidad de ficheros
+20=Generar informe
+21=Filtrar por tipo de fichero
+22=Gráfico por extensiones
+23=El contenido del directorio ha cambiado. Pulsa el botón refrescar para actualizar los datos.
+24=O pulsa el botón autoactualizar para desactivar.
+25=Refrescar automáticamente basándose en notificaciones del shell
+26=Guardar informe de VisualDirsize
+27=Informe HTML (*.html)|*.html|TXT Informe (*.txt)|*.txt|Sólo imágenes (*.jpg)|*.jpg
+28=Ir al directorio superior
+29=Gráfico por bloques
+30=Bytes
+31=Kb
+32=Mb
+33=Gb
+
+[Config]
+0=Apariencia
+1=Librería de iconos externa:
+2=Color de fondo
+3=Color del texto
+4=Ordenar como en WinXP
+5=Importar ajustes de TC
+6=Esquemas de color
+7=Máxima tonalidad
+8=Mínima tonalidad
+9=Saturación
+10=Luminosidad
+11=Guardar esquema actual
+12=Otros
+13=Máximo número de barras a mostrar:
+14=Idioma
+15=Aceptar
+16=Cancelar
+17=Abrir el navegador después de generar informe HTML
+18=VisualDirSize configuración
+19=Cambiar tipo de letra
+20=Ayuda
+21=Factor de escala en gráfico de bloques:
+22=Mostrar tamaño como:
+23=bytes
+24=Kbytes
+25=Mbytes
+26=Gbytes
+27=Kb,Mb,Gb (Dinámico)
+28=Dinámico con decimal
+29=Nuevo esquema de color
+30=Eliminar esquema actual
+
+
+[Report]
+0=Informe VisualDirSize
+1=Informe de la ruta
+2=Tamaño total de los ficheros
+3=Total de ficheros encontrados
+4=Tipo de ficheros diferentes
+5=Nombre
+6=Tamaño
+7=Ficheros
+8=% del total
+
+[Filter]
+0=Filtros de escaneo
+1=Máscara para nombres de fichero
+2=Filtro de ficheros:
+3=Búsquedas TC
+4=Separa filtros múltiples con punto y coma o espacios; Pulsa el botón para ver búsquedas guardadas de TC
+5=Usar expresiones regulares
+6=Excluir archivos que coincidan
+7=Aceptar
+8=Cancelar
+9=Ayuda

@@ -1,0 +1,46 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd]
+@="TConsole plug-in"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleSetSecure]
+@="TConsole - Switch Secure Mode ON"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleSetSecure\.Current]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleSetSecure\.Default]
+@=""
+
+
+[HKEY_CURRENT_USER\AppEvents\EventLabels\TConsoleSetSecure]
+@="TConsole - Switch Secure Mode ON"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleDetach]
+@="TConsole - Switch Secure Mode ON"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleDetach\.Current]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleDetach\.Default]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\EventLabels\TConsoleDetach]
+@="TConsole - Detach Console"
+
+
+
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleUnsetSecure]
+@="TConsole - Switch Secure Mode OFF"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleUnsetSecure\.Current]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\Totalcmd\TConsoleUnsetSecure\.Default]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\EventLabels\TConsoleUnsetSecure]
+@="TConsole - Switch Secure Mode OFF"
+
+

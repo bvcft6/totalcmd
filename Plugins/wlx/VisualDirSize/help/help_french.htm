@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Aide de &#147;VisualDirSize&#148;</title>
+<LINK REL=STYLESHEET HREF="vds.css" TYPE="text/css">
+</head>
+<BODY>
+
+<A HREF="help_english.htm"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+<CENTER><H2>Aide de VisualDirSize 1.3</H2><HR CLASS="med2">
+
+<TABLE WIDTH="770" BORDER="0">
+<TR>
+<!-- ligne 1 colonne 1 -->
+<TD ALIGN="left">
+<h2>&#160;&#160;Sommaire<A ID="somm"><IMG SRC="img/ancre.bmp" BORDER="0"></A></h2>
+<OL CLASS="det">
+  <li><a CLASS="som" href="#description">Description</a>
+  <li><a CLASS="som" href="#installation">Installation</a>
+  <li><a CLASS="som" href="#location">Emplacement de &#60;VisualDirSize.ini&#62;</a>
+  <li><a CLASS="som" href="#usage">Utilisation</a>
+  <li><a CLASS="som" href="#faq">Foire Aux Questions</a>
+  <li><a CLASS="som" href="#charts">Types de graphiques</a>
+  <li><a CLASS="som" href="#filter">Filtrage de la scrutation</a>
+  <li><a CLASS="som" href="#report">G&#233;n&#233;rer un rapport</a>
+  <li><a CLASS="som" href="#configuration">Dialogue d'agencements</a>
+  <li><a CLASS="som" href="#history">&#160;&#160;&#201;volution des versions&#133;</a> 
+  <li><a CLASS="som" href="#license">&#160;&#160;Licence</a>
+  <li><a CLASS="som" href="#author">&#160;&#160;Auteur</a>  
+</OL>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+
+<CENTER><HR CLASS="sep2"></CENTER>
+<BLOCKQUOTE>
+<H3> 1) Description<a ID="description"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="inf">VisualDirSize fournit une vue d'ensemble graphique de tous les fichiers¦dossiers contenus dans un r&#233;pertoire s&#233;lectionn&#233;. 
+<LI CLASS="aff">L'on peut visionner un graphique en pla&#231;ant le curseur sur n'importe quel r&#233;pertoire, puis en appuyant sur &#60;<B>Ctrl+Q</B>&#62;. 
+<LI CLASS="his">Le r&#233;pertoire choisi sera scrut&#233;, et les tailles des fichiers¦dossiers qu'il contient s'afficheront sous forme d'histogramme (barres horizontales) dans le panneau de <B CLASS="bl">Vue rapide</B>. 
+<LI CLASS="his2">Un tel histogramme est utile pour afficher les tailles relatives des fichiers¦dossiers. 
+<LI CLASS="pvt">Par exemple :  l'on peut rapidement rep&#233;rer le plus gros fichier¦dossier du r&#233;pertoire. 
+<LI CLASS="warn">Vu la fa&#231;on dont le module fonctionne, il n'est <B CLASS="rge">pas</B> recommand&#233; de l'utiliser sur de tr&#232;s gros r&#233;pertoires, l'attente devenant excessive&#133;
+<LI CLASS="zero"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A>
+<HR CLASS="sep2">
+</UL>
+<H3> 2) Installation<a ID="installation"></a></H3>
+<OL CLASS="alph" COMPACT>
+<LI><B CLASS="rge">TC v. 5.51</B></OL>
+<DL COMPACT>
+<DD>Copiez le fichier &#60;visualdirsize.wlx&#62; dans le dossier des modules du r&#233;pertoire de Commander. 
+<DD>Sous la section <B CLASS="demi">[ListerPlugins]</B>, ajoutez ensuite la ligne suivante dans le fichier &#60;wincmd.ini&#62; :
+<DT>0=C:\totalcmd\plugins\visualdirsize.wlx (changez le chemin pour celui r&#233;el en cours )</DL>
+
+<OL CLASS="alph" COMPACT START="2"> 
+<LI><B CLASS="rge">TC v. 6.5</B> et plus r&#233;centes</OL> 
+<DL COMPACT>
+<DD>Cette version de TC et suivantes ont une fonction automatique d'installation des modules. Ouvrez simplement l'archive du module, et TC vous demandera si vous voulez l'installer.
+<DD><IMG SRC="img/tool.png">Avec l'outil gratuit <A CLASS="ext" HREF="http://perso.wanadoo.fr/charries/tc-plugins-manager.htm#haut">TC Plugman</A>, on peut aussi installer facilement le module avec toutes les versions de TC cit&#233;es ci-dessus.
+<DD><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A>
+</DL><CENTER><HR CLASS="sep2"></CENTER>
+						<!-- Emplacement INI -->
+<H3> 3) Emplacement de &#60;VisualDirSize.ini&#62;<a ID="location"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="sav">Par d&#233;faut, &#60;VisualDirSize.ini&#62; sera enregistr&#233; dans le m&#234;me r&#233;pertoire que &#60;Wincmd.ini&#62;.
+<LI CLASS="nsm">Si cet emplacement ne convient pas, on peut simplement d&#233;placer le fichier vers l'une des destinations suivantes : 
+<LI CLASS="sav">Dans un sous-r&#233;pertoire nomm&#233; &#147;VisualDirSize&#148; dans l'aborescence du dossier o&#249; se trouve &#60;Wincmd.ini&#62;.</li>
+<LI CLASS="sav">Le r&#233;pertoire du module.
+<LI CLASS="sav">Celui de Total Commander.
+<LI CLASS="zero"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></li>
+<HR CLASS="sep2"></UL>
+							<!-- Utilisation -->
+<H3>4) Utilisation<A ID="usage"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">Placez le curseur sur un r&#233;pertoire quelconque, puis appuyez sur &#147;<B>Ctrl+Q</B>&#148;. 
+<LI CLASS="warn">Il est impossible d'ex&#233;cuter le module par <B CLASS="demi">F3</B>, il fonctionne <B CLASS="rge">uniquement</B> avec <B CLASS="demi">Ctrl+Q</B>.
+<LI CLASS="ks">On peut utiliser les touches-fl&#232;ches<IMG SRC="img/2_fleches.png"> ainsi que D&#233;but<IMG SRC="img/home.png">,<IMG SRC="img/fin.png">, Page Suivante<IMG SRC="img/p_suivante.png"> et Page Pr&#233;c&#233;dente<IMG SRC="img/p_precedente.png"> ou &#60;Barre espace&#62; 
+<LI CLASS="zer">pour de d&#233;placer parmi les barres d'un histogramme.
+<LI CLASS="mus">Un double-clic gauche sur une barre de sous-r&#233;pertoire y donnera acc&#232;s et scrutera ce sous r&#233;pertoire, 
+<LI CLASS="zer">alors qu'un double-clic droit fera remonter au r&#233;pertoire parent [••].
+<LI CLASS="sup">Pour abandonner la scrutation, appuyez assez longtemps sur la touche &#60;<B>&#201;chap</B>&#62;.<BR><BR>
+<CENTER><H5>La barre d'outils</H5>
+<IMG SRC="img/barre_outils.png" BORDER="0" HEIGHT="23" WIDTH="486" USEMAP="#barre">
+<H6>Passez la souris sur les boutons pour afficher leurs fonctions</H6></CENTER>
+<MAP NAME="barre">
+<AREA NOHREF SHAPE="rect" COORDS="2,2,22,21" TITLE="Graphique en histogramme horizontal">
+<AREA NOHREF SHAPE="rect" COORDS="25,2,45,21" TITLE="Graphique en secteurs &#147;Camembert&#148;">
+<AREA NOHREF SHAPE="rect" COORDS="48,2,68,21" TITLE="Graphique en blocs">
+<AREA NOHREF SHAPE="rect" COORDS="71,2,90,21" TITLE="Graphique des extensions">
+<AREA NOHREF SHAPE="rect" COORDS="100,2,119,21" TITLE="Tri par tailles">
+<AREA NOHREF SHAPE="rect" COORDS="125,2,145,21" TITLE="Tri par noms">
+<AREA NOHREF SHAPE="rect" COORDS="156,2,176,21" TITLE="Afficher la taille">
+<AREA NOHREF SHAPE="rect" COORDS="180,2,199,21" TITLE="Afficher en pourcentage">
+<AREA NOHREF SHAPE="rect" COORDS="202,2,221,21" TITLE="Afficher le nombre de fichiers">
+<AREA NOHREF SHAPE="rect" COORDS="233,2,253,21" TITLE="N'afficher que les r&#233;pertoires">
+<AREA NOHREF SHAPE="rect" COORDS="256,2,275,21" TITLE="Filtrage de la scrutation">
+<AREA NOHREF SHAPE="rect" COORDS="287,2,307,21" TITLE="Aller au r&#233;pertoire parent">
+<AREA NOHREF SHAPE="rect" COORDS="310,2,329,21" TITLE="Rafra&#238;chir&#133;">
+<AREA NOHREF SHAPE="rect" COORDS="332,2,351,21" TITLE="Mise &#224; jour automatique&#133;">
+<AREA NOHREF SHAPE="rect" COORDS="354,2,373,21" TITLE="Cr&#233;er un rapport">
+<AREA NOHREF SHAPE="rect" COORDS="376,2,395,21" TITLE="Options - Dialogue des Agencements">
+</MAP>
+<LI CLASS="zero"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A>
+<HR CLASS="sep2"></UL>
+									<!-- FAQ -->
+<H3>5) Foire Aux Questions<a ID="faq"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="inter">Je ne comprends pas comment utiliser ce module. En appuyant sur &#60;<B>CTRL+Q</B>&#62; le panneau de Vue rapide appara&#238;t, 
+<LI CLASS="zer">mais le module n'affiche aucune vue d'ensemble en graphique. O&#249; est l'erreur ?
+<LI CLASS="pink">Si apr&#232;s avoir appuy&#233; sur &#60;Ctrl+Q&#62; il n'y a encore que la liste par d&#233;faut de Total Commander d'affich&#233;e, indiquant les informations sur le r&#233;pertoire 
+<LI CLASS="zer2">en simple texte, d&#233;placez &#147;VisualDirSize&#148; vers le¦au d&#233;but de la liste des modules &#147;Lister&#148; install&#233;s. 
+<LI CLASS="pen-w"><A ID="faq2"><IMG SRC="img/ancre.bmp" BORDER="0"></A>Se fait via :  Menu Options<IMG SRC="img/sm-arrow.png" CLASS="al">Configuration<IMG SRC="img/sm-arrow.png" CLASS="al">Modules additionnels<IMG SRC="img/sm-arrow.png" CLASS="al">Section Modules &#147;Lister&#148;<IMG SRC="img/sm-arrow.png" CLASS="al">Bouton &#147;Agencer…&#148;&#160;&#160;&#160;<!-- <A CLASS="int" HREF="captures.html#cap01">Voir la capture d'&#233;cran</A> -->
+<LI CLASS="pen-w">L'op&#233;ration est sans doute plus simple et plus rapide en utilisant <A CLASS="ext" HREF="http://perso.wanadoo.fr/charries/tc-plugins-manager.htm#haut">TC Plugman</A>&#133;
+<HR CLASS="med">
+
+<LI CLASS="inter">Parfois, en d&#233;pla&#231;ant rapidement le curseur vers le haut et le bas de la liste des fichiers¦r&#233;pertoires, le module se bloque. 
+<LI CLASS="zer">Je suppose qu'il essaye de tous les lire alors que je navigue vers le haut ou le bas. 
+<LI CLASS="pink">Certes&#133; En fait, le module commence &#224; lire tous les r&#233;pertoires sur lesquels vous placez le curseur. 
+<LI CLASS="zer2">Il vous faut simplement attendre que le module ait scrut&#233; le r&#233;pertoire choisi avant d'en marquer un suivant. 
+<LI CLASS="zero"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A>
+<HR CLASS="sep2"></UL>
+							<!-- Types de graphique -->
+<H3>6) Types de graphiques<a ID="charts"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="aff">VisualDirSize peut afficher les tailles des r&#233;pertoires en quatre types de graphiques. 
+<LI CLASS="zer">Un graphique affiche toujours les tailles des sous-r&#233;pertoires du dossier choisi en cours. 
+<LI CLASS="cam">Les &#233;l&#233;ments des graphiques peuvent &#234;tre tri&#233;s par taille¦nom et donner la taille en octets &#38;multiples¦pourcentage du total¦nombre de fichiers, 
+<LI CLASS="zer">selon les choix effectu&#233;s par l'utlisat¦eur¦rice dans la barre d'outils.
+<LI CLASS="his2">Un double-clic gauche sur une barre d'histogramme fait scruter le dossier correspondant.
+</UL> 
+</BLOCKQUOTE>
+<CENTER>
+ <table width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+     <td width="17%" valign="top" CLASS="subj" ALIGN="left"><A ID="graph"><IMG SRC="img/ancre.bmp" BORDER="0"></A>Histogramme
+<BR><A CLASS="int" HREF="captures.html#cap03">Voir la capture d'&#233;cran</A></td>
+     <td CLASS="std" width="*"><UL CLASS="rien" COMPACT>
+<LI CLASS="his2">Repr&#233;sente le r&#233;sultat de la scrutation du lecteur¦dossier choisi sous forme d'histogramme horizontal (barres superpos&#233;es).</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Secteurs
+<BR><A CLASS="int" HREF="captures.html#cap04">Voir la capture d'&#233;cran</A></td>
+     <td CLASS="std"><LI CLASS="cam">Le r&#233;sultat de la scrutation du lecteur¦dossier choisi est affich&#233; en cercle par secteurs (plaisamment nomm&#233; &#147;camembert&#148;). 
+<LI CLASS="pav">Dans ce mode, les petits fichiers¦dossiers peuvent tous &#234;tre rassembl&#233;s dans une portion unique nomm&#233;e &#147;<B CLASS="demi">Autres</B>&#148;.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Blocs
+<BR><A CLASS="int" HREF="captures.html#cap05">Voir la capture d'&#233;cran</A></td>
+     <td CLASS="std"><LI CLASS="bloc">L&#224;, ce sont des blocs color&#233;s qui affichent le r&#233;sultat de la scrutation du lecteur¦dossier choisi en cours. Si le bloc repr&#233;sente un r&#233;pertoire, pr&#232;s de lui des blocs repr&#233;sentants tous les fichiers contenus dans ce r&#233;pertoire et ses sous-r&#233;pertoires sont affich&#233;s. 
+<LI CLASS="pav">Les dossiers trop petits pour &#234;tre affich&#233;s individuellement seront rassembl&#233;s dans un seul bloc.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Extensions
+<BR><A CLASS="int" HREF="captures.html#cap06">Voir la capture d'&#233;cran</A></td>
+<td CLASS="std"><LI CLASS="p_exts">Le r&#233;sultat de la scrutation du lecteur¦dossier choisi en cours s'affiche en texte plus histogramme, 
+<LI CLASS="zer">et indique le nombre de types de fichiers et la taille totale par type (par extension).</UL></td>
+   </tr>
+ </table></CENTER><BR>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire" HSPACE="45"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+								<!-- Filtrage scrutation -->
+<BLOCKQUOTE><H3>7) Filtrage de la scrutation<a ID="filter"></a></H3>
+
+<A HREF="help_english.htm#filter"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm#filter"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm#filter"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+<BR>
+
+<UL CLASS="rien" COMPACT>
+<LI CLASS="filt">Cette caract&#233;ristique permet de filtrer les fichiers et dossiers scrut&#233;s. 
+<LI CLASS="pav">Avec cette fonction, on peut indiquer pr&#233;cis&#233;ment quels types de fichiers devront &#234;tre inclus dans les graphiques. 
+<LI CLASS="pav">Ainsi, si l'on ne d&#233;sire obtenir des informations que pour certains types de fichiers, par exemple des fichiers d'images, 
+<LI CLASS="zer">on peut ici employer le masque :  <B CLASS="demi">*.jpg *.gif</B>.
+</UL> 
+</BLOCKQUOTE><CENTER>
+ <table width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+<TD width="30%" valign="top" CLASS="subj" ALIGN="left"><A ID="mask"><IMG SRC="img/ancre.bmp" BORDER="0"></A>Masques de nom de fichier
+<BR>&#160;<A CLASS="int" HREF="captures.html#cap02">Voir la bo&#238;te de dialogue</A>
+</td>
+ <TD width="*" valign="top" CLASS="std" ALIGN="left">
+<OL COMPACT CLASS="alph">
+<LI>Dans ce champ, on peut entrer le masque de recherche pour les fichiers que l'on veut trouver.
+<LI>Les noms contenant des espaces <B CLASS="rge">doivent</B> &#234;tre mis entre guillemets, p. ex.. :  "Lettre &#224; Mr. Dupont.doc", <LI CLASS="zer">sinon <I>VisualDirSize</I> rechercherait chaque partie du nom, individuellement. 
+<LI>On peut employer plusieurs filtres, s&#233;par&#233;s par un point-virgule<IMG SRC="img/point-virgule.png" HEIGHT="13" WIDTH="14" CLASS="al2"> ou un espace. 
+</OL>
+<P>Exemples :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">*.txt; *.exe (*.txt *.exe) cherche tous les fichiers d'extension TXT ou EXE. 
+ <LI CLASS="pav">*.ini peut trouver par exemple <B CLASS="demi">win.ini</B> 
+<LI CLASS="pav">Dupont trouvera  "Lettre &#224; Mr. Dupont.doc" 
+<LI CLASS="pav">Les masques d'exclusion sont plac&#233;s apr&#232;s une barre verticale &#147;<B CLASS="bl">|</B>&#148; (<B CLASS="demi">AltGr+6Alpha</B>).</UL>  
+<P>Exemple :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">w*.* | *.bak   trouve des fichiers qui commencent par <B CLASS="bl">w</B> et ne finissent pas par <B CLASS="rge">.bak</B> 
+<LI CLASS="pav">Pour inclure¦exclure certains r&#233;pertoires de la recherche, leurs noms doivent comporter 
+<LI CLASS="zer">une barre oblique invers&#233;e <IMG SRC="img/bar-inve.png" HEIGHT="13" WIDTH="15"></UL> 
+<P>Exemple :</P>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pav">windows\ system32\ *.ini  ne trouve que les fichiers INI des r&#233;pertoires &#147;windows\&#148; et &#147;system32&#148; 
+<LI CLASS="pav">*.ini | windows\   trouve tous les fichiers INI, sauf ceux des r&#233;pertoires Windows 
+<LI CLASS="zer">et de leurs sous-r&#233;pertoires.</UL> 
+   </td>
+   </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">Recherches de TC</td>
+<td width="*" valign="top" CLASS="std" ALIGN="left">
+<UL CLASS="bout" COMPACT>
+<LI>Utilisez le bouton <B CLASS="demi">Rechercher</B> plac&#233; &#224; droite du dialogue pour voir les param&#232;tres de recherche
+<LI CLASS="zer">enregistr&#233;s par Total Commander pour des recherches fr&#233;quentes ant&#233;rieures.</UL></td> 
+  </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">Utiliser les Expressions r&#233;guli&#232;res</td>
+<TD CLASS="std" ALIGN="left">Cherche dans les noms de fichiers en employant les <B CLASS="demi">Expressions r&#233;guli&#232;res</B>.</td> 
+  </tr>
+  <tr>
+<TD CLASS="subj" ALIGN="left"valign="top">Exclure les fichiers qui correspondent</td>
+<TD CLASS="std" ALIGN="left">Exclure  - plut&#244;t qu'inclure -  les fichiers correspondants au masque d&#233;clar&#233;. </td> 
+  </tr>
+ </table></CENTER> 
+ <br>
+<P CLASS="tx">Ces options ne seront <B CLASS="rge">pas</B> enregistr&#233;es en quittant VisualDirSize de fa&#231;on &#224; &#233;viter des r&#233;sultats erron&#233;s lors de l'utilisation suivante.</P>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></P>  
+<CENTER><HR CLASS="sep2"></CENTER>
+								<!-- Générer un rapport -->
+<BLOCKQUOTE><H3>8) G&#233;n&#233;rer un rapport<a ID="report"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="pvt">VisualDirSize poss&#232;de de puissantes possibilit&#233;s int&#233;gr&#233;es de cr&#233;ation et d'exportation d'un rapport. 
+<LI CLASS="exi">Les contenus de rapport export&#233;s peuvent souvent &#234;tre import&#233;s et utilis&#233;s par des applications externes pour un traitement suppl&#233;mentaire. 
+<LI CLASS="pvt">Une large gamme de formats d'exportation sont disponibles, comprenant : 
+</UL></BLOCKQUOTE><CENTER>
+
+ <TABLE width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+   <tr>
+     <TD width="27%" valign="top" CLASS="subj" ALIGN="left">Rapport HTML</td>
+     <TD width="*" valign="top" CLASS="std" ALIGN="left"><UL CLASS="rien" COMPACT>
+<LI CLASS="ht">Permet d'enregistrer le rapport en fichier HTML, que l'on pourra visionner plus tard dans n'importe quel <LI CLASS="zer">navigateur¦visionneuse HTML, ou dans <B CLASS="demi">Lister</B> en texte clair.</td>
+   </tr>
+   <tr>
+     <TD valign="top" CLASS="subj" ALIGN="left">Rapport TXT</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="txx">Enregistre les donn&#233;es collect&#233;es dans un fichier texte “s&#233;par&#233; par tabulations” pouvant &#234;tre import&#233; par 
+<LI CLASS="zer">des applications telles que Microsoft Excel.</td>
+   </tr>
+   <tr>
+     <TD valign="top" CLASS="subj" ALIGN="left">Image seulement</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="imag">Le graphique de l'application principale peut &#234;tre export&#233; directement en fichier d'image <B CLASS="bl">JPEG</B>.</UL></td>
+   </tr>
+ </table></CENTER>
+ <br>
+<P CLASS="tx">La fonction d'exportation de rapport est accessible par le bouton &#147;Cr&#233;er un rapport&#148; de la barre d'outils.</P>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+							<!-- Agencements -->
+<BLOCKQUOTE><H3>9) Dialogue d'agencements<a ID="configuration"></a></H3></BLOCKQUOTE>
+<CENTER>
+ <TABLE width="95%" border="1" CELLSPACING="3" CELLPADDING="3" BORDERCOLOR="#DDDDDD">
+ 
+  <A HREF="help_english.htm#configuration"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+  <A HREF="help_french.htm#configuration"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+  <A HREF="help_dutch.htm#configuration"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+   <tr>
+     <TD width="35%" valign="top" CLASS="subj" ALIGN="left">Fichier d'ic&#244;nes externe</td>
+     <TD width="*" valign="top" CLASS="std" ALIGN="left"><UL CLASS="rien" COMPACT>
+<LI CLASS="ico_r">&#160;L'option permet de choisir une biblioth&#232;que externe depuis laquelle les ic&#244;nes par d&#233;faut des r&#233;pertoires et fichiers seront charg&#233;es. 
+<LI CLASS="vari">On peut utiliser la variable <B CLASS="demi">%COMMANDER_PATH%</B> dans le chemin.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Couleur du fond</td>
+     <td valign="top" CLASS="std" ALIGN="left">
+<LI CLASS="coul">Permet de choisir la couleur du fond des graphiques.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Couleur du texte</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="coul">Pour &#233;tablir la couleur du texte des graphiques.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Changer de police</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="font">Pour choisir une police qui peut &#234;tre normale ou en gras, l'italique n'&#233;tant pas assum&#233; ni 
+<LI CLASS="zer">par <I>VisualDirSize</I> ni par Total Commander.
+<LI CLASS="pen-w">Mais vous pouvez toujours essayer une police seulement italique d'origine, voir <A CLASS="ext" HREF="http://www.ghisler.ch/board/viewtopic.php?t=9990&start=0&postdays=0&postorder=asc&highlight=">ICI</A>  s.v.p. !
+</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Tri comme WinXP</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="pvt">Utilise un tri logique mixte alphab&#233;tique et num&#233;rique, par exemple :
+<LI CLASS="zer"><B CLASS="demi"> fichier10.txt</B> vient <B CLASS="rge">apr&#232;s</B> <B CLASS="demi">fichier1.txt</B>. 
+<LI CLASS="prge"><A ID="sup3"><IMG SRC="img/ancre.bmp" BORDER="0"></A>Cette option ne marche que sous Windows XP, dans les autres syst&#232;mes, on a le tri habituel.
+<LI CLASS="pen-w">&#133;ce qui n'est pas absolument vrai ! Le tri logique marche tr&#232;s bien sous Win 98 SE 
+<LI CLASS="zerop">d&#232;s que l'on a Internet Explorer 6 ou plus r&#233;cent d'install&#233;, et que l'on a ajout&#233;<B CLASS="rge"> SortUpper=3</B> 
+<LI CLASS="zerop">dans &#60;wincmd.ini&#62; sous la section [Configuration]. Le module suit ce tri, nous avons v&#233;rifi&#233;. 
+<LI CLASS="zer"><A CLASS="int" HREF="#ret_ver">&#201;volution des versions&#133;</A>
+</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Importer les agencements de TC</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="pav">Importe les agencements ci-dessus depuis l'instance de Total Commander en cours.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">&#147;ColourTheme_x&#148;</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="coul">On peut choisir un th&#232;me de couleurs pour les graphiques dans cette liste (pas traduite&#133;).</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Nuance maximale, Nuance minimale, Saturation, Luminosit&#233;</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="coul">Th&#232;me de couleurs pour les graphiques. 
+<LI CLASS="zer">Toutes les valeurs sont en <B CLASS="rge">N</B>uance - <B CLASS="rge">S</B>aturation - <B CLASS="rge">L</B>uminosit&#233;. Des couleurs d'&#233;l&#233;ments 
+<LI CLASS="zer">(barres, secteurs) seront &#233;labor&#233;es depuis <B CLASS="vtf">Nuance max. - Saturation - Luminosit&#233;</B> jusqu'&#224;
+<LI CLASS="zer"><B> <FONT COLOR="#519551">Nuance mini. - Saturation - Luminosit&#233;</FONT></B> en NSL.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Enregistrer cet agencement</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="sav">On peut ici enregistrer l'agencement de ce nouveau th&#232;me de couleurs. 
+<LI CLASS="zer">Il s'ajoutera au bas de la liste &#147;<B CLASS="demi">ColourTheme_x</B>&#148;.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Ne pas en afficher plus de : (barres)</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="his2">&#201;tablit combien de barres pourront &#234;tre affich&#233;es (par d&#233;faut : 500). 
+<LI CLASS="his">Raison : le module scrute tous les fichiers et dossiers du r&#233;pertoire choisi, mais il n'affiche que les 
+<LI CLASS="zer">500 premiers car des probl&#232;mes de rafra&#238;chissement apparaissent sur des machines trop lentes. 
+<LI CLASS="zer">Si l'ordinateur est assez puissant, on peut augmenter cette valeur.</td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">&#201;chelle en mode &#147;Bloc&#148;</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="ech">Permet d'indiquer combien d'informations du r&#233;pertoire seront mises en bloc conjointement.
+ <DL COMPACT> 
+<DD>Un facteur d'&#233;chelle de <B CLASS="brn">1</B> dessinera exactement jusqu'aux limites de la fen&#234;tre du module.
+<DD>Un facteur de <B CLASS="rge">2</B> dessinera deux fois plus d'informations que la fen&#234;tre ne peut en afficher.</DL></td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Ouvrir le rapport HTML d&#232;s que g&#233;n&#233;r&#233;</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="aff">Ouvre automatiquement le rapport HTML dans le navigateur par d&#233;faut d&#232;s qu'il est disponible.<br></td>
+   </tr>
+   <tr>
+     <td valign="top" CLASS="subj" ALIGN="left">Langue</td>
+     <td valign="top" CLASS="std" ALIGN="left"><LI CLASS="bla2">Permet de choisir une langue dans la liste. 
+<LI CLASS="bla2">Si vous souhaitiez traduire VisualDirSize en votre langue, veuillez <A CLASS="ext" HREF="mailto:kzoladek@o2.pl?subject=Translation into a missing language">contacter l'Auteur</A>. 
+<LI CLASS="pav">De m&#234;me si votre langue n'est pas incluse dans le paquetage de distribution.
+<LI CLASS="fra">Adaptation de la structure et traduction de l'Aide : <A CLASS="ext" HREF="mailto:charries@wanadoo.fr?subject=AIDE_DE_VISUAL.DIR.SIZE">Claude Charries - alias “Clo”</A>
+<LI CLASS="be">Traduction de l'interface et contr&#244;le de l'Aide : <A CLASS="ext" HREF="mailto:Ouistiti@gmail.com?subject=AIDE_DE_VISUAL.DIR.SIZE">Paul Vansumsen</A>
+</UL></td>
+   </tr>
+ </table></CENTER>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+
+<BLOCKQUOTE><H3>10) &#201;volution des versions<a ID="history"></a></H3>
+
+<UL CLASS="rien" COMPACT>
+<LI CLASS="titre2">L&#233;gende :
+<LI CLASS="add">Ajout&#233;…
+<LI CLASS="fix">R&#233;par&#233;&#133;
+<LI CLASS="mod">Modifi&#233;¦Compl&#233;t&#233;&#133;
+<LI CLASS="sup">Supprim&#233;&#133;
+<LI CLASS="pen">Nota de l'Auteur.
+<LI CLASS="pen-w">Nota du traducteur.
+<HR CLASS="med" ALIGN="left">
+<LI CLASS="titre2">1.3 beta1 [17.03.2006]
+<LI CLASS="add">Graphique en blocs. L'id&#233;e de ce mode vient de l'excellent programme <B CLASS="demi">DirGraph</B> 
+que l'on on peut t&#233;l&#233;charger ici : <A CLASS="ext" href="http://www.spillett.net/~dirgraph/">http://www.spillett.net/~dirgraph/</a> 
+<LI CLASS="add">Nouvelle option dans les agencements &#147;&#201;chelle en mode bloc&#148;. 
+<LI CLASS="add">Le filtrage de scrutation fonctionne aussi en mode &#147;Bloc&#148;. 
+<LI CLASS="add">On peut utiliser les &#171;jokers&#187; dans les noms de dossiers pour le filtrage de scrutation. 
+<LI CLASS="fix">Petites erreurs dans les agencements.
+<LI CLASS="add">Nouveau fichier d'aide r&#233;crit en HTML.
+<LI CLASS="pink">D'autres petites am&#233;liorations&#133;<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 [17.03.2006] 
+<LI CLASS="mod">Mise &#224; jour des fichiers LNG.<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 beta2 [05.03.2006]
+<LI CLASS="add">Bouton pour remonter au r&#233;pertoire parent. 
+<LI CLASS="mod">Police par d&#233;faut pour les dialogues en <B CLASS="demi">Tahoma</B>. Il s'ensuit que le module ne fonctionne probablement pas sous (certains)  Win95.
+<LI CLASS="fix">Parfois, le module n'obtenait pas les valeurs de &#60;wincmd.ini&#62; apr&#232;s que l'on ait appuy&#233; sur le bouton &#147;Recherches de TC&#148;.
+<LI CLASS="fix">Dans le dialogue Filtration de la scrutation, l'historique des masques de noms est &#233;tendu &#224; vingt entr&#233;es. 
+<LI CLASS="fix">Parfois, le module n'affichait pas la police en gras en mode &#147;N'afficher que les r&#233;pertoires&#148;.
+<LI CLASS="fix">Le module importe maintenant les agencements de couleurs et polices <I>des fen&#234;tres de TC</I>, et non pas ceux de Lister.
+<LI CLASS="fix">Probl&#232;me d'enregistrement de graphique &#147;Secteurs&#148;.<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.2 beta1 [02.04.2006]
+<LI CLASS="add">Option de Filtrage.
+<LI CLASS="pen">Le module fonctionne actuellement sous Win 95 avec IE 4.0 ou plus r&#233;cent par l'utilisation de la fonction API <B CLASS="rd">PathMatchSpec</B>. 
+<LI CLASS="zerop"><B CLASS="rge">MatchesMask()</B> inclus dans Delphi 7&#174; contient toujours une bogue pas corrig&#233;e avec &#147;<B CLASS="rge">?</B>&#148;. 
+Voir <A CLASS="ext" HREF="http://qc.borland.com/wc/qcmain.aspx?d=5744">cette rubrique chez Borland</A>.
+<LI CLASS="add">Possibilit&#233; de changer de police dans les graphiques.
+<LI CLASS="add">Info-bulle en rajustant la colonne &#147;Nom de fichier&#148; en <B CLASS="demi">Histogramme</B>.
+<LI CLASS="mod">Dor&#233;navant, le module fonctionne sur [••] et pr&#233;sente le graphique du r&#233;pertoire en cours. 
+<LI CLASS="pen">Le module n'est pas charg&#233; quand on place le curseur sur &#147;••&#148;dans le premier r&#233;pertoire du lecteur (tel que : C:\r&#233;pertoire\), 
+<LI CLASS="zerop">cela &#224; cause d'une bogue de l'interface des modules du Lister de TC. Mr. Ghisler en est inform&#233;. 
+<LI CLASS="fix">Probl&#232;me &#224; l'affichage de chemins trop longs.
+<LI CLASS="fix">Probl&#232;me d'affichage des polices en 120 DPI (“Grandes polices”).
+<LI CLASS="fix">Probl&#232;me de d&#233;tection de l'emplacement de &#147;wincmd.ini&#148;. On peut maintenant obtenir des agencement provenant de &#147;TC Power Pack&#148; (&#233;dition &#233;tendue de Total Commander - pas officielle-)
+<LI CLASS="fix">Diverses petites r&#233;parations&#133;<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta5  [01.11.2005]
+<LI CLASS="fix">Probl&#232;me en escamotant la fen&#234;tre des agencements.
+<LI CLASS="fix">Le module devrait &#234;tre plus stable, alors que l'on change de dossier rapidement.
+<LI CLASS="pink">Quelques petites r&#233;parations et am&#233;liorations internes.<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta4  [17.10.2005]
+<LI CLASS="pink">Quelques r&#233;parations et am&#233;liorations internes.<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta3  [14.10.2005]
+<LI CLASS="add">Bouton pour rafra&#238;chir la vue du r&#233;pertoire en cours scrut&#233; (oui¦non).
+<LI CLASS="sup">L'option ci-dessus des agencements&#133; 
+<LI CLASS="add">Case &#224; cocher dans les agencements pour activer¦d&#233;sactiver l'affichage automatique du rapport HTML dans le navigateur d&#232;s que ce rapport est cr&#233;&#233;.
+<LI CLASS="sup">Fichier &#171;visualdirsize.ini&#187; de la distribution. 
+<LI CLASS="fix">Quelques fois, les boutons de la barre d'outils n'&#233;taient pas visibles.
+<LI CLASS="pink">Quelques petites r&#233;parations et am&#233;liorations internes.<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta2  [10.10.2005]
+<LI CLASS="mod">Le nom du module devient <B CLASS="demi">&#147;VisualDirSize&#148;</B>. Le nom pr&#233;c&#233;dent ressemblait trop &#224; ceux d'autres modules de TC ou de programmes commerciaux.
+<LI CLASS="add">Possibilit&#233; de trier par nombre de fichiers dans les r&#233;pertoires. 
+<LI CLASS="add">Option pour grouper par extensions. 
+<LI CLASS="add">Fonction de g&#233;n&#233;ration de rapport. Il y a types de rapport possibles :<B CLASS="demi"> HTML</B>, <B CLASS="demi">simple texte</B> et <B CLASS="demi">image</B> de capture. 
+<LI CLASS="add">Possibilit&#233; de rajuster la colonne nom de fichier en histogramme : 
+<DL COMPACT>
+<DD>En cliquant sur l'alignement vertical gauche des barres, on obtient le curseur de rajustement<IMG SRC="img/curseur_ajuste_vertical.png">avec lequel on peut &#233;largir ou r&#233;tr&#233;cir les barres 
+<DD>en le d&#233;pla&#231;ant, tout en tenant le bouton gauche de la souris enfonc&#233; <— —>.
+<DD>Rel&#226;chez le bouton gauche quand la colonne atteint la largeur d&#233;sir&#233;e. 
+<DD>Avec un double-clic gauche sur l'alignement vertical gauche des barres, on r&#233;tablit la colonne &#224; sa largeur par d&#233;faut.</DL> 
+<LI CLASS="mod">Emplacement par d&#233;faut de &#147;VisualDirSize.ini&#148;. D&#233;sormais, &#147;visualdirsize.ini&#148; sera enregistr&#233; dans le m&#234;me r&#233;pertoire que &#60;wincmd.ini&#62;
+<LI CLASS="nsm">Si cet emplacement ne convient pas, on peut simplement d&#233;placer le fichier vers l'une des destinations suivantes :
+<LI CLASS="exi">Dans un sous-r&#233;pertoire nomm&#233; &#147;VisualDirSize&#148; dans l'aborescence du dossier o&#249; se trouve &#60;Wincmd.ini&#62;
+<LI CLASS="exi">Dans le r&#233;pertoire du module
+<LI CLASS="exi">Dans le r&#233;pertoire de Total Commander.<HR CLASS="med" ALIGN="left">	  
+<LI CLASS="add">Option pour rafra&#238;chir automatiquement la scrutation du  r&#233;pertoire en cours. 
+<LI CLASS="zer">Fonctionne comme <B CLASS="demi">WatchDirs=1</B> dans &#60;wincmd.ini&#62;
+<LI CLASS="warn">Il n'est pas recommand&#233; d'&#233;tablir cette option sur des r&#233;pertoires qui changent continuellement, 
+<LI CLASS="zerow">tels que le r&#233;pertoire &#147;Journal&#148; d'un pare-feu ou celui de la cache du navigateur Internet. 
+<LI CLASS="fix">Le module devrait fonctionner dans des syst&#232;mes plus anciens que WinXP<HR CLASS="sep2">
+<LI CLASS="titre2">1.1 beta1  [01.09.2005]
+<LI CLASS="add">Barre d'outils.
+<LI CLASS="add">Graphique en secteurs &#147;Camembert&#148;.
+<LI CLASS="add">Possibilit&#233; de parcourir des catalogues. 
+<LI CLASS="add">Double-clic sur un &#233;l&#233;ment de graphique affiche le sous-dossier correspondant.
+<LI CLASS="add">Double-clic droit pour revenir au r&#233;pertoire parent.
+<LI CLASS="add">Dialogue d'agencements.
+<LI CLASS="add">Prise en charge des fichiers de langues.
+<LI CLASS="add">Prise en charge des th&#232;mes de couleurs.
+<LI CLASS="add"><A ID="ret_ver"><IMG SRC="img/ancre.bmp" BORDER="0"></A>Option pour trier les noms de fichiers¦r&#233;pertoires comme Win XP. 
+<LI CLASS="zer">Fonctionne comme <B CLASS="demi">SortUpper=3</B> dans &#60;wincmd.ini&#62;. 
+<LI CLASS="pen-w">Voir s.v.p. <A CLASS="int" HREF="#sup3">le nota &#224; ce sujet</A>.
+<LI CLASS="fix">Il &#233;tait parfois n&#233;cessaire d'appuyer longtemps sur la touche <B CLASS="demi">&#201;chap</B> pour arr&#234;ter le calcul de la taille d'un dossier.
+<LI CLASS="pink">Autres petites am&#233;liorations et r&#233;parations.<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 [17.08.2005]
+<LI CLASS="fix">Probl&#232;me avec les ic&#244;nes &#224; canal &#147;Alpha&#148; int&#233;gr&#233; de Win XP.
+<LI CLASS="fix">Bogue dans les codes de scrutation<IMG SRC="img/sm-arrow.png" CLASS="al"><I>VisualDirSize</I> affichait parfois des tailles fausses.
+<LI CLASS="fix">Bogue en utilisant %COMMANDER_PATH%<IMG SRC="img/sm-arrow.png" CLASS="al"&#224; la fermeture, <I><I>VisualDirSize</I> &#233;crasait <B CLASS="demi">%COMMANDER_PATH%</B> avec le chemin r&#233;el de <B CLASS="demi">IcoLibPath</B>.
+<LI CLASS="pink">D'autres petites corrections&#133;<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 beta3 [13.08.2005]
+<LI CLASS="add">Option pour n'afficher que les r&#233;pertoires :
+<LI CLASS="zer">Touche <B CLASS="vt">&#147;S&#148;</B> pour activer - Touche <B CLASS="rge">&#147;A&#148;</B> pour d&#233;sactiver (voir avec les fichiers).
+<LI CLASS="add">Affichage de la taille totale du r&#233;pertoire examin&#233;.
+<LI CLASS="add">D&#233;filement en temps r&#233;el. 
+<LI CLASS="add">Touche <B CLASS="demi">&#201;chap</B> pour annuler le calcul de la taille d'un dossier.
+<LI CLASS="add">Option pour afficher les tailles en pourcentages &#224; la place d'unit&#233;s - Touche <B CLASS="bl">&#147;Z&#148;</B>. 
+<LI CLASS="add">Option pour afficher les barres d'histogramme tri&#233;es par noms - Touche <B>&#147;X&#148;</B>.
+<LI CLASS="pink">Quelques corrections mineures&#133;<HR CLASS="sep2">
+<LI CLASS="titre2">1.0 beta2 [10.08.2005]
+<LI CLASS="fix">Affichage de tr&#232;s gros fichiers¦r&#233;pertoires.
+<LI CLASS="add">Possibilit&#233; d'employer %COMMANDER_PATH% dans <B CLASS="demi">IcoLibPath</B>
+<HR CLASS="sep2"> 
+<LI CLASS="titre2">1.0 beta  [08.08.2005]
+<LI CLASS="pink">Premi&#232;re sortie publique.
+<LI CLASS="zero"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A>
+<HR CLASS="sep"></UL>
+
+<H3> 11) Licence<a ID="license"></a></H3>
+<UL CLASS="rien" COMPACT>
+<LI CLASS="inf">Ce logiciel est fournit &#147;tel-quel&#148;. Aucune garantie n'est assur&#233;e. 
+<LI CLASS="prge">Vous utilisez ce programme &#224; vos risques et p&#233;rils. 
+<LI CLASS="pvt">L'auteur ne r&#233;pondra pas des pertes de donn&#233;es, dommages etc. caus&#233;s par la bonne ou mauvaise utilisation de ce logiciel.
+<LI CLASS="pen-w">Suivant les l&#233;gislations en cours de divers pays francophones, cette d&#233;claration est contestable&#133; 
+<LI CLASS="pink">Ce module est <B CLASS="bl">Gratuiciel</B>.</UL>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></P>
+<CENTER><HR CLASS="sep2"></CENTER>
+<H3>12) Auteur<a ID="author"></a></H3>
+<P CLASS="tx"><B>Karol Zoladek</B> <a CLASS="ext" href="mailto:kzoladek@o2.pl"><IMG SRC="img/mail.png" BORDER="0" HEIGHT="13" WIDTH="34"></a></P>
+<P CLASS="tx">Ou visitez le <a CLASS="ext" href="http://www.ghisler.ch/board/index.php?language=french">forum officiel</a> de Total Commander</p>
+<P CLASS="tx"><A HREF="#somm"><IMG SRC="img/retour.png" BORDER="0" TITLE="Retour au Sommaire"></A></P>
+</BLOCKQUOTE>
+<BR><CENTER><IMG SRC="img/point--.png" HEIGHT="2" WIDTH="700"><BR>
+<IMG SRC="img/spacerub.png" HEIGHT="500" WIDTH="2"></CENTER>
+</body>
+</html>
+
+

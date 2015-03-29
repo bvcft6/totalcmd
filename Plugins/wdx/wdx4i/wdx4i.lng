@@ -1,0 +1,103 @@
+[RUS]
+; field names -- названия полей
+iform=формат
+badext=пл-расш
+order=порядок
+;pages=страниц
+images=изображений
+layers=слоёв
+pixw=ш-пикс
+pixh=в-пикс
+orient=ориентация
+aspect=соотношение
+pixd=д-пикс
+pixels=пикселов
+spp=каналов
+bps=бит/к
+depth=глубина-цв
+mode=режим
+compr=сжатие
+xres=x-разр
+yres=y-разр
+docw=ш-док
+doch=в-док
+docasp=соотн-док
+docd=д-док
+square=площадь
+fres=форс-разр
+fdocw=ш-форс
+fdoch=в-форс
+fdocasp=соотн-форс
+fdocd=д-форс
+fsquare=пл-форс
+ininame=ini-файл
+
+Quadrate=Квадрат
+Landscape=Альбом
+Portrait=Портрет
+
+; image file format name -- название формата файла изображения
+BMP=BMP
+GIF87a=GIF87a
+GIF89a=GIF89a
+JPEG=JPEG
+PCX=PCX
+PNG=PNG
+PSD=PSD
+TIFF=TIFF
+JPEG2000=JPEG2000
+
+; byte order names -- названия порядка байтов
+any=любой
+PC=PC
+Mac=Mac
+
+; mode names -- названия режимов
+Mono=Ч/Б
+Gray=Серое
+Gray-a=Серое-а
+Doutone=Дуотон
+Indexed=Индекс
+;RGB=КЗС
+;RGB=КЗС-а
+;CMYK=ЧГПЖ
+Multi=Многокан.
+;YCbCr=YCbCr
+;YIQ=YIQ
+;CIELab=CIELab
+
+; compression method names -- названия методов сжатия
+None=Нет
+;CCITT 1D=CCITT 1D
+;G3 Fax=G3 Fax
+;G4 Fax=G4 Fax
+;LZW=LZW
+;JPEG=JPEG
+;ZIP=ZIP
+;Deflate=Deflate
+;PackBits=PackBits
+;RLE=RLE
+bDCT-H=бДКП-Х
+xsDCT-H=рпДКП-Х
+pDCT-H=пДКП-Х
+sl-H=б/п-Х
+xsDCT-A=рпДКП-А
+pDCT-A=пДКП-А
+sl-A=б/п-А
+wavelet=вейвлет
+
+; units of measurement -- единицы измерения
+;dpi=dpi
+dpcm=т/см
+mm=мм
+cm=см
+m=м
+quadrat=квадрат
+inch=дюйм
+pica=пика
+point=поинт
+ps-point=ps-поинт
+twip=твип
+
+; mics -- разное
+Unknown=Неизвестно

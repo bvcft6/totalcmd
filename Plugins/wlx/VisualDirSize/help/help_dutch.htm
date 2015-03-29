@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>VisualDirSize help</title>
+  <LINK REL=STYLESHEET HREF="vds.css" TYPE="text/css">
+</head>
+<body>
+<A HREF="help_english.htm"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+<table width="770" align="center">
+<tr><td>
+
+<h1 align=center>VisualDirSize 1.3</h1>
+<br><br>
+
+<h2>Inhoud</h2>
+<ol>
+  <li><a target="_blank" href="#description">Beschrijving</a></li>
+  <li><a target="_blank" href="#installation">Installatie</a></li>
+  <li><a target="_blank" href="#location">Locatie van VisualDirSize.ini </a></li>
+  <li><a target="_blank" href="#usage">Het gebruik</a>
+  <li><a target="_blank" href="#faq">Veel gestelde vragen</a></li>
+  <li><a target="_blank" href="#charts">Diagrammen</a></li>
+  <li><a target="_blank" href="#filter">Scanfilter</a></li>
+  <li><a target="_blank" href="#report">Rapport opmaken</a></li>
+  <li><a target="_blank" href="#configuration">Configuratie (Opties)</a></li>
+  <li><a target="_blank" href="#history">Historie</a> </li>
+  <li><a target="_blank" href="#license">Licentie</a></li>
+  <li><a target="_blank" href="#author">Auteur</a></li>  
+</ol>
+
+
+<h2> 1) Beschrijving<a target="_blank" name="description"></a> </h2>
+<p>
+ VisualDirSize verzorgt een grafisch overzicht van de bestanden/mappen in een geselecteerde directory. 
+ Je kunt een diagram laten tonen door de cursor op een directory te plaatsen en 'Ctrl+Q' in te drukken. 
+ De geselecteerde directory zal worden gescand en bestand-/mapgrootte zullen worden getoond als een balkendiagram in het Quick View panel. Zo'n balkendiagram is handig om de relatieve grootte van bestanden en mappen te zien. 
+ Bijvoorbeeld: je kunt snel het grootste bestand of de grootste map in de directory lokaliseren.<br> 
+ Waarschuwing: Door de manier waarop de plugin werkt, is het niet aan te bevelen het te gebruiken voor zéér grote directories - de vertragingen kunnen dan aanzienlijk zijn.
+</p>
+<h2> 2) Installatie<a target="_blank" name="installation"></a> </h2>
+<p>
+ a) TC 5.51 <br><br>
+   <ol> Kopieer het visualdirsize.wlx bestand naar de map van de Total Commander plugins. Voeg vervolgens de volgende regel toe aan de [ListerPlugins] sectie in het wincmd.ini bestand: <br>
+        0=C:\totalcmd\plugins\visualdirsize.wlx (Wijzig eventueel het pad indien nodig)
+   </ol>  
+ 
+ b) TC 6.5 en nieuwer <br>
+    <ol> Deze versie van TC heeft een "auto install plugin" mogelijkheid. Ga naar de map met de plugin, dubbelklik erop en TC vraagt of je de plugin wilt installeren. 
+    </ol>   
+</p>
+<h2> 3) Locatie van VisualDirSize.ini<a target="_blank" name="location"></a> </h2>
+<p>
+ VisualDirSize.ini zal worden opgeslagen in dezelfde directory als standaard het Wincmd.ini bestand. <br> 
+ Indien je een andere locatie wilt, kun je eenvoudig het bestand verplaatsen naar een van de volgende bestemmingen: <br>
+ <ul>
+   <li> In een subdirectory genaamd "VisualDirSize", gerelateerd aan de directory waarin Wincmd.ini is geplaatst. </li> <br>
+   <li> Plugin directory. </li> <br>
+   <li> Total Commander directory. </li> <br>
+ </ul>
+</p>
+<h2> 4) Het gebruik<a target="_blank" name="usage"></a> </h2>
+<p>
+ Plaats de cursor op een directory, klik erop en druk vervolgens op 'Ctrl+Q'. Opmerking: er is geen mogelijkheid de plugin uit te voeren via F3 - de plugin werkt alleen met Ctrl+Q.<br>
+ Je kunt de cursortoetsen gebruiken en Home, End, PgUp en PgDn of SPACE om te scrollen door de balken. <br>
+ Je kunt dubbel-klikken met de muis op een diagrambalk om in de onderliggende submap te komen en met dubbel-klik op de rechter muisknop om terug te gaan naar de bovenliggende map. <br>
+ Om het scannen af te breken druk je eenvoudigweg op de ESC toets. <br>
+</p>
+<h2> 5)	Veel gestelde vragen<a target="_blank" name="faq"></a> </h2>
+<p>
+ <strong>Vraag:</strong> Ik begrijp niet hoe deze plugin kan worden gebruikt. Wanneer ik op CTRL+Q druk verschijnt het quick view panel, echter niet het beloofde grafische overzicht van deze plugin. Wat doe ik verkeerd? <br>
+ <strong> Antwoord: </strong> Als er na het indrukken van Ctrl+Q niets gebeurd en de normale Total Commander bestandslijst zichtbaar blijft en de directory-info in platte tekst wordt getoond, verplaats dan VisualDirSize hogerop in de lijst van geïnstalleerde Lister plugins. (in TC: Configuratie/Opties/Plugins/WLX configureren)<br>
+ <br>
+ <strong> Vraag: </strong> Soms wanneer de cursor snel op en neer over de bestands- of mappenlijst wordt verplaatst, blijft de plugin hangen. Ik veronderstel dat hij dan alles wil inlezen als je op en neer navigeert. <br>
+ <strong> Antwoord: </strong> Goed, in feite begint de plugin alle directories in te lezen, zodra je de cursor erop plaatst. Je moet even wachten, totdat de plugin de geselecteerde directory heeft gescand en dan pas de volgende directory selecteren. <br>
+</p>
+<h2> 6) Diagrammen<a target="_blank" name="charts"></a> </h2>
+<p>
+ VisualDirSize kan mapgroottes in vier verschillende diagramtypes tonen. Een diagram laat altijd de grootte van de submap of submappen van de laatst geselecteerde map zien. <br>
+ Diagrammen kunnen worden gesorteerd op grootte/naam en de grootte/percentage/aantal van de bestanden tonen, afhankelijk van de soort die de gebruiker heeft geselecteerd in de toolbalk. <br>
+ Dubbelklikken op een balk zal je in de map doen belanden. <br>
+ <br>
+
+ <table width="100%" border="0">
+   <tr>
+     <td width=181 valign=top> <strong>Balkendiagram</strong> </td>
+     <td> geeft de scanresultaten grafisch weer van de geselecteerde drive/map door een balkendiagram.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Taartpuntdiagram</strong> </td>
+     <td> geeft de scanresultaten grafisch weer van de geselecteerde drive/map door een taartpuntdiagram. In deze mode zullen kleine bestanden/mappen worden samengevat als een dun schijfje met de naam 'Overigen'.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Blokdiagram</strong> </td>
+     <td> geeft de scanresultaten grafisch weer van de geselecteerde drive/map door gekleurde blokken (randen). Indien het blok een directory weergeeft, worden er naast blokken getoond, die alle bestanden bevatten in die betreffende directory en subdirectories. Alle directories die te klein zijn om afzonderlijk getoond te worden zijn samengevoegd.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Extensie-overzicht</strong> </td>
+     <td> geeft de scanresultaten weer van de geselecteerde drive/map in tekst (letters) met er naast een balkendiagram.</td>
+   </tr>
+ </table>
+</p>
+<h2> 7) Scanfilter<a target="_blank" name="filter"></a> </h2>
+
+<A HREF="help_english.htm#filter"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm#filter"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm#filter"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+<p>
+ De scanfiltermogelijkheid staat toe de gescande bestanden en mappen te filteren. Met scanfilteren,
+ kun je exact specificeren, welke bestanden in het diagram moeten worden opgenomen. Dus als je meer informatie wilt hebben
+ over bepaalde bestandstypes, bijvoorbeeld grafische bestanden, gebruik hiervoor dan b.v. het filter "*.jpg *.gif". <br>
+ <br>
+ 
+ <table width="100%" border="0">
+   <tr>
+     <td width=181 valign=top> <strong>Bestandsnaamfilter</strong> </td>
+     <td> In dit veld kun je het zoekfilter invullen voor bestanden die je wilt zoeken. <br> 
+          Namen met spaties MOETEN worden opgesloten tussen "-", b.v. "Brief aan Mr. Smith.doc", anders zal VisualDirSize zoeken naar de afzonderlijke naamdelen. Je kunt meervoudige filters gebruiken gescheiden door een ; (punt-komma) of een spatie. <br>
+          Voorbeelden:
+          <ol>
+             *.txt; *.exe (*.txt *.exe)  zoekt alle bestanden met txt- of exe-extensie <br> 
+             *.ini zoekt b.v. win.ini <br>
+             Smith zoekt "Brief aan Mr. Smith.doc" <br>
+          </ol>   
+          Uitgesloten filters worden geplaatst na "|". <br> 
+          Voorbeeld:
+          <ol>
+             w*.* | *.bak   zoekt bestanden, die beginnen met een w en niet eindigen op .bak. 
+          </ol>
+          Om bepaalde directories in- of exclusief in de zoekopdracht op te nemen, moeten die een backslash (\) in hun naam hebben. <br>
+          Voorbeeld:
+          <ol>
+             windows\ system32\ *.ini  zoekt alleen naar ini-bestanden in windows en system32 directories. <br>
+             *.ini | windows\   zoekt alle ini-bestanden met uitzondering van die bestanden in de directory genaamd "Windows" en hun sub-directories. <br>
+          </ol>             
+     </td>
+   </tr>
+  <tr>
+     <td width=181 valign=top> <strong>TC Zoek-items</strong> </td>
+     <td> Gebruik de TC Zoek-items-knop om de in Total Commander opgeslagen zoekparameters voor veel gezochte zoek-items te zien. <br>&nbsp;</td> 
+  </tr>
+  <tr>
+     <td width=181 valign=top> <strong>Gebruik reguliere uitdrukkingen</strong> </td>
+     <td> Het zoeken van bestandsnamen verlangt reguliere uitdrukkingen. <br>&nbsp;</td> 
+  </tr>
+  <tr>
+     <td width=181 valign=top> <strong>Uitsluiten van gelijke bestanden</strong> </td>
+     <td> Uitsluiten (anders dan inbegrepen) van gelijke bestanden bij het zoeken. </td> 
+  </tr>
+ </table>
+ <br>
+ Deze optie wordt niet opgeslagen bij het afsluiten van VisualDirSize om verkeerde resultaten te voorkomen, wanneer de zoekoptie de volgende keer weer wordt gebruikt.  
+</p>
+<h2> 8)	Rapport opmaken<a target="_blank" name="report"></a> </h2>
+<p>
+ VisualDirSize heeft een krachtige ingebouwde rapportagemogelijkheid. Geëxporteerde rapporten kunnen vaak worden geïmporteerd of anderzins worden gebruikt door applicaties van anderen voor toegevoegde toepassingen. <br>
+ <br>
+ Een breed scala aan exporteerbare formaten is beschikbaar, inclusief : <br><br>
+
+ <table width="100%" border="0">
+   <tr>
+     <td width=181 valign=top> <strong>HTML rapport</strong> </td>
+     <td> Staat toe om rapporten op te slaan als een HTML bestand, die later bekeken kunnen worden met iedere HTML browser.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>TXT rapport</strong> </td>
+     <td> Slaat de verzamelde data op als een tab-gescheiden tekstbestand, die kan worden ingeladen door applicaties zoals Microsoft Excel.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Alleen afbeelding</strong> </td>
+     <td> Het hoofddiagram kan rechtsstreeks als een JPEG beeldbestand worden opgeslagen.</td>
+   </tr>
+ </table>
+ <br>
+ De rapportexportfunctie kan gestart worden door op de “Rapportage maken” knop te drukken.
+</p>
+
+
+<h2> 9)	Configuratie (Opties)<a target="_blank" name="configuration"></a> </h2>
+
+<A HREF="help_english.htm#configuration"><IMG SRC="img/english.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="English Help Page" ></A>
+<A HREF="help_french.htm#configuration"><IMG SRC="img/french.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Page d'aide Fran&#231;aise"></A>
+<A HREF="help_dutch.htm#configuration"><IMG SRC="img/dutch.png" BORDER="0" HEIGHT="15" WIDTH="25" TITLE="Dutch Help Page"></A>
+
+<p>
+ <table width="100%" border="0">
+   <tr>
+     <td width=181 valign=top> <strong>Externe icoonbibliotheek</strong> </td>
+     <td> Deze optie staat toe een externe bibliotheek te kiezen, vanwaar uit standaard iconen kunnen worden ingeladen voor bestanden en directories. (je kunt ook %COMMANDER_PATH% variabelen in het pad gebruiken).<br>&nbsp; </td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Achtergrondkleur</strong> </td>
+     <td> Selecteert de achtergrondkleur voor de diagrammen.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Letterkleur</strong> </td>
+     <td> Gebruik deze optie om de tekstkleur voor de diagrammen te selecteren.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Lettertype wijzigen</strong> </td>
+     <td> Kies een lettertype voor de diagrammen in VisualDirSize. Het lettertype mag vet zijn of normaal, italic wordt NIET ondersteund.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Sorteren op WinXP-wijze</strong> </td>
+     <td> Deze wijze gebruikt gemengd alfabetisch en numeriek sorteren, b.v. bestand10.txt komt NA bestand1.txt. Deze optie werkt alleen in Windows XP, in andere systemen wordt normaal gesorteerd.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>TC-instellingen importeren</strong> </td>
+     <td> Importeert de instellingen van Total Commander.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Kleurenschema's</strong> </td>
+     <td> Je kunt kleurinstellingen selecteren voor diagrammen uit de lijst.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Max. Tint, Min. Tint, Verzadiging, Helderheid</strong> </td>
+     <td> Kleurschema voor balken. Alle waarden zijn gegeven in TVH (Tint, Verzadiging, Helderheid). Balkkleuren zullen worden samengesteld uit: <br> 
+     (Max. Tint, Verzadiging, Helderheid) naar (Min. Tint, Verzadiging, Helderheid) in TVH.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Opslaan huidig schema</strong> </td>
+     <td> Hier kun je de huidige kleurinstelling opslaan. Het zal worden toegevoegd aan het eind van de kleurenschema-lijst.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Toon niet meer balken dan</strong> </td>
+     <td> Stelt in hoeveel balken er worden getoond (default = 500). Reden: <br>
+          De plugin scant alle bestanden en mappen in de geselecteerde directory, maar alleen de eerste 500 worden getoond, omdat trage machines problemen hebben met het vernieuwen. Indien jij een krachtige computer hebt, kun je de waarde naar boven toe bijstellen.<br>&nbsp;      
+     </td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Schaalfactor in blokmode</strong> </td>
+     <td> Deze optie staat toe om op te geven hoeveel informatie over een directory bij elkaar wordt verzameld. <br> 
+          Een schaalfactor van 1 zal precies de grenzen van het VisualDirSize plugin-venster aangeven. <br>
+          Een schaalfactor van 2 zal twee maal zoveel informatie geven als kan worden getoond in het plugin-venster.<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Starten van de browser, nadat het HTML rapport is opgemaakt.</strong> </td>
+     <td> Automatisch wordt het HTML rapport met de standaard webbrowser geopend, nadat de opmaak is voltooid.<br>&nbsp;<br>&nbsp;</td>
+   </tr>
+   <tr>
+     <td width=181 valign=top> <strong>Taal</strong> </td>
+     <td> Hier kies je een taal uit de lijst. Indien je VisualDirSize in je eigen taal wilt vertalen, email mij dan. Als jouw taal nog niet in het totaalpakket zit, email mij dan ook.<br>&nbsp;</td>
+   </tr>
+ </table>
+</p>
+<h2> 10) Historie<a target="_blank" name="history"></a> </h2>
+<p style='font-size:10.0pt;font-family:"Courier New"'>
+1.3 bèta1 [17.03.2006] <br>
+ - Added block chart. The idea of this mode is taken from great DirGraph program. <br> 
+   You can download it here: <a target="_blank" href="http://www.spillett.net/~dirgraph/">http://www.spillett.net/~dirgraph/</a> <br>
+ - Added new option in Configuration "Scale factor in Block mode". <br>
+ - Added. Scan Filtering also works in block mode. <br>
+ - Added. Now it's possible to use wildcards in folder names when using Scan Filtering. <br>
+ - Fixed small errors in Configuration. <br>
+ - Added new help file rewritten in HTML. <br>
+ - Some other small improvements. <br>
+1.2 [17.03.2006] <br> 
+ - Updated LNG files
+1.2 bèta2 [05.03.2006] <br>
+ - Added button to go to parent folder. <br> 
+ - Changed default font for dialogs to Tahoma. Therefore plugin probably don't run in Win95. <br>
+ - Fixed. Sometimes plugin didn't get values from wincmd.ini after pressing "TC Searches" button. <br>
+ - Fixed. File name masks history extended to 20 entries in Scan Filtering dialog. <br>
+ - Fixed. Sometimes plugin didn't display bold font in "Show only directories" mode <br>
+ - Fixed. Plugin now import the colors and font from the TC file panel setting not TC lister settings. <br>
+ - Fixed problem with saving pie chart. <br>
+1.2 bèta1 [04.02.2006] <br>
+ - Added Filter option <br>
+ - Plugin currently works in Win95 WITH IE4.0 and above because of using PathMatchSpec API function. <br> 
+   MatchesMask() included in Delphi 7 contain still not corrected bug with "?". <br>
+   See http://qc.borland.com/wc/qcmain.aspx?d=5744 <br>
+ - Added possibility do change font in graphs <br>
+ - Added hint when resize filename column in the bar chart. <br>
+ - Plugin now works on [..] and show the chart for the current directory <br>
+   Note: plugin isn't loaded when put cursor on ".." in first directory on drive (like c:\directory\)
+   because of TC lister plugin interface bug. Ghisler is informed about this. 
+ - Fixed problem with displaying too long path <br>
+ - Fixed problem with displaying 120 DPI fonts <br>
+ - Fixed problem with detecting "wincmd.ini" location. Now it's possible to get settings from TC Power Pack (extended edition of Total Commander) <br>
+ - Some small fixes <br>
+ 1.1 bèta5  [01.11.2005] <br>
+ - Fixed problem with hiding config window <br>
+ - Fixed. Plugin should be more stable when switching folders fast <br>
+ - Some small fixes and internal improvements <br>
+1.1 bèta4  [17.10.2005] <br>
+ - Some bug fixes and internal improvements <br>
+1.1 bèta3  [14.10.2005] <br>
+ - Added Button to on/off watch changes in currently scanned directory (removed this option from configuration) <br>
+ - Added In Configuration checkbox to on/off automatically launch browser after HTML report is generated  <br>
+ - Removed visualdirsize.ini from distribution <br>
+ - Fixed Sometimes buttons on button bar were not visible <br>
+ - Some small fixes and internal improvements <br>
+1.1 bèta2  [10.10.2005] <br>
+ - Changed plugin name to "VisualDirSize". Previous name sounds too similar to other TC plugins and commercial programs <br>
+ - Added possibility to sort by number of files in directory <br>
+ - Added option to group by extension. <br>
+ - Added report generation function. There is three possible report types: HTML, plain text and graph image. <br>
+ - Added possibility to resize filename column in the bar chart. Simply click on the left bar border and drag the mouse to the right (to make wider) or left (to make smaller). Let up on the mouse button when the filename column is wide enough. Double click left bar border to resize filename column to default position. <br>
+ - Changed default location for VisualDirSize.ini. Now visualdirsize.ini will be saved in the same directory as wincmd.ini <br>
+ 	 If you don't like this location you can simply move the file to one of the following destinations: <br>
+   &nbsp;&nbsp;* In a subdirectory called VisualDirSize relative to the directory where wincmd.ini is located <br>
+	 &nbsp;&nbsp;* Plugin directory <br>
+	 &nbsp;&nbsp;* Total Commander directory <br>  	  
+ - Added option to watch changes in currently scanned directory. (works like WatchDirs=1 in wincmd.ini) <br>
+   It's not recommended to use this option on directories that changes regularly like firewall log directory or browser cache directory. <br>
+ - Fixed Plugin should works in systems older than WinXP <br>
+1.1 beta1  [01.09.2005] <br>
+ - Added buttonbar <br>
+ - Added pie chart <br>
+ - Added possibility to go thru catalogs <br>
+ - Added double-click a graph to drill into the corresponding subfolder <br>
+ - Added right double-click to go to parent folder <br>
+ - Added configuration dialog <br>
+ - Support for language files <br>
+ - Support for colors schemas <br>
+ - Added option to sort directories/files names like WinXp do. (works like SortUpper=3 in wincmd.ini). <br>
+   In other systems it's normal sorting. <br>
+ - Fixed Sometimes it was necessary to hold Esc key for long to stop calculating folder size <br>
+ - Other small improvements and fixes <br>
+1.0 [17.08.2005] <br>
+ - Fixed problem with alpha blended icons in WinXP <br>
+ - Fixed bug in scan code -> VisualDirSize sometimes showed wrong sizes <br>
+ - Fixed bug when using %COMMANDER_PATH% -> on close VisualDirSize overwrote the %COMMANDER_PATH% by the real path of IcoLibPath. <br>
+ - Some other small corrections <br>
+1.0 bèta3 [13.08.2005] <br>
+ - Added option to show only directories (key 'S', show with files key 'A') <br>
+ - Added display total size of examined directory <br>
+ - Added real-time scrolling <br>
+ - Added Esc key when calculating folder size to cancel the operation <br>
+ - Added option to show percents instead file sizes (key 'Z') <br>
+ - Added option to show bars sorted by name (key 'X') <br>
+ - Some small corrections <br>
+1.0 bèta2 [10.08.2005] <br>
+ - Fixed displaying very big files/directories <br>
+ - Added possibility to use %COMMANDER_PATH% in IcoLibPath <br> 
+1.0 bèta  [08.08.2005] <br> 
+ - Initial public release <br>
+</p>
+
+
+<h2> 11) Licentie<a target="_blank" name="license"></a> </h2>
+<p>
+ Deze software wordt verstrekt als "as-is". Er wordt geen garantie op gegeven. Je gebruikt dit programma op eigen risico. De auteur zal niet aansprakelijk zijn voor data-verlies, schade, etc. door gebruik of misbruik van deze software. Deze plugin is freeware.
+</p>
+<h2> 12) Auteur<a target="_blank" name="author"></a> </h2>
+<p>
+ Karol Zoladek (<a target="_blank" href="mailto:kzoladek@o2.pl">kzoladek@o2.pl</a>) <br>
+ Of bezoek het officiële Total Commander Forum (<a target="_blank" href="http://www.ghisler.ch">http://www.ghisler.ch</a>)
+</p> 
+
+</td></tr>
+</table>
+
+</body>
+</html>

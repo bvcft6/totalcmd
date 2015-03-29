@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "HTTP://WWW.W3.ORG/TR/HTML4/LOOSE.DTD">
+<html>
+<head>
+<title>wdx4i for Total Commander</title>
+
+<style>
+body { font-family: "Times New Roman", Times, serif; }
+h1, h2, h3, h4, h5, h6 { font-family: Verdana, Arial, Helvetica, sans-serif; }
+h1 { font-weight: bold; font-size: 150%; }
+h2 { font-weight: normal; font-size: 120%; list-style-type: decimal; }
+h3 { font-weight: normal; font-size: 100%; }
+h4 { font-weight: bold; font-size: smaller; }
+strong { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bolder; font-size: smaller; }
+code, samp { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: smaller; }
+a { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bolder; font-size: smaller; }
+a:link    { color: Navy; }
+a:visited { color: Purple; }
+a:hover { color: Purple; }
+</style>
+
+</head>
+
+<body>
+<h1>Content plugin WDX for Images for Total Commander</h1>
+
+<p align="right" style="font-size: smaller;"><a href="wdx4i_ru.htm">Switch to Russian</a></p>
+
+<p>Extracts information from BMP, GIF, JPEG, JPEG 2000, PCX, PNG, PSD, TIFF image files:
+
+<ul>
+  <li>Real file format
+  <li>Byte order in integers
+  <li>Number of images (TIFF), local images or frames (GIF), layers (PSD and TIFF), images plus thumbnails (JPEG)
+  <li>Width and height of image in pixels, which used to calculate aspect ratio, diagonal and number of pixels
+  <li>Number of samples per pixel (channels in Photoshop)
+  <li>Number of bit per sample (bits per channel)
+  <li>Image mode: RGB, CMYK, etc.
+  <li>Image data compression method: LZW, RLE, etc.
+  <li>Horizontal and vertical resolution, which used to calculate document sizes: width, height, aspect ratio, diagonal and square
+</ul>
+
+<p>In <i>Change attributes</i> dialog (TC version 7 and above) plugin allows the setting of picture resolution (not all files).
+
+<hr>
+
+<p>Version 0.5 for <a href="http://www.ghisler.com/">Total Commander</a> (x86 and x64).
+Use it at your own responsibility.
+Tested with <strong>Total Commander 7.04a, 8.01</strong>
+under <strong>WinXP (rus)</strong> (requires <strong>WinNT 3.5</strong> or <strong>Win95</strong> or later).
+
+<p><b>WARNING: While plugin testing make backup copies of images before setting resolution.</b>
+
+<p>This software is donationware. Free for any using. This program
+is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY
+and NO SUPPORT. Comments and money may be sent to <a href="#author">author</a>.
+
+<h2>Installation</h2>
+
+<p>
+
+<ul>
+  <li><b>Standard</b>: enter into archive with plugin <samp>wdx4i.wdx</samp> and <code>pluginst.inf</code> using TC for automatic install
+  <li><b>Manual</b>: menu <i>Configuration/Options...</i>, next <i>Plugins&nbsp;/ Content plugins (.WDX)&nbsp;/ Configure...</i>
+</ul>
+
+<p><b>Notice.</b> In version 0.2 detect string was changed.
+To change it in TC settings reinstall plugin or find it in
+<code>wincmd.ini</code> and delete.
+
+<a name="#fields"></a>
+<h2>Fields</h2>
+
+<p><b>Notice.</b> All data for image (width, height...) are only for first image in file (page for TIFF etc.).
+
+<ul>
+  <li><b>iform</b> &mdash; name of real format of image file independently of its extension
+  <li><b>badext</b> &mdash; &ldquo;Yes&rdquo;, if extension is not correspond to format
+  <li><b>order</b> &mdash; byte order in integers that require more than one byte: big-endian (Mac), little-endian (PC)
+<!--  <LI><B>pages</B> &mdash; number of pages (TIFF), local images or frames (GIF), layers (PSD), pictures plus thumbnails (JPEG). For others &mdash; 1-->
+  <li><b>images</b> &mdash; number of images (TIFF), local images or frames (GIF), images plus thumbnails (JPEG). For others &mdash; 1
+  <li><b>layers</b> &mdash; number of layers in PSD and in 1st image in TIFF. For others &mdash; 1
+  <li><b>pixw</b> &mdash; width of image in pixels
+  <li><b>pixh</b> &mdash; height of image in pixels
+  <li><b>orient</b> &mdash; image orientation: Quadrate, Landscape or Portrait
+  <li><b>aspect</b> &mdash; aspect ratio (<b>pixw</b> / <b>pixh</b>)
+  <li><b>pixd</b> &mdash; diagonal in pixels
+  <li><b>pixels</b> &mdash; number of pixels in image (<b>pixw</b> x <b>pixh</b>)
+  <li><b>spp</b> &mdash; number of samples per pixel (channels in Photoshop)
+  <li><b>bps</b> &mdash; number of bit per sample (bits per channel)
+  <li><b>depth</b> &mdash; bit depth (bits per pixel) = <b>spp</b> x <b>bps</b>
+  <li><b>mode</b> &mdash; image mode: RGB, CMYK, etc. In RGB-a suffix <i>-a</i> means alpha chanel
+  <li><b>compr</b> &mdash; image data compression method: LZW, RLE, etc.
+  <li><b>xres</b> &mdash; horizontal resolution
+  <li><b>yres</b> &mdash; vertical resolution<br>
+    For JPEG plugin can extract it from sections
+    with markers APP0 (JFIF), APP1 (Exif) and APPd (Photoshop)&nbsp;&mdash; what come first.
+    Some files not contains such info (GIF &mdash; always).
+    If there is not resolution data in file, you can use default values (see <a href="#settings">Settings</a>)
+  <li><b>docw</b> &mdash; width of document (<b>pixw</b> / <b>xres</b>)
+  <li><b>doch</b> &mdash; height of document (<b>pixh</b> / <b>xres</b>)
+  <li><b>docasp</b> &mdash; aspect ratio of document (<b>docw</b> / <b>doch</b>)
+  <li><b>docd</b> &mdash; diagonal of document
+  <li><b>square</b> &mdash; square of document (<b>docw</b> x <b>doch</b>)
+  <li><b>fres</b> &mdash; forced resolution of image (by user choice, does not affect on resolution saved in file) along both axes.
+    May be used for valuation of image sizes with some arbitrary resolution.
+    If user changes <b>fres</b> in <i>Change attributes</i> dialog, INI file parameter <a href="#settings">forced_res</a> will be changed in fact
+  <li><b>fdocw</b> &mdash; same as <b>docw</b> for <b>fres</b>
+  <li><b>fdoch</b> &mdash; same as <b>doch</b> for <b>fres</b>
+  <li><b>fdocasp</b> &mdash; same as <b>docasp</b> for <b>fres</b>
+  <li><b>fdocd</b> &mdash; same as <b>docd</b> for <b>fres</b>
+  <li><b>fsquare</b> &mdash; same as <b>square</b> for <b>fres</b>
+  <li><b>ininame</b> &mdash; plugin's INI-file name location. This info is about plugin, not about image file
+</ul>
+
+
+<a name="#settings"></a>
+<h2>Settings</h2>
+
+<p>When loading plugin reads settings from content plugins INI-file
+(usually <code>contplug.ini</code> in TC dir), section <code>[wdx4i]</code>, see also <b>ininame</b> field.
+After install it writes default values:
+
+<ul>
+  <li><code>configured=1</code> &mdash; not 0, if plugin is configured
+  <li><code>default_res=72.0</code> &mdash; if not 0, use this resolution (in <code>default_res_units</code>) for files without resolution info
+  <li><code>default_res_units=0</code> &mdash; units of measurements (1 &mdash; dpi, 2 &mdash; dpcm) for files without resolution info, 0 &mdash; do not use default resolution
+  <li><code>forced_res=300.0</code> &mdash; forced resolution in <code>forced_res_units</code>
+  <li><code>forced_res_units=1</code> &mdash; units of measurements for forced resolution (1 &mdash; dpi, 2 &mdash; dpcm)
+  <li><code>exif_resolution=1</code> &mdash; if not 0, extract JPEG resolution info from Exif metadata (APP1)
+  <li><code>pshop_resolution=1</code> &mdash; if not 0, extract JPEG resolution info from Photoshop metadata (APPd)
+  <li><code>size_decimals=0</code> &mdash; number of digits in fractional part of real numbers (TC 6.52 and above). 0 &mdash; use TC behaviour
+</ul>
+
+<p>Yuo can change <code>contplug.ini</code> using any text editor, e.g. Notepad.
+
+
+<h2>Miscellaneous</h2>
+
+<p>JPEG compression abbreviation:
+
+<ul>
+  <li><samp>bDCT-H</samp> &mdash; baseline Discrete Cosine Transform (DCT) plus Huffman
+  <li><samp>xsDCT-H</samp> &mdash; extended sequential DCT Huffman
+  <li><samp>pDCT-H</samp> &mdash; progressive DCT Huffman
+  <li><samp>sl-H</samp> &mdash; spatial lossless Huffman
+  <li><samp>xsDCT-A</samp> &mdash; extended sequential DCT arithmetic
+  <li><samp>pDCT-A</samp> &mdash; progressive DCT arithmetic
+  <li><samp>sl-A</samp> &mdash; spatial lossless arithmetic
+</ul>
+
+<p>To translate or change default fuild names of plugin add (edit) section for your language in a text file
+<samp>wdx4i.lng</samp> in same dir as plugin is. For example see section
+<samp>[RUS]</samp>.
+
+<p>About some units of length:
+
+<ul>
+  <li><b>Quadrat</b> &mdash; Didot unit (from French inch) = 48 punkts = 2/3 Fr. inch = 18.05112 mm.
+  <li><b>Pica (pc)</b> = 1/6 inch = 4.2336 mm.
+  <li><b>Point (pt)</b> = 1/72.27 inch = 0.3515 mm.
+  <li><b>PostScript-point (ps-point)</b> = 1/72 inch = 0.3528 μμ.
+  <li><b>Twip (tw)</b> [TWenty In Point ?] = 1/1440 inch = 0.01764 mm.
+</ul>
+
+<p>Plugin can set resolution only for files that already have such an info
+(otherwise it must rewrite whole file) and that can hold it. For example, GIF
+can not contain such an info at all and rest formats can hold it and can hold
+not. Aside from, JPEG can hold not APP0 marker that Photoshop knows (tested
+with version 6) and resolution info stored in <i>Exif</i> metadata that
+Photoshop ignores. So for such JPEG after setting resolution plugin will show
+new one but Photoshop will use default 72 dpi. Similar situation take place
+with PNG.
+
+<a name="author"></a>
+
+<p>Plugin page: <a href="http://www.totalcmd.net/plugring/wdx4i.html">http://www.totalcmd.net/plugring/wdx4i.html</a>
+
+<p>&copy; Oleg Bondar aka Hobo (<code>hobo<!-- fuck spammers! -->-<!-- fuck spammers! -->mts <i>at</i> mail <i>pnt</i> ru</code>).
+Change '<code>at</code>' to symbol <em>at</em> and '<code>pnt</code>' to '.' (<em>point</em>).
+Subject of message must contain word '<samp>wdx4i</samp>'.
+
+<hr>
+
+
+<a name="history"></a>
+<h2>History</h2>
+
+<h3>0.5 (2013/10/24)</h3>
+
+<ul>
+  <li>Practically same as 0.5-beta, small typos fixed.
+  <LI>Added 'version' value into pluginst.inf (new in TC 8.50 beta 7).
+</ul>
+
+<h3>0.5-beta (2013/10/13)</h3>
+
+<ul>
+	<li>Added <b>JPEG 2000</b> support. Please, add string '<code>|FIND(&quot;jP  &quot;)</code>'
+		('<b>jP</b>' with two spaces) into <code>*_detect</code> string in section <code>[ContentPlugins]</code>
+		in your <code>wincmd.ini</code>. Or simply remove and install plugin again.
+  <li>32-bit version linked dinamically with <code>msvcrt.dll</code>.
+  <LI>For PNG only known chunks allowed.
+</ul>
+
+<h3>0.4 (2012/03/23)</h3>
+
+<ul>
+  <li>Plugin linked with runtime library statically and don't depend on <code>msvcrt.dll</code>.
+	<li>Added <code>x64</code> version.
+</ul>
+
+<h3>0.3a (2009/02/06)</h3>
+
+<ul>
+  <li>Added field <b>orient</b>.
+</ul>
+
+<h3>0.3 (2009/02/04)</h3>
+
+<ul>
+  <li>Removed field <b>pages</b>.
+  <li>Added fields <b>images</b> and <b>layers</b>.
+</ul>
+
+<h3>0.2b (2009/02/02)</h3>
+
+<ul>
+  <li>Added field <b>depth</b>.
+</ul>
+
+<h3>0.2a (2007/10/07)</h3>
+
+<ul>
+  <li>Added field <b>badext</b>.
+  <li>Small fixes.
+</ul>
+
+<h3>0.2 (2007/10/02)</h3>
+
+<ul>
+  <li>Detect string was changed. Contents of file is used instead of extension.
+  <li>Added field with name of image file format.
+  <li>Now it is possible to get data from JPEG files that contains marker SOI not at beginning of the file.
+</ul>
+
+<h3>0.1b (2007/10/01)</h3>
+
+<ul>
+  <li>Fixed error causing crash when reading some files saved in Photoshop.
+</ul>
+
+<h3>0.1a (2007/09/07)</h3>
+
+<ul>
+  <li>Fixed error calculating diagonal and square with measurements other then mm.
+</ul>
+
+<h3>0.1 (2007/08/19)</h3>
+
+<ul>
+  <li>Fixed error reading BMP file header. Thank to Frank Zheng for bug report.
+</ul>
+
+<h3>0.1 beta4 (2007/07/02)</h3>
+
+<ul>
+  <li>Added forced resolution fields.
+  <li>Added aspect ratio of document sizes field.
+  <li>Added field for INI file name.
+</ul>
+
+<h3>0.1 beta3 (2007/06/25)</h3>
+
+<ul>
+  <li>Added function <code>ContentSetValue()</code> for set resolution of image in <i>Change attributes</i> dialog.
+  <li>Fixed getting PSD file resolution.
+  <li>Changed names of some units of measurement.
+</ul>
+
+<h3>0.1 beta2 (2007/05/31)</h3>
+
+<ul>
+  <li>Added default resolution for files without resolution info.
+  <li>Added aspect ratio field.
+  <li>Added units of length: <i>mm</i> (now is default), <i>metre</i>, <i>quadrat</i>, <i>pica</i>, <i>point</i>, <i>PostScript-point</i>, <i>twip</i>.
+  <li>Parameter <samp>defaultdir</samp> in <code>pluginst.inf</code> changed to <samp>wdx4i</samp>.
+</ul>
+
+<h3>0.1 beta (2007/05/28)</h3>
+
+<ul>
+  <li>Initial public beta.
+</ul>
+
+
+</body>
+</html>

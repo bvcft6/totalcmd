@@ -16,8 +16,6 @@ SetTimer subTimer, 250
 
 SetTimer closeTimer, 5000
 
-
-
 ; TOTALCMD: minimize on esc  
 ;#ifWinActive ahk_class TTOTAL_CMD
 ;  $Escape::WinMinimize A
@@ -75,19 +73,24 @@ $#a::
 Return
 
 ; launch diff program from the internal compare window
+#IfWinActive, ahk_class TFileCompForm
 ~F2::
-  if WinActive( "ahk_class TFileCompForm" )
-  {
     ControlGetText sFile1, Edit1
     ControlGetText sFile2, Edit2
     Run "C:\Program Files (x86)\WinMerge\WinMergeU.exe" "%sFile2%" "%sFile1%"
-    Return
-  }
   Return
 
 ; Scroll, keeping the cursor in place
-^+Down:: TCScrollKeep( 1 )
-^+Up:: TCScrollKeep( 0 )
+#IfWinActive, ahk_class TTOTAL_CMD
+^+Down::
+  TCScrollKeep( 1 )
+return
+
+#IfWinActive, ahk_class TTOTAL_CMD
+^+Up::
+  TCScrollKeep( 0 )
+return
+
 TCScrollKeep( xnDirecton )
 {
   if WinActive( "ahk_class TTOTAL_CMD" )
