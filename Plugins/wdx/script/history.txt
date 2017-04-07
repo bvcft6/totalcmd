@@ -1,7 +1,0 @@
-initial alfa
-silent update - added script example
-0.1     - [+] added js support
-0.1.0.1 - [*] better reaction on ini and script changes
-0.2.0.0 - [+] 10 columns support
-	  [+] functions and soubrutines can be used in code
-	  [-] js execution can be wrong
